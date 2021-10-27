@@ -15,6 +15,19 @@ import {
   Image
 } from 'react-native';
 
+const theme = {
+  Button: {
+    titleStyle: {
+      color: 'blue',
+    },
+    Avatar: {
+      rounded: true,
+    },
+    Badge: {
+      textStyle: { fontSize: 30 },
+    },
+  },
+};
 
 
  
@@ -28,8 +41,11 @@ import {
         <Text style={{fontFamily: 'SF Pro Rounded Regular'}}>This is my project</Text>
         <Image
         source={require('./assets/img/circleButtonPay.png')}/>
+        <ThemeProvider theme={theme}>
+          <Button title="My Button" titleStyle={{ color: 'pink' }} />
+        </ThemeProvider>
       </View>
-  
+
     );
   };
 
