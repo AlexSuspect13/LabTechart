@@ -6,9 +6,14 @@ import { Surface, Text } from "react-native-paper";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Feather from "react-native-vector-icons/Feather";
 import { ListItem } from "react-native-elements";
+import { HomeScreenNavigation } from "./types/navigation";
 const Stack = createStackNavigator();
 
-export function Home({ navigation }) {
+interface HomeScreenProps {
+	navigation: HomeScreenNavigation;
+}
+
+export function Home({ navigation }: HomeScreenProps) {
 	const { signOut } = React.useContext(AuthContext);
 
 	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
@@ -57,7 +62,6 @@ export function Home({ navigation }) {
 					<Button
 						title="Go to Saving"
 						onPress={() => {
-							/* 1. Navigate to the Details route with params */
 							navigation.navigate("Saving", {
 								textparam: "Saving",
 							});

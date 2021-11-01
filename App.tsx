@@ -5,9 +5,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Home, SignInScreen, Giving, Account, Payments, Card, Saving } from "./src";
 import { AuthContext } from "./src/utils";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { RootBottomTabNavigator } from "./src/types/navigation";
 
 const StackAuth = createStackNavigator();
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<RootBottomTabNavigator>();
+
 
 function HomeTab() {
 	return (
