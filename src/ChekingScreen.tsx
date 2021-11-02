@@ -1,21 +1,17 @@
 import * as React from "react";
-import { TouchableWithoutFeedback, StyleSheet, Button, View, Image, Modal, ScrollView, StatusBar } from "react-native";
-import { AuthContext } from "./utils";
-import { Surface, Text } from "react-native-paper";
+import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal, StatusBar, Text } from "react-native";
+import { Surface } from "react-native-paper";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { AuthContext } from "./utils";
 import Feather from "react-native-vector-icons/Feather";
-import { CompositeScreenProps } from "@react-navigation/native";
-import { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
-import { StackScreenProps } from "@react-navigation/stack";
-import { NavigatorScreenParams } from "@react-navigation/native";
+import { color } from "react-native-elements/dist/helpers";
 import { HomeScreenNavigation } from "./types/navigation";
 
 interface HomeScreenProps {
 	navigation: HomeScreenNavigation;
 }
 
-export function Giving({ navigation }: HomeScreenProps) {
-	const { signOut } = React.useContext(AuthContext);
+export function Checking({ route, navigation }: HomeScreenProps) {
 	return (
 		<Surface style={styles.header}>
 			<StatusBar backgroundColor="#ff1493" />
@@ -27,17 +23,13 @@ export function Giving({ navigation }: HomeScreenProps) {
 							name="chevron-left"
 							size={30}
 							color={"white"}
-							onPress={() =>
-								navigation.navigate("Home", {
-									screen: "Home",
-								})
-							}
+							onPress={() => navigation.navigate("Home")}
 						/>
 					</TouchableOpacity>
 				}
 			</View>
 			<View style={styles.view}>
-				<Image source={require("../assets/img/logo.png")} />
+				<Text style={styles.text}>{route.params.textparam}</Text>
 			</View>
 			<View style={styles.view}>
 				{
@@ -49,7 +41,6 @@ export function Giving({ navigation }: HomeScreenProps) {
 		</Surface>
 	);
 }
-
 const styles = StyleSheet.create({
 	header: {
 		justifyContent: "space-between",
@@ -68,10 +59,8 @@ const styles = StyleSheet.create({
 		backgroundColor: "#dcdcdc",
 		height: "100%",
 	},
-	userMenuContent: {
-		position: "absolute",
-
-		right: 10,
-		width: 100,
+	text: {
+		color: "#fff",
+		fontSize: 20,
 	},
 });

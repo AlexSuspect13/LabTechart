@@ -2,14 +2,18 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Home, SignInScreen, Giving, Account, Payments, Card, Saving } from "./src";
+import { Home, SignInScreen, Giving, Account, Payments, Card, Saving, Checking } from "./src";
 import { AuthContext } from "./src/utils";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { RootBottomTabNavigator } from "./src/types/navigation";
+import { SavingScreenNavigation } from "./src/types/navigation";
 
 const StackAuth = createStackNavigator();
 const Tab = createBottomTabNavigator<RootBottomTabNavigator>();
 
+interface AuthStackScreenProps {
+	navigation: SavingScreenNavigation;
+}
 
 function HomeTab() {
 	return (
@@ -85,7 +89,7 @@ function AuthStack() {
 
 const Stack = createStackNavigator();
 
-export default function App({ navigation }) {
+export default function App({ navigation }: AuthStackScreenProps) {
 	const [state, dispatch] = React.useReducer(
 		(prevState, action) => {
 			switch (action.type) {
@@ -173,6 +177,7 @@ export default function App({ navigation }) {
 						<>
 							<Stack.Screen name="Home" component={HomeTab} />
 							<Stack.Screen name="Saving" component={Saving} />
+							<Stack.Screen name="Cheking" component={Checking} />
 						</>
 					)}
 				</Stack.Navigator>

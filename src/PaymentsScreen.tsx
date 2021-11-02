@@ -3,10 +3,9 @@ import { StyleSheet, Text, View } from "react-native";
 import { AuthContext } from "./utils";
 
 export function Payments() {
-	const { signOut } = React.useContext(AuthContext);
 	return (
 		<View style={styles.container}>
-			<Text style={{ color: "red" }}>dhd</Text>
+			<Text style={{ color: "red", fontSize: 30 }}>Cкоро!</Text>
 		</View>
 	);
 }

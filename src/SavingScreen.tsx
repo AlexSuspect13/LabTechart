@@ -5,16 +5,26 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { AuthContext } from "./utils";
 import Feather from "react-native-vector-icons/Feather";
 import { color } from "react-native-elements/dist/helpers";
+import { HomeScreenNavigation } from "./types/navigation";
 
-export function Saving({ route }) {
-	const { signOut } = React.useContext(AuthContext);
+interface HomeScreenProps {
+	navigation: HomeScreenNavigation;
+}
+
+export function Saving({ route, navigation }: HomeScreenProps) {
 	return (
 		<Surface style={styles.header}>
 			<StatusBar backgroundColor="#ff1493" />
 			<View style={styles.view}>
 				{
 					<TouchableOpacity>
-						<Feather style={{ marginRight: 80 }} name="menu" size={24} color={"white"} />
+						<Feather
+							style={{ marginRight: 80 }}
+							name="chevron-left"
+							size={30}
+							color={"white"}
+							onPress={() => navigation.navigate("Home")}
+						/>
 					</TouchableOpacity>
 				}
 			</View>

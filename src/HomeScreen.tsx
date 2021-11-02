@@ -63,7 +63,15 @@ export function Home({ navigation }: HomeScreenProps) {
 						title="Go to Saving"
 						onPress={() => {
 							navigation.navigate("Saving", {
-								textparam: "Saving",
+								textparam: "Savings",
+							});
+						}}
+					/>
+					<Button
+						title="Go to Cheking"
+						onPress={() => {
+							navigation.navigate("Cheking", {
+								textparam: "Cheking",
 							});
 						}}
 					/>
@@ -98,7 +106,7 @@ const styles = StyleSheet.create({
 	},
 	userMenuContent: {
 		position: "absolute",
-		top: Platform.OS === "ios" ? 90 : 55,
+
 		right: 10,
 		width: 100,
 	},
