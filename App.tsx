@@ -14,28 +14,34 @@ interface AuthStackScreenProps {
 	navigation: SavingScreenNavigation;
 }
 
+const getIconByRouteName = (routeName: keyof RootBottomTabNavigator) => {
+	if (routeName === 'Account') {
+		return 'ios-person-outline';
+	}
+
+	if (routeName === 'Card') {
+		return 'card-outline';
+	}
+
+	if (routeName === 'Giving') {
+		return 'ios-heart-outline';
+	}
+
+	if (routeName === 'Payments') {
+		return 'ios-wallet-outline';
+	}
+
+	return 'home';
+};
+
 function HomeTab() {
 	return (
 		<Tab.Navigator
 			screenOptions={({ route }) => ({
 				headerShown: false,
 				tabBarIcon: ({ color, size }) => {
-					let iconName;
-					if (route.name === 'HomeTabs') {
-						iconName = 'home';
-					}
-					if (route.name === 'Account') {
-						iconName = 'ios-person-outline';
-					}
-					if (route.name === 'Card') {
-						iconName = 'card-outline';
-					}
-					if (route.name === 'Giving') {
-						iconName = 'ios-heart-outline';
-					}
-					if (route.name === 'Payments') {
-						iconName = 'ios-wallet-outline';
-					}
+					const iconName = getIconByRouteName(route.name);
+
 					return <Ionicons name={iconName} size={size} color={color} />;
 				},
 			})}>
