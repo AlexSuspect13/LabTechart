@@ -65,7 +65,7 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 						}}
 					/>
 					<Button
-						title="Go to Cheking"
+						title="Go to Checking"
 						onPress={() => {
 							navigation.navigate('Checking', { textParam: 'main account(2932)' });
 						}}
