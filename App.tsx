@@ -8,7 +8,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RootBottomTabNavigator } from './src/types/navigation';
 import { SavingScreenNavigation } from './src/types/navigation';
 
-const StackAuth = createStackNavigator();
 const Tab = createBottomTabNavigator<RootBottomTabNavigator>();
 
 interface AuthStackScreenProps {
@@ -46,14 +45,6 @@ function HomeTab() {
 			<Tab.Screen name="Payments" component={Payments} options={{}} />
 			<Tab.Screen name="Card" component={Card} />
 		</Tab.Navigator>
-	);
-}
-
-function AuthStack() {
-	return (
-		<Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="SigInScreen">
-			<Stack.Screen name="SigInScreen" component={SignInScreen} />
-		</Stack.Navigator>
 	);
 }
 
@@ -140,9 +131,7 @@ export default function App({ navigation }: AuthStackScreenProps) {
 			<NavigationContainer>
 				<Stack.Navigator screenOptions={{ headerShown: false }}>
 					{state.userToken == null ? (
-						<>
-							<Stack.Screen name="Auth" component={AuthStack} />
-						</>
+						<Stack.Screen name="SigInScreen" component={SignInScreen} />
 					) : (
 						<>
 							<Stack.Screen name="Home" component={HomeTab} />
