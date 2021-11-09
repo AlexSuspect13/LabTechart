@@ -64,7 +64,7 @@ export function Account({ navigation }: AccountScreenProps) {
 
 const styles = StyleSheet.create({
 	scrollView: {
-		backgroundColor: 'pink',
+		backgroundColor: '#1e90ff',
 		height: '100%',
 		width: '100%',
 	},

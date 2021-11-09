@@ -7,14 +7,15 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { ListItem } from 'react-native-elements';
 import { HomeScreenNavigation } from '../types/navigation';
+
 const Stack = createStackNavigator();
 
 interface HomeScreenProps extends HomeScreenNavigation {}
 
 export function HomeTabs({ navigation }: HomeScreenProps) {
-	const { signOut } = React.useContext(AuthContext);
-
 	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
+
+	const { signOut } = React.useContext(AuthContext);
 
 	const hideUserMenu = () => {
 		setUserMenuVisible(false);
@@ -60,13 +61,13 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 					<Button
 						title="Go to Saving"
 						onPress={() => {
-							navigation.navigate('Checking', { textParam: 'buy a house | 4044|' });
+							navigation.navigate('Saving', { textParam: 'buy a house | 4044|' });
 						}}
 					/>
 					<Button
 						title="Go to Cheking"
 						onPress={() => {
-							navigation.navigate('Checking', { textParam: 'buy a house | 4044|' });
+							navigation.navigate('Checking', { textParam: 'main account(2932)' });
 						}}
 					/>
 				</ScrollView>

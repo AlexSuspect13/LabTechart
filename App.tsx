@@ -147,7 +147,7 @@ export default function App({ navigation }: AuthStackScreenProps) {
 						<>
 							<Stack.Screen name="Home" component={HomeTab} />
 							<Stack.Screen name="Saving" component={Saving} />
-							<Stack.Screen name="Cheking" component={Checking} />
+							<Stack.Screen name="Checking" component={Checking} />
 						</>
 					)}
 				</Stack.Navigator>

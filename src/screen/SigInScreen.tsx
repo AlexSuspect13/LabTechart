@@ -12,7 +12,7 @@ export function SignInScreen() {
 
 	return (
 		<View style={styles.container}>
-			<StatusBar backgroundColor="#fff" />
+			<StatusBar backgroundColor="#ff1493" />
 			<View style={styles.header}>
 				<Text
 					style={{

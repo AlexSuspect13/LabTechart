@@ -2,13 +2,14 @@ import * as React from 'react';
 import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal, StatusBar, Text } from 'react-native';
 import { Surface } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { AuthContext } from './utils';
+
 import Feather from 'react-native-vector-icons/Feather';
 import { color } from 'react-native-elements/dist/helpers';
-import { HomeScreenNavigation } from './types/navigation';
+import { HomeScreenNavigation, SavingScreenRouteProp } from '../types/navigation';
 
 interface HomeScreenProps {
 	navigation: HomeScreenNavigation;
+	route: SavingScreenRouteProp;
 }
 
 export function Saving({ route, navigation }: HomeScreenProps) {
@@ -23,18 +24,19 @@ export function Saving({ route, navigation }: HomeScreenProps) {
 							name="chevron-left"
 							size={30}
 							color={'white'}
-							onPress={() => navigation.navigate('Home')}
+							onPress={() => navigation.navigate('HomeTabs')}
 						/>
 					</TouchableOpacity>
 				}
 			</View>
 			<View style={styles.view}>
-				<Text style={styles.text}>{route.params.textparam}</Text>
+				<Text style={{ color: '#fff', fontSize: 20 }}>Saving</Text>
+				<Text style={styles.text}>{route.params.textParam}</Text>
 			</View>
 			<View style={styles.view}>
 				{
 					<TouchableOpacity>
-						<Image style={{ marginLeft: 70 }} source={require('../assets/img/oval.png')} />
+						<Image style={{ marginLeft: 70 }} source={require('../../assets/img/oval.png')} />
 					</TouchableOpacity>
 				}
 			</View>
@@ -61,6 +63,6 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		color: '#fff',
-		fontSize: 20,
+		fontSize: 10,
 	},
 });

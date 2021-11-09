@@ -30,6 +30,7 @@ export function Checking({ route, navigation }: CheckingScreenProps) {
 				}
 			</View>
 			<View style={styles.view}>
+				<Text style={{ color: '#fff', fontSize: 20 }}>Checking</Text>
 				<Text style={styles.text}>{route.params.textParam}</Text>
 			</View>
 			<View style={styles.view}>
@@ -62,6 +63,6 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		color: '#fff',
-		fontSize: 20,
+		fontSize: 10,
 	},
 });
