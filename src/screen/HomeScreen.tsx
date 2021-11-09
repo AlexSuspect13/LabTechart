@@ -1,26 +1,15 @@
 import * as React from 'react';
-import { TouchableWithoutFeedback, StyleSheet, Button, View, Image, Modal, ScrollView, StatusBar } from 'react-native';
+import { StyleSheet, Button, View, Image, ScrollView, StatusBar } from 'react-native';
 import { AuthContext } from '../utils';
 import { Surface } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
-import { ListItem } from 'react-native-elements';
 import { HomeScreenNavigation } from '../types/navigation';
+import { UserMenu } from '../components/userMenu';
 
 interface HomeScreenProps extends HomeScreenNavigation {}
 
 export function HomeScreen({ navigation }: HomeScreenProps) {
-	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
-
-	const { signOut } = React.useContext(AuthContext);
-
-	const hideUserMenu = () => {
-		setUserMenuVisible(false);
-	};
-	const showUserMenu = () => {
-		setUserMenuVisible(true);
-	};
-
 	return (
 		<View style={styles.container}>
 			<Surface style={styles.header}>
@@ -36,21 +25,7 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
 					<Image source={require('../../assets/img/logo.png')} />
 				</View>
 				<View style={styles.view}>
-					{
-						<TouchableOpacity onPress={showUserMenu}>
-							<Image style={{ marginLeft: 70 }} source={require('../../assets/img/oval.png')} />
-						</TouchableOpacity>
-					}
-					<Modal visible={userMenuVisible} transparent>
-						<TouchableWithoutFeedback onPress={hideUserMenu}>
-							<View style={StyleSheet.absoluteFillObject} />
-						</TouchableWithoutFeedback>
-						<ListItem style={styles.userMenuContent} onPress={signOut}>
-							<ListItem.Content>
-								<ListItem.Title>Log out</ListItem.Title>
-							</ListItem.Content>
-						</ListItem>
-					</Modal>
+					<UserMenu />
 				</View>
 			</Surface>
 			<ScrollView style={styles.scrollView}>
@@ -90,10 +65,5 @@ const styles = StyleSheet.create({
 		flex: 1,
 		margin: 5,
 		alignItems: 'center',
-	},
-	userMenuContent: {
-		position: 'absolute',
-		right: 10,
-		width: 100,
 	},
 });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 

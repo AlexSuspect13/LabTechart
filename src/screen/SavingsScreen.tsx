@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { StyleSheet, View, Image, StatusBar, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, StatusBar, Text, TouchableOpacity } from 'react-native';
 import { Surface } from 'react-native-paper';
 
 import Feather from 'react-native-vector-icons/Feather';
+import { UserMenu } from '../components/userMenu';
 import { SavingsScreenNavigation } from '../types/navigation';
 
 interface SavingScreenProps extends SavingsScreenNavigation {}
@@ -29,11 +30,7 @@ export function SavingScreen({ route, navigation }: SavingScreenProps) {
 				<Text style={styles.text}>{route.params.textParam}</Text>
 			</View>
 			<View style={styles.view}>
-				{
-					<TouchableOpacity>
-						<Image style={{ marginLeft: 70 }} source={require('../../assets/img/oval.png')} />
-					</TouchableOpacity>
-				}
+				<UserMenu />
 			</View>
 		</Surface>
 	);

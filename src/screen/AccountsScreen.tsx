@@ -1,24 +1,14 @@
 import * as React from 'react';
-import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal } from 'react-native';
-import { AuthContext } from '../utils';
+import { StyleSheet, View } from 'react-native';
 import { Surface, Text } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
-import { ListItem } from 'react-native-elements';
 import { AccountsScreenNavigation } from '../types/navigation';
+import { UserMenu } from '../components/userMenu';
 
 interface AccountsScreenProps extends AccountsScreenNavigation{}
 
 export function AccountsScreen({ navigation }: AccountsScreenProps) {
-	const { signOut } = React.useContext(AuthContext);
-	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
-
-	const hideUserMenu = () => {
-		setUserMenuVisible(false);
-	};
-	const showUserMenu = () => {
-		setUserMenuVisible(true);
-	};
 	return (
 		<View>
 			<Surface style={styles.header}>
@@ -39,21 +29,7 @@ export function AccountsScreen({ navigation }: AccountsScreenProps) {
 					<Text style={{ color: 'white', fontSize: 20 }}>Account</Text>
 				</View>
 				<View style={styles.view}>
-					{
-						<TouchableOpacity onPress={showUserMenu}>
-							<Image style={{ marginLeft: 70 }} source={require('../../assets/img/oval.png')} />
-						</TouchableOpacity>
-					}
-					<Modal visible={userMenuVisible} transparent>
-						<TouchableWithoutFeedback onPress={hideUserMenu}>
-							<View style={styles.userMenuOverlay} />
-						</TouchableWithoutFeedback>
-						<ListItem style={styles.userMenuContent} onPress={signOut}>
-							<ListItem.Content>
-								<ListItem.Title>Log out</ListItem.Title>
-							</ListItem.Content>
-						</ListItem>
-					</Modal>
+					<UserMenu />
 				</View>
 			</Surface>
 		</View>
@@ -83,11 +59,4 @@ const styles = StyleSheet.create({
 		backgroundColor: '#dcdcdc',
 		height: '100%',
 	},
-	userMenuContent: {
-		position: 'absolute',
-
-		right: 10,
-		width: 100,
-	},
-	userMenuOverlay: StyleSheet.absoluteFillObject,
 });
