@@ -5,13 +5,11 @@ import { Surface, Text } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { ListItem } from 'react-native-elements';
-import { HomeScreenNavigation } from '../types/navigation';
+import { GivingScreenNavigation } from '../types/navigation';
 
-interface HomeScreenProps {
-	navigation: HomeScreenNavigation;
-}
+interface GivingScreenProps extends GivingScreenNavigation {}
 
-export function Giving({ navigation }: HomeScreenProps) {
+export function GivingScreen({ navigation }: GivingScreenProps) {
 	const { signOut } = React.useContext(AuthContext);
 	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
 
@@ -35,9 +33,7 @@ export function Giving({ navigation }: HomeScreenProps) {
 								size={30}
 								color={'white'}
 								onPress={() =>
-									navigation.navigate('HomeTabs', {
-										screen: 'HomeTabs',
-									})
+									navigation.goBack()
 								}
 							/>
 						</TouchableOpacity>

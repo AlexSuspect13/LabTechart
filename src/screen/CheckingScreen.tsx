@@ -1,18 +1,12 @@
 import * as React from 'react';
-import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal, StatusBar, Text } from 'react-native';
+import { StyleSheet, View, Image, StatusBar, Text, TouchableOpacity } from 'react-native';
 import { Surface } from 'react-native-paper';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { AuthContext } from '../utils';
 import Feather from 'react-native-vector-icons/Feather';
-import { color } from 'react-native-elements/dist/helpers';
-import { CheckingScreenRouteProp, HomeScreenNavigation } from '../types/navigation';
+import { CheckingScreenNavigation } from '../types/navigation';
 
-interface CheckingScreenProps {
-	navigation: HomeScreenNavigation;
-	route: CheckingScreenRouteProp;
-}
+interface CheckingScreenProps extends CheckingScreenNavigation {}
 
-export function Checking({ route, navigation }: CheckingScreenProps) {
+export function CheckingScreen({ route, navigation }: CheckingScreenProps) {
 	return (
 		<Surface style={styles.header}>
 			<StatusBar backgroundColor="#ff1493" />
@@ -24,7 +18,7 @@ export function Checking({ route, navigation }: CheckingScreenProps) {
 							name="chevron-left"
 							size={30}
 							color={'white'}
-							onPress={() => navigation.navigate('HomeTabs')}
+							onPress={() => navigation.goBack()}
 						/>
 					</TouchableOpacity>
 				}

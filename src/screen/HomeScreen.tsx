@@ -1,14 +1,11 @@
 import * as React from 'react';
 import { TouchableWithoutFeedback, StyleSheet, Button, View, Image, Modal, ScrollView, StatusBar } from 'react-native';
 import { AuthContext } from '../utils';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Surface, Text } from 'react-native-paper';
+import { Surface } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { ListItem } from 'react-native-elements';
 import { HomeScreenNavigation } from '../types/navigation';
-
-const Stack = createStackNavigator();
 
 interface HomeScreenProps extends HomeScreenNavigation {}
 
@@ -57,19 +54,19 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
 				</View>
 			</Surface>
 			<ScrollView style={styles.scrollView}>
-					<Button
-						title="Go to Saving"
-						onPress={() => {
-							navigation.navigate('Saving', { textParam: 'buy a house | 4044|' });
-						}}
-					/>
-					<Button
-						title="Go to Checking"
-						onPress={() => {
-							navigation.navigate('Checking', { textParam: 'main account(2932)' });
-						}}
-					/>
-				</ScrollView>
+				<Button
+					title="Go to Saving"
+					onPress={() => {
+						navigation.navigate('Savings', { textParam: 'buy a house | 4044|' });
+					}}
+				/>
+				<Button
+					title="Go to Checking"
+					onPress={() => {
+						navigation.navigate('Checking', { textParam: 'main account(2932)' });
+					}}
+				/>
+			</ScrollView>
 		</View>
 	);
 }

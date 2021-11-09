@@ -1,40 +1,37 @@
-import { BottomTabNavigationProp, BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { CompositeScreenProps, RouteProp } from '@react-navigation/core';
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { CompositeScreenProps } from '@react-navigation/core';
 import { StackScreenProps } from '@react-navigation/stack';
 
 export type RootBottomTabNavigator = {
 	Home: undefined;
-	Account: undefined;
+	Accounts: undefined;
 	Giving: undefined;
 	Payments: undefined;
 	Card: undefined;
 };
 export type RootStackParamList = {
 	SigInScreen: undefined
-	HomeTabs: RootBottomTabNavigator
-	Saving: { textParam: string };
+	HomeTabs: undefined
+	Savings: { textParam: string };
 	Checking: { textParam: string };
 };
 
-export type CheckingScreenRouteProp = RouteProp<RootStackParamList, 'Checking'>;
-export type SavingScreenRouteProp = RouteProp<RootStackParamList, 'Saving'>;
-
+// Root bottom tab
 export type HomeScreenNavigation = CompositeScreenProps<
 	BottomTabScreenProps<RootBottomTabNavigator, 'Home'>,
 	StackScreenProps<RootStackParamList>
 >;
-export type CheckingScreenNavigation = CompositeScreenProps<
-	BottomTabScreenProps<RootBottomTabNavigator>,
-	StackScreenProps<RootStackParamList, "Checking">
+
+export type GivingScreenNavigation = CompositeScreenProps<
+	BottomTabScreenProps<RootBottomTabNavigator, "Giving">,
+	StackScreenProps<RootStackParamList>
 >;
 
-export type SavingScreenNavigation = CompositeScreenProps<
-	BottomTabScreenProps<RootBottomTabNavigator>,
-	StackScreenProps<RootStackParamList, "Saving">
+export type AccountsScreenNavigation = CompositeScreenProps<
+	BottomTabScreenProps<RootBottomTabNavigator, "Accounts">,
+	StackScreenProps<RootStackParamList>
 >;
 
-export type AccountScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Account'>;
-export type GivingScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Giving'>;
-export type PaymentsScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Payments'>;
+export type CheckingScreenNavigation = StackScreenProps<RootStackParamList, "Checking">
+export type SavingsScreenNavigation = StackScreenProps<RootStackParamList, "Savings">;
 
-export type CardScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Card'>;

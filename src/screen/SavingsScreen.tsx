@@ -1,18 +1,13 @@
 import * as React from 'react';
-import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal, StatusBar, Text } from 'react-native';
+import { StyleSheet, View, Image, StatusBar, Text, TouchableOpacity } from 'react-native';
 import { Surface } from 'react-native-paper';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import Feather from 'react-native-vector-icons/Feather';
-import { color } from 'react-native-elements/dist/helpers';
-import { HomeScreenNavigation, SavingScreenRouteProp } from '../types/navigation';
+import { SavingsScreenNavigation } from '../types/navigation';
 
-interface HomeScreenProps {
-	navigation: HomeScreenNavigation;
-	route: SavingScreenRouteProp;
-}
+interface SavingScreenProps extends SavingsScreenNavigation {}
 
-export function Saving({ route, navigation }: HomeScreenProps) {
+export function SavingScreen({ route, navigation }: SavingScreenProps) {
 	return (
 		<Surface style={styles.header}>
 			<StatusBar backgroundColor="#ff1493" />

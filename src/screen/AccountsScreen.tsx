@@ -1,17 +1,15 @@
 import * as React from 'react';
-import { TouchableWithoutFeedback, StyleSheet, Button, View, Image, Modal } from 'react-native';
+import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal } from 'react-native';
 import { AuthContext } from '../utils';
 import { Surface, Text } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { ListItem } from 'react-native-elements';
-import { HomeScreenNavigation } from '../types/navigation';
+import { AccountsScreenNavigation } from '../types/navigation';
 
-interface AccountScreenProps {
-	navigation: HomeScreenNavigation;
-}
+interface AccountsScreenProps extends AccountsScreenNavigation{}
 
-export function Account({ navigation }: AccountScreenProps) {
+export function AccountsScreen({ navigation }: AccountsScreenProps) {
 	const { signOut } = React.useContext(AuthContext);
 	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
 
@@ -32,7 +30,7 @@ export function Account({ navigation }: AccountScreenProps) {
 								name="chevron-left"
 								size={30}
 								color={'white'}
-								onPress={() => navigation.navigate('HomeTabs')}
+								onPress={() => navigation.goBack()}
 							/>
 						</TouchableOpacity>
 					}

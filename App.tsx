@@ -2,21 +2,16 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeScreen, SignInScreen, Giving, Account, Payments, Card, Saving, Checking } from './src';
+import { HomeScreen, SignInScreen, GivingScreen, AccountsScreen, PaymentsScreen, CardScreen, SavingScreen, CheckingScreen } from './src';
 import { AuthContext } from './src/utils';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RootBottomTabNavigator, RootStackParamList } from './src/types/navigation';
-import { SavingScreenNavigation } from './src/types/navigation';
 
 const Tab = createBottomTabNavigator<RootBottomTabNavigator>();
 const Stack = createStackNavigator<RootStackParamList>();
 
-interface AuthStackScreenProps {
-	navigation: SavingScreenNavigation;
-}
-
 const getIconByRouteName = (routeName: keyof RootBottomTabNavigator) => {
-	if (routeName === 'Account') {
+	if (routeName === 'Accounts') {
 		return 'ios-person-outline';
 	}
 
@@ -47,10 +42,10 @@ function HomeTabs() {
 				},
 			})}>
 			<Tab.Screen name="Home" component={HomeScreen} />
-			<Tab.Screen name="Giving" component={Giving} />
-			<Tab.Screen name="Account" component={Account} />
-			<Tab.Screen name="Payments" component={Payments} options={{}} />
-			<Tab.Screen name="Card" component={Card} />
+			<Tab.Screen name="Accounts" component={AccountsScreen} />
+			<Tab.Screen name="Giving" component={GivingScreen} />
+			<Tab.Screen name="Payments" component={PaymentsScreen} options={{}} />
+			<Tab.Screen name="Card" component={CardScreen} />
 		</Tab.Navigator>
 	);
 }
@@ -140,8 +135,8 @@ export default function App() {
 					) : (
 						<>
 							<Stack.Screen name="HomeTabs" component={HomeTabs} />
-							<Stack.Screen name="Saving" component={Saving} />
-							<Stack.Screen name="Checking" component={Checking} />
+							<Stack.Screen name="Savings" component={SavingScreen} />
+							<Stack.Screen name="Checking" component={CheckingScreen} />
 						</>
 					)}
 				</Stack.Navigator>

@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { AuthContext } from '../utils';
 
-export function Payments() {
+export function PaymentsScreen() {
 	return (
 		<View style={styles.container}>
-			<Text style={{ color: 'red', fontSize: 30 }}>Cкоро!</Text>
+			<Text style={{ color: 'red', fontSize: 30 }}>Coming soon</Text>
 		</View>
 	);
 }

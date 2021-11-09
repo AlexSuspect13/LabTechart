@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export function Card() {
+export function CardScreen() {
 	return (
 		<View style={styles.container}>
-			<Text style={{ fontSize: 30, color: 'red' }}>Скоро!</Text>
+			<Text style={{ fontSize: 30, color: 'red' }}>Coming soon!</Text>
 		</View>
 	);
 }
