@@ -9,13 +9,15 @@ export type RootBottomTabNavigator = {
 	Payments: undefined;
 	Card: undefined;
 	Checking: undefined;
+	Saving: undefined;
 };
 export type RootStackParamList = {
-	Saving: undefined;
+	Saving: { textParam: string };
 	Checking: { textParam: string };
 };
 
 export type CheckingScreenRouteProp = RouteProp<RootStackParamList, 'Checking'>;
+export type SavingScreenRouteProp = RouteProp<RootStackParamList, 'Saving'>;
 
 export type HomeScreenNavigation = CompositeScreenProps<
 	BottomTabScreenProps<RootBottomTabNavigator, 'HomeTabs'>,
@@ -23,6 +25,11 @@ export type HomeScreenNavigation = CompositeScreenProps<
 >;
 export type CheckingScreenNavigation = CompositeScreenProps<
 	BottomTabScreenProps<RootBottomTabNavigator, 'Checking'>,
+	StackScreenProps<RootStackParamList>
+>;
+
+export type SavingScreenNavigation = CompositeScreenProps<
+	BottomTabScreenProps<RootBottomTabNavigator, 'Saving'>,
 	StackScreenProps<RootStackParamList>
 >;
 
