@@ -22,11 +22,6 @@ export type HomeScreenNavigation = CompositeScreenProps<
 	StackScreenProps<RootStackParamList>
 >;
 
-export type GivingScreenNavigation = CompositeScreenProps<
-	BottomTabScreenProps<RootBottomTabNavigator, "Giving">,
-	StackScreenProps<RootStackParamList>
->;
-
 export type AccountsScreenNavigation = CompositeScreenProps<
 	BottomTabScreenProps<RootBottomTabNavigator, "Accounts">,
 	StackScreenProps<RootStackParamList>
