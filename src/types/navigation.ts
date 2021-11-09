@@ -3,13 +3,15 @@ import { CompositeScreenProps, RouteProp } from '@react-navigation/core';
 import { StackScreenProps } from '@react-navigation/stack';
 
 export type RootBottomTabNavigator = {
-	HomeTabs: undefined;
+	Home: undefined;
 	Account: undefined;
 	Giving: undefined;
 	Payments: undefined;
 	Card: undefined;
 };
 export type RootStackParamList = {
+	SigInScreen: undefined
+	HomeTabs: RootBottomTabNavigator
 	Saving: { textParam: string };
 	Checking: { textParam: string };
 };
@@ -18,7 +20,7 @@ export type CheckingScreenRouteProp = RouteProp<RootStackParamList, 'Checking'>;
 export type SavingScreenRouteProp = RouteProp<RootStackParamList, 'Saving'>;
 
 export type HomeScreenNavigation = CompositeScreenProps<
-	BottomTabScreenProps<RootBottomTabNavigator, 'HomeTabs'>,
+	BottomTabScreenProps<RootBottomTabNavigator, 'Home'>,
 	StackScreenProps<RootStackParamList>
 >;
 export type CheckingScreenNavigation = CompositeScreenProps<

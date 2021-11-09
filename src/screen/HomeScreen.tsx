@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 
 interface HomeScreenProps extends HomeScreenNavigation {}
 
-export function HomeTabs({ navigation }: HomeScreenProps) {
+export function HomeScreen({ navigation }: HomeScreenProps) {
 	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
 
 	const { signOut } = React.useContext(AuthContext);

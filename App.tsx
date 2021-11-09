@@ -2,13 +2,14 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeTabs, SignInScreen, Giving, Account, Payments, Card, Saving, Checking } from './src';
+import { HomeScreen, SignInScreen, Giving, Account, Payments, Card, Saving, Checking } from './src';
 import { AuthContext } from './src/utils';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { RootBottomTabNavigator } from './src/types/navigation';
+import { RootBottomTabNavigator, RootStackParamList } from './src/types/navigation';
 import { SavingScreenNavigation } from './src/types/navigation';
 
 const Tab = createBottomTabNavigator<RootBottomTabNavigator>();
+const Stack = createStackNavigator<RootStackParamList>();
 
 interface AuthStackScreenProps {
 	navigation: SavingScreenNavigation;
@@ -34,7 +35,7 @@ const getIconByRouteName = (routeName: keyof RootBottomTabNavigator) => {
 	return 'home';
 };
 
-function HomeTab() {
+function HomeTabs() {
 	return (
 		<Tab.Navigator
 			screenOptions={({ route }) => ({
@@ -45,7 +46,7 @@ function HomeTab() {
 					return <Ionicons name={iconName} size={size} color={color} />;
 				},
 			})}>
-			<Tab.Screen name="HomeTabs" component={HomeTabs} />
+			<Tab.Screen name="Home" component={HomeScreen} />
 			<Tab.Screen name="Giving" component={Giving} />
 			<Tab.Screen name="Account" component={Account} />
 			<Tab.Screen name="Payments" component={Payments} options={{}} />
@@ -54,9 +55,7 @@ function HomeTab() {
 	);
 }
 
-const Stack = createStackNavigator();
-
-export default function App({ navigation }: AuthStackScreenProps) {
+export default function App() {
 	const [state, dispatch] = React.useReducer(
 		(prevState, action) => {
 			switch (action.type) {
@@ -140,7 +139,7 @@ export default function App({ navigation }: AuthStackScreenProps) {
 						<Stack.Screen name="SigInScreen" component={SignInScreen} />
 					) : (
 						<>
-							<Stack.Screen name="Home" component={HomeTab} />
+							<Stack.Screen name="HomeTabs" component={HomeTabs} />
 							<Stack.Screen name="Saving" component={Saving} />
 							<Stack.Screen name="Checking" component={Checking} />
 						</>
