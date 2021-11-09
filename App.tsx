@@ -1,12 +1,12 @@
-import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Home, SignInScreen, Giving, Account, Payments, Card, Saving, Checking } from "./src";
-import { AuthContext } from "./src/utils";
-import Ionicons from "react-native-vector-icons/Ionicons";
-import { RootBottomTabNavigator } from "./src/types/navigation";
-import { SavingScreenNavigation } from "./src/types/navigation";
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { HomeTabs, SignInScreen, Giving, Account, Payments, Card, Saving, Checking } from './src';
+import { AuthContext } from './src/utils';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { RootBottomTabNavigator } from './src/types/navigation';
+import { SavingScreenNavigation } from './src/types/navigation';
 
 const StackAuth = createStackNavigator();
 const Tab = createBottomTabNavigator<RootBottomTabNavigator>();
@@ -19,71 +19,41 @@ function HomeTab() {
 	return (
 		<Tab.Navigator
 			screenOptions={({ route }) => ({
+				headerShown: false,
 				tabBarIcon: ({ color, size }) => {
 					let iconName;
-					if (route.name === "Home") {
-						iconName = "home";
+					if (route.name === 'HomeTabs') {
+						iconName = 'home';
 					}
-					if (route.name === "Account") {
-						iconName = "ios-person-outline";
+					if (route.name === 'Account') {
+						iconName = 'ios-person-outline';
 					}
-					if (route.name === "Card") {
-						iconName = "card-outline";
+					if (route.name === 'Card') {
+						iconName = 'card-outline';
 					}
-					if (route.name === "Giving") {
-						iconName = "ios-heart-outline";
+					if (route.name === 'Giving') {
+						iconName = 'ios-heart-outline';
 					}
-					if (route.name === "Payments") {
-						iconName = "ios-wallet-outline";
+					if (route.name === 'Payments') {
+						iconName = 'ios-wallet-outline';
 					}
 					return <Ionicons name={iconName} size={size} color={color} />;
 				},
-			})}
-		>
-			<Tab.Screen
-				name="Home"
-				component={Home}
-				options={{
-					headerShown: false,
-				}}
-			/>
-			<Tab.Screen
-				name="Giving"
-				component={Giving}
-				options={{
-					headerShown: false,
-				}}
-			/>
-			<Tab.Screen
-				name="Account"
-				component={Account}
-				options={{
-					headerShown: false,
-				}}
-			/>
-			<Tab.Screen
-				name="Payments"
-				component={Payments}
-				options={{
-					headerShown: false,
-				}}
-			/>
-			<Tab.Screen
-				name="Card"
-				component={Card}
-				options={{
-					headerShown: false,
-				}}
-			/>
+			})}>
+			<Tab.Screen name="HomeTabs" component={HomeTabs} />
+			<Tab.Screen name="Giving" component={Giving} />
+			<Tab.Screen name="Account" component={Account} />
+			<Tab.Screen name="Payments" component={Payments} options={{}} />
+			<Tab.Screen name="Card" component={Card} />
 		</Tab.Navigator>
 	);
 }
 
 function AuthStack() {
 	return (
-		<StackAuth.Navigator initialRouteName="SigInScreen">
-			<StackAuth.Screen name="SigInScreen" component={SignInScreen} />
-		</StackAuth.Navigator>
+		<Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="SigInScreen">
+			<Stack.Screen name="SigInScreen" component={SignInScreen} />
+		</Stack.Navigator>
 	);
 }
 
@@ -93,19 +63,19 @@ export default function App({ navigation }: AuthStackScreenProps) {
 	const [state, dispatch] = React.useReducer(
 		(prevState, action) => {
 			switch (action.type) {
-				case "RESTORE_TOKEN":
+				case 'RESTORE_TOKEN':
 					return {
 						...prevState,
 						userToken: action.token,
 						isLoading: false,
 					};
-				case "SIGN_IN":
+				case 'SIGN_IN':
 					return {
 						...prevState,
 						isSignout: false,
 						userToken: action.token,
 					};
-				case "SIGN_OUT":
+				case 'SIGN_OUT':
 					return {
 						...prevState,
 						isSignout: true,
@@ -117,7 +87,7 @@ export default function App({ navigation }: AuthStackScreenProps) {
 			isLoading: true,
 			isSignout: false,
 			userToken: null,
-		}
+		},
 	);
 
 	React.useEffect(() => {
@@ -136,7 +106,7 @@ export default function App({ navigation }: AuthStackScreenProps) {
 
 			// This will switch to the App screen or Auth screen and this loading
 			// screen will be unmounted and thrown away.
-			dispatch({ type: "RESTORE_TOKEN", token: userToken });
+			dispatch({ type: 'RESTORE_TOKEN', token: userToken });
 		};
 
 		bootstrapAsync();
@@ -150,19 +120,19 @@ export default function App({ navigation }: AuthStackScreenProps) {
 				// After getting token, we need to persist the token using `SecureStore` or any other encrypted storage
 				// In the example, we'll use a dummy token
 
-				dispatch({ type: "SIGN_IN", token: "dummy-auth-token" });
+				dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
 			},
-			signOut: () => dispatch({ type: "SIGN_OUT" }),
+			signOut: () => dispatch({ type: 'SIGN_OUT' }),
 			signUp: async (data) => {
 				// In a production app, we need to send user data to server and get a token
 				// We will also need to handle errors if sign up failed
 				// After getting token, we need to persist the token using `SecureStore` or any other encrypted storage
 				// In the example, we'll use a dummy token
 
-				dispatch({ type: "SIGN_IN", token: "dummy-auth-token" });
+				dispatch({ type: 'SIGN_IN', token: 'dummy-auth-token' });
 			},
 		}),
-		[]
+		[],
 	);
 
 	return (
@@ -171,7 +141,7 @@ export default function App({ navigation }: AuthStackScreenProps) {
 				<Stack.Navigator screenOptions={{ headerShown: false }}>
 					{state.userToken == null ? (
 						<>
-							<StackAuth.Screen name="Auth" component={AuthStack} />
+							<Stack.Screen name="Auth" component={AuthStack} />
 						</>
 					) : (
 						<>

@@ -1,19 +1,33 @@
-import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
-import { StackNavigationProp } from "@react-navigation/stack";
+import { BottomTabNavigationProp, BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { CompositeScreenProps, RouteProp } from '@react-navigation/core';
+import { StackScreenProps } from '@react-navigation/stack';
 
 export type RootBottomTabNavigator = {
-	Home: undefined;
+	HomeTabs: undefined;
 	Account: undefined;
 	Giving: undefined;
 	Payments: undefined;
 	Card: undefined;
+	Checking: undefined;
 };
 export type RootStackParamList = {
 	Saving: undefined;
+	Checking: { textParam: string };
 };
 
-export type HomeScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, "Home">;
-export type AccountScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, "Account">;
-export type GivingScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, "Giving">;
-export type PaymentsScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, "Payments">;
-export type CardScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, "Card">;
+export type CheckingScreenRouteProp = RouteProp<RootStackParamList, 'Checking'>;
+
+export type HomeScreenNavigation = CompositeScreenProps<
+	BottomTabScreenProps<RootBottomTabNavigator, 'HomeTabs'>,
+	StackScreenProps<RootStackParamList>
+>;
+export type CheckingScreenNavigation = CompositeScreenProps<
+	BottomTabScreenProps<RootBottomTabNavigator, 'Checking'>,
+	StackScreenProps<RootStackParamList>
+>;
+
+export type AccountScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Account'>;
+export type GivingScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Giving'>;
+export type PaymentsScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Payments'>;
+
+export type CardScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Card'>;
