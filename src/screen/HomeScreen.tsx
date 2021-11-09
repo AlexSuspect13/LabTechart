@@ -25,7 +25,7 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
 	};
 
 	return (
-		<View>
+		<View style={styles.container}>
 			<Surface style={styles.header}>
 				<StatusBar backgroundColor="#ff1493" />
 				<View style={styles.view}>
@@ -46,7 +46,7 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
 					}
 					<Modal visible={userMenuVisible} transparent>
 						<TouchableWithoutFeedback onPress={hideUserMenu}>
-							<View style={styles.userMenuOverlay} />
+							<View style={StyleSheet.absoluteFillObject} />
 						</TouchableWithoutFeedback>
 						<ListItem style={styles.userMenuContent} onPress={signOut}>
 							<ListItem.Content>
@@ -56,8 +56,7 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
 					</Modal>
 				</View>
 			</Surface>
-			<View style={styles.body}>
-				<ScrollView style={styles.scrollView}>
+			<ScrollView style={styles.scrollView}>
 					<Button
 						title="Go to Saving"
 						onPress={() => {
@@ -71,16 +70,16 @@ export function HomeScreen({ navigation }: HomeScreenProps) {
 						}}
 					/>
 				</ScrollView>
-			</View>
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+	},
 	scrollView: {
 		backgroundColor: 'pink',
-		height: '100%',
-		width: '100%',
 	},
 	header: {
 		justifyContent: 'space-between',
@@ -95,15 +94,9 @@ const styles = StyleSheet.create({
 		margin: 5,
 		alignItems: 'center',
 	},
-	body: {
-		backgroundColor: '#dcdcdc',
-		height: '100%',
-	},
 	userMenuContent: {
 		position: 'absolute',
-
 		right: 10,
 		width: 100,
 	},
-	userMenuOverlay: StyleSheet.absoluteFillObject,
 });
