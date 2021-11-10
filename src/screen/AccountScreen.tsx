@@ -12,7 +12,6 @@ interface AccountScreenProps {
 }
 
 export function Account({ navigation }: AccountScreenProps) {
-	const { signOut } = React.useContext(AuthContext);
 	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
 
 	const hideUserMenu = () => {
@@ -50,7 +49,7 @@ export function Account({ navigation }: AccountScreenProps) {
 						<TouchableWithoutFeedback onPress={hideUserMenu}>
 							<View style={styles.userMenuOverlay} />
 						</TouchableWithoutFeedback>
-						<ListItem style={styles.userMenuContent} onPress={signOut}>
+						<ListItem style={styles.userMenuContent} onPress={() => {}}>
 							<ListItem.Content>
 								<ListItem.Title>Log out</ListItem.Title>
 							</ListItem.Content>

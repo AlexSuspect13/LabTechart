@@ -4,11 +4,12 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 
 import { AuthContext } from '../utils';
+import { useDispatch } from 'react-redux';
 export function SignInScreen() {
 	const [username, setUsername] = React.useState('');
 	const [password, setPassword] = React.useState('');
 
-	const { signIn } = React.useContext(AuthContext);
+	const dispatch = useDispatch();
 
 	return (
 		<View style={styles.container}>
@@ -60,7 +61,7 @@ export function SignInScreen() {
 							let email = /^[\w-\.]+@itechart.com$/;
 
 							if (email.test(username) && password === 'admin') {
-								signIn({ username, password });
+								dispatch({ type: 'SIGN_IN', token: 'sdsd' });
 							}
 						}}>
 						<View style={{ backgroundColor: '#ff1493', height: 30, width: 300, borderRadius: 15 }}>

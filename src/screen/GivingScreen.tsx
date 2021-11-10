@@ -12,7 +12,6 @@ interface HomeScreenProps {
 }
 
 export function Giving({ navigation }: HomeScreenProps) {
-	const { signOut } = React.useContext(AuthContext);
 	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
 
 	const hideUserMenu = () => {
@@ -56,7 +55,7 @@ export function Giving({ navigation }: HomeScreenProps) {
 						<TouchableWithoutFeedback onPress={hideUserMenu}>
 							<View style={styles.userMenuOverlay} />
 						</TouchableWithoutFeedback>
-						<ListItem style={styles.userMenuContent} onPress={signOut}>
+						<ListItem style={styles.userMenuContent} onPress={() => {}}>
 							<ListItem.Content>
 								<ListItem.Title>Log out</ListItem.Title>
 							</ListItem.Content>

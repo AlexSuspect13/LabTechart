@@ -15,8 +15,6 @@ interface HomeScreenProps extends HomeScreenNavigation {}
 export function HomeTabs({ navigation }: HomeScreenProps) {
 	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
 
-	const { signOut } = React.useContext(AuthContext);
-
 	const hideUserMenu = () => {
 		setUserMenuVisible(false);
 	};
@@ -48,7 +46,7 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 						<TouchableWithoutFeedback onPress={hideUserMenu}>
 							<View style={styles.userMenuOverlay} />
 						</TouchableWithoutFeedback>
-						<ListItem style={styles.userMenuContent} onPress={signOut}>
+						<ListItem style={styles.userMenuContent} onPress={() => {}}>
 							<ListItem.Content>
 								<ListItem.Title>Log out</ListItem.Title>
 							</ListItem.Content>
