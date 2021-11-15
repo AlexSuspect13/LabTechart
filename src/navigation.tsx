@@ -1,19 +1,13 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeTabs, SignInScreen, Giving, Account, Payments, Card, Saving, Checking } from '../src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RootBottomTabNavigator } from '../src/types/navigation';
-import { SavingScreenNavigation } from '../src/types/navigation';
 import { useSelector } from 'react-redux';
 
 const StackAuth = createStackNavigator();
 const Tab = createBottomTabNavigator<RootBottomTabNavigator>();
-
-interface AuthStackScreenProps {
-	navigation: SavingScreenNavigation;
-}
 
 function HomeTab() {
 	return (

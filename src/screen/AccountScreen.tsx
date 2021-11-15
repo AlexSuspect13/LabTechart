@@ -6,12 +6,15 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { ListItem } from 'react-native-elements';
 import { HomeScreenNavigation } from '../types/navigation';
+import { useDispatch } from 'react-redux';
 
 interface AccountScreenProps {
 	navigation: HomeScreenNavigation;
 }
 
 export function Account({ navigation }: AccountScreenProps) {
+	const dispatch = useDispatch();
+
 	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
 
 	const hideUserMenu = () => {
@@ -49,7 +52,11 @@ export function Account({ navigation }: AccountScreenProps) {
 						<TouchableWithoutFeedback onPress={hideUserMenu}>
 							<View style={styles.userMenuOverlay} />
 						</TouchableWithoutFeedback>
-						<ListItem style={styles.userMenuContent} onPress={() => {}}>
+						<ListItem
+							style={styles.userMenuContent}
+							onPress={() => {
+								dispatch({ type: 'SIGN_OUT', token: null });
+							}}>
 							<ListItem.Content>
 								<ListItem.Title>Log out</ListItem.Title>
 							</ListItem.Content>

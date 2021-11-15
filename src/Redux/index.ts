@@ -1,7 +1,17 @@
 import { combineReducers } from 'redux';
 
-import userReducer from './userReducer';
+import AsyncStorage from '@react-native-community/async-storage';
 
-export default combineReducers({
+import userReducer from './userReducer';
+import persistReducer from 'redux-persist/es/persistReducer';
+
+const persisConfig = {
+	key: 'root',
+	storage: AsyncStorage,
+};
+
+const rootReducer = combineReducers({
 	user: userReducer,
 });
+
+export default persistReducer(persisConfig, rootReducer);

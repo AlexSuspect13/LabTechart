@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { TouchableWithoutFeedback, StyleSheet, Button, View, Image, Modal, ScrollView, StatusBar } from 'react-native';
-import { AuthContext } from '../utils';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Surface, Text } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { ListItem } from 'react-native-elements';
 import { HomeScreenNavigation } from '../types/navigation';
+import { useDispatch } from 'react-redux';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +21,8 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 	const showUserMenu = () => {
 		setUserMenuVisible(true);
 	};
+
+	const dispatch = useDispatch();
 
 	return (
 		<View>
@@ -46,7 +48,11 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 						<TouchableWithoutFeedback onPress={hideUserMenu}>
 							<View style={styles.userMenuOverlay} />
 						</TouchableWithoutFeedback>
-						<ListItem style={styles.userMenuContent} onPress={() => {}}>
+						<ListItem
+							style={styles.userMenuContent}
+							onPress={() => {
+								dispatch({ type: 'SIGN_OUT', token: null });
+							}}>
 							<ListItem.Content>
 								<ListItem.Title>Log out</ListItem.Title>
 							</ListItem.Content>
