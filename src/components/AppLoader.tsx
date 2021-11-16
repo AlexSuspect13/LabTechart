@@ -3,13 +3,13 @@ import { View, StyleSheet } from 'react-native';
 import LottieView from 'lottie-react-native';
 export function AppLoader() {
 	return (
-		<View>
+		<View style={[styles.container, StyleSheet.absoluteFillObject]}>
 			<LottieView source={require('../../assets/AppLoader.json')} />
 		</View>
 	);
 }
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
 	container: {
 		justifyContent: 'center',
 		alignItems: 'center',

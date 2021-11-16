@@ -4,7 +4,7 @@ import { StackScreenProps } from '@react-navigation/stack';
 
 export type RootBottomTabNavigator = {
 	HomeTabs: undefined;
-	Account: undefined;
+	Accounts: undefined;
 	Giving: undefined;
 	Payments: undefined;
 	Card: undefined;
@@ -33,7 +33,10 @@ export type SavingScreenNavigation = CompositeScreenProps<
 	StackScreenProps<RootStackParamList>
 >;
 
-export type AccountScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Account'>;
+export type AccountsScreenNavigation = CompositeScreenProps<
+	BottomTabScreenProps<RootBottomTabNavigator, 'Accounts'>,
+	StackScreenProps<RootStackParamList>
+>;
 export type GivingScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Giving'>;
 export type PaymentsScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Payments'>;
 export type CardScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Card'>;
