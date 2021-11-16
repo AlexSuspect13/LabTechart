@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { ActivityIndicator, Alert, StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity } from 'react-native';
+import { Alert, StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
-import { AppLoader } from '../components/AppLoader';
 
 export function SignInScreen() {
 	const [username, setUsername] = React.useState('');

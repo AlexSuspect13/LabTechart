@@ -36,5 +36,4 @@ export type SavingScreenNavigation = CompositeScreenProps<
 export type AccountScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Account'>;
 export type GivingScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Giving'>;
 export type PaymentsScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Payments'>;
-
 export type CardScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Card'>;

@@ -76,6 +76,7 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 					/>
 				</ScrollView>
 			</View>
+			=======
 		</View>
 	);
 }

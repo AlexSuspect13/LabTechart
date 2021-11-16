@@ -4,8 +4,6 @@ import { Provider } from 'react-redux';
 import { persistor, store } from './src/Redux/store';
 import Navigation from './src/navigation';
 import { PersistGate } from 'redux-persist/integration/react';
-import appLoader from './src/components/AppLoader';
-
 export default function App() {
 	return (
 		<NavigationContainer>

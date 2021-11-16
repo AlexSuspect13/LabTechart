@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export function Payments() {
+export function ComingSoon() {
 	return (
 		<View style={styles.container}>
-			<Text style={{ color: 'red', fontSize: 30 }}>Cкоро!</Text>
+			<Text style={styles.text}>Coming soon</Text>
 		</View>
 	);
 }
@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
+	},
+	text: {
 		color: 'red',
+		fontSize: 20,
 	},
 });
