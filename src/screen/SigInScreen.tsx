@@ -3,7 +3,7 @@ import { Alert, StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity }
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
-
+import { AppLoader } from '../components/AppLoader';
 export function SignInScreen() {
 	const [username, setUsername] = React.useState('');
 	const [password, setPassword] = React.useState('');
@@ -122,7 +122,7 @@ export function SignInScreen() {
 					}
 				</View>
 			</View>
-			{/* {loadinPending ? <AppLoader /> : null} */}
+			{loadinPending ? <AppLoader /> : null}
 		</>
 	);
 }
