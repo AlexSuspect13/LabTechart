@@ -54,9 +54,7 @@ export function SignInScreen() {
 					<View style={{ height: 1, width: 300, backgroundColor: '#000', marginBottom: 5 }} />
 					{
 						<TouchableOpacity>
-							<Text style={{ color: '#ff1493', marginBottom: 50, marginLeft: 180, fontFamily: 'SF-Pro-Rounded-Bold' }}>
-								FORGOT PASSWORD
-							</Text>
+							<Text style={styles.forgotPassword}>FORGOT PASSWORD</Text>
 						</TouchableOpacity>
 					}
 					{
@@ -72,17 +70,8 @@ export function SignInScreen() {
 									pressHandler();
 								}
 							}}>
-							<View style={{ backgroundColor: '#ff1493', height: 30, width: 300, borderRadius: 15 }}>
-								<Text
-									style={{
-										color: 'white',
-										fontSize: 15,
-										marginTop: 5,
-										marginLeft: 130,
-										fontFamily: 'SF-Pro-Rounded-Medium',
-									}}>
-									LOGIN
-								</Text>
+							<View style={styles.loginButton}>
+								<Text style={styles.login}>LOGIN</Text>
 							</View>
 						</TouchableOpacity>
 					}
@@ -93,27 +82,11 @@ export function SignInScreen() {
 					{
 						<TouchableHighlight>
 							<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-								<View
-									style={{
-										borderWidth: 1,
-										borderColor: '#c0c0c0',
-										height: 30,
-										width: 130,
-										borderRadius: 15,
-										flexDirection: 'row',
-									}}>
+								<View style={styles.idButton}>
 									<Icon style={{ marginLeft: 30, marginTop: 2 }} name="face" />
 									<Text style={{ color: '#c0c0c0', marginTop: 6 }}>Face ID</Text>
 								</View>
-								<View
-									style={{
-										borderWidth: 1,
-										borderColor: '#c0c0c0',
-										height: 30,
-										width: 130,
-										borderRadius: 15,
-										flexDirection: 'row',
-									}}>
+								<View style={styles.idButton}>
 									<Icon style={{ marginLeft: 30, marginTop: 2 }} name="fingerprint" />
 									<Text style={{ color: '#c0c0c0', marginTop: 6 }}>Touch ID</Text>
 								</View>
@@ -133,7 +106,33 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		backgroundColor: '#fff',
 	},
-
+	idButton: {
+		borderWidth: 1,
+		borderColor: '#c0c0c0',
+		height: 30,
+		width: 130,
+		borderRadius: 15,
+		flexDirection: 'row',
+	},
+	loginButton: {
+		backgroundColor: '#ff1493',
+		height: 30,
+		width: 300,
+		borderRadius: 15,
+	},
+	forgotPassword: {
+		color: '#ff1493',
+		marginBottom: 50,
+		marginLeft: 180,
+		fontFamily: 'SF-Pro-Rounded-Bold',
+	},
+	login: {
+		color: 'white',
+		fontSize: 15,
+		marginTop: 5,
+		marginLeft: 130,
+		fontFamily: 'SF-Pro-Rounded-Medium',
+	},
 	txtinput: {
 		height: 40,
 		width: 300,
