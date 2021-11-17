@@ -1,11 +1,9 @@
 import * as React from 'react';
 
-import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal, StatusBar, Text } from 'react-native';
+import { StyleSheet, View, Image, Modal, StatusBar, Text } from 'react-native';
 import { Surface } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
 import Feather from 'react-native-vector-icons/Feather';
-import { color } from 'react-native-elements/dist/helpers';
 import { HomeScreenNavigation, SavingScreenRouteProp } from '../types/navigation';
 
 interface HomeScreenProps {

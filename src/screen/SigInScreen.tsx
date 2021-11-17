@@ -4,6 +4,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import { AppLoader } from '../components/AppLoader';
+
 export function SignInScreen() {
 	const [username, setUsername] = React.useState('');
 	const [password, setPassword] = React.useState('');
@@ -52,29 +53,25 @@ export function SignInScreen() {
 					/>
 
 					<View style={{ height: 1, width: 300, backgroundColor: '#000', marginBottom: 5 }} />
-					{
-						<TouchableOpacity>
-							<Text style={styles.forgotPassword}>FORGOT PASSWORD</Text>
-						</TouchableOpacity>
-					}
-					{
-						<TouchableOpacity
-							onPress={() => {
-								let email = /^[\w-\.]+@itechart.com$/;
-								if (email.test(username) && password === 'admin') {
-									setLoadingPending(true);
-									setTimeout(() => {
-										dispatch({ type: 'SIGN_IN', token: 'sdsd' });
-									}, 4000);
-								} else {
-									pressHandler();
-								}
-							}}>
-							<View style={styles.loginButton}>
-								<Text style={styles.login}>LOGIN</Text>
-							</View>
-						</TouchableOpacity>
-					}
+					<TouchableOpacity>
+						<Text style={styles.forgotPassword}>FORGOT PASSWORD</Text>
+					</TouchableOpacity>
+					<TouchableOpacity
+						onPress={() => {
+							let email = /^[\w-\.]+@itechart.com$/;
+							if (email.test(username) && password === 'admin') {
+								setLoadingPending(true);
+								setTimeout(() => {
+									dispatch({ type: 'SIGN_IN', token: 'sdsd' });
+								}, 4000);
+							} else {
+								pressHandler();
+							}
+						}}>
+						<View style={styles.loginButton}>
+							<Text style={styles.login}>LOGIN</Text>
+						</View>
+					</TouchableOpacity>
 					<Text style={{ color: '#c0c0c0', marginLeft: 80, marginTop: 120, marginBottom: 50 }}>
 						Lets test 2 ways to log in
 					</Text>
