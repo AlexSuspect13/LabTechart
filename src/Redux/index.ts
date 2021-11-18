@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import userReducer from './userReducer';
-import persistReducer from 'redux-persist/es/persistReducer';
+import { persistReducer } from 'redux-persist';
 
 const persisConfig = {
 	key: 'root',

@@ -4,7 +4,8 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import { AppLoader } from '../components/AppLoader';
-
+import { Button } from 'react-native-elements';
+import { color } from 'react-native-elements/dist/helpers';
 export function SignInScreen() {
 	const [username, setUsername] = React.useState('');
 	const [password, setPassword] = React.useState('');
@@ -24,7 +25,7 @@ export function SignInScreen() {
 						style={{
 							color: '#000',
 							marginTop: 50,
-							marginLeft: 20,
+							marginLeft: 30,
 							fontSize: 40,
 							fontFamily: 'SF-Pro-Rounded-Medium',
 						}}>
@@ -33,7 +34,7 @@ export function SignInScreen() {
 					<View style={styles.hairline} />
 				</View>
 				<View style={styles.loginwin}>
-					<Text style={{ color: '#000', fontSize: 20, fontFamily: 'SF-Pro-Rounded-Medium' }}>Email</Text>
+					<Text style={{ color: '#636363', fontSize: 20, fontFamily: 'SF-Pro-Rounded-Medium' }}>Email</Text>
 					<TextInput
 						placeholder="Your email addres"
 						placeholderTextColor="#c0c0c0"
@@ -41,8 +42,8 @@ export function SignInScreen() {
 						value={username}
 						onChangeText={setUsername}
 					/>
-					<View style={{ height: 1, width: 300, backgroundColor: '#000', marginBottom: 30 }} />
-					<Text style={{ color: '#000', fontSize: 20, fontFamily: 'SF-Pro-Rounded-Medium' }}>Password</Text>
+					<View style={{ height: 1, width: 300, backgroundColor: '#636363', marginBottom: 20 }} />
+					<Text style={{ color: '#636363', fontSize: 20, fontFamily: 'SF-Pro-Rounded-Medium' }}>Password</Text>
 					<TextInput
 						style={styles.txtinput}
 						placeholder="Password"
@@ -51,33 +52,32 @@ export function SignInScreen() {
 						onChangeText={setPassword}
 						secureTextEntry
 					/>
-
-					<View style={{ height: 1, width: 300, backgroundColor: '#000', marginBottom: 5 }} />
+					<View style={{ height: 1, width: 300, backgroundColor: '#636363', marginBottom: 5 }} />
 					<TouchableOpacity>
 						<Text style={styles.forgotPassword}>FORGOT PASSWORD</Text>
 					</TouchableOpacity>
-					<TouchableOpacity
+					<Button
+						title="Login"
 						onPress={() => {
 							let email = /^[\w-\.]+@itechart.com$/;
 							if (email.test(username) && password === 'admin') {
 								setLoadingPending(true);
 								setTimeout(() => {
 									dispatch({ type: 'SIGN_IN', token: 'sdsd' });
-								}, 4000);
+								}, 1000);
 							} else {
 								pressHandler();
 							}
-						}}>
-						<View style={styles.loginButton}>
-							<Text style={styles.login}>LOGIN</Text>
-						</View>
-					</TouchableOpacity>
-					<Text style={{ color: '#c0c0c0', marginLeft: 80, marginTop: 120, marginBottom: 50 }}>
+						}}
+						loading={loadinPending}
+						buttonStyle={{ backgroundColor: '#ff1493', borderRadius: 20, marginLeft: 5, marginTop: '20%' }}
+					/>
+					<Text style={{ color: '#c0c0c0', marginLeft: 80, marginTop: 80, marginBottom: 20 }}>
 						Lets test 2 ways to log in
 					</Text>
 
 					{
-						<TouchableHighlight>
+						<TouchableHighlight style={{ marginLeft: '3%' }}>
 							<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 								<View style={styles.idButton}>
 									<Icon style={{ marginLeft: 30, marginTop: 2 }} name="face" />
@@ -92,15 +92,14 @@ export function SignInScreen() {
 					}
 				</View>
 			</View>
-			{loadinPending ? <AppLoader /> : null}
 		</>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: {
-		alignItems: 'center',
-		justifyContent: 'center',
+		alignItems: 'flex-start',
+		justifyContent: 'flex-start',
 		backgroundColor: '#fff',
 	},
 	idButton: {
@@ -141,17 +140,19 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 		width: '100%',
 		height: 150,
+		marginTop: -40,
 	},
 	loginwin: {
-		marginTop: 30,
+		marginTop: 10,
 		backgroundColor: '#fff',
-		height: 570,
+		height: '90%',
+		marginLeft: 30,
 	},
 	hairline: {
 		backgroundColor: '#ff1493',
 		height: 4,
 		width: 85,
-		marginLeft: 20,
+		marginLeft: 30,
 	},
 	button: {
 		height: 50,
