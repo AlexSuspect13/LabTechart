@@ -1,17 +1,5 @@
 import * as React from 'react';
-import {
-	Alert,
-	StyleSheet,
-	TextInput,
-	View,
-	StatusBar,
-	Text,
-	TouchableOpacity,
-	KeyboardAvoidingView,
-	Platform,
-	TouchableWithoutFeedback,
-	Keyboard,
-} from 'react-native';
+import { Alert, StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity, Keyboard } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
@@ -24,6 +12,22 @@ export function SignInScreen() {
 	const pressHandler = () => {
 		Alert.alert('Ошибка', 'Вход в аккаунт не выполнен!', [{ text: 'ok', onPress: () => console.log('Хорошо!') }]);
 	};
+
+	const [keyboardStatus, setKeyboardStatus] = React.useState(true);
+
+	React.useEffect(() => {
+		const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+			setKeyboardStatus(false);
+		});
+		const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+			setKeyboardStatus(true);
+		});
+
+		return () => {
+			showSubscription.remove();
+			hideSubscription.remove();
+		};
+	}, []);
 
 	const dispatch = useDispatch();
 
@@ -70,7 +74,13 @@ export function SignInScreen() {
 					</TouchableOpacity>
 				</View>
 			</View>
-			<View style={{ height: 130, backgroundColor: '#000', width: '100%' }}>
+			<View
+				style={{
+					height: 150,
+					width: '100%',
+					alignContent: 'center',
+					justifyContent: 'center',
+				}}>
 				<Button
 					title="Login"
 					//TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -98,23 +108,26 @@ export function SignInScreen() {
 						//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 					}
 				/>
+				{keyboardStatus ? (
+					<>
+						<Text style={{ color: '#c0c0c0', marginTop: 15, marginLeft: 120, marginBottom: 10 }}>
+							Lets test 2 ways to log in
+						</Text>
 
-				<Text style={{ color: '#c0c0c0', marginTop: 15, marginLeft: 120, marginBottom: 10 }}>
-					Lets test 2 ways to log in
-				</Text>
-
-				<TouchableHighlight style={{ marginLeft: 35 }}>
-					<View style={{ flexDirection: 'row' }}>
-						<View style={styles.idButton}>
-							<Icon style={{ marginLeft: 30, marginTop: 2 }} name="face" />
-							<Text style={{ color: '#c0c0c0', marginTop: 6 }}>Face ID</Text>
-						</View>
-						<View style={styles.idButton}>
-							<Icon style={{ marginLeft: 30, marginTop: 2 }} name="fingerprint" />
-							<Text style={{ color: '#c0c0c0', marginTop: 6 }}>Touch ID</Text>
-						</View>
-					</View>
-				</TouchableHighlight>
+						<TouchableHighlight style={{ marginLeft: 35 }}>
+							<View style={{ flexDirection: 'row' }}>
+								<View style={styles.idButton}>
+									<Icon style={{ marginLeft: 30, marginTop: 2 }} name="face" />
+									<Text style={{ color: '#c0c0c0', marginTop: 6 }}>Face ID</Text>
+								</View>
+								<View style={styles.idButton}>
+									<Icon style={{ marginLeft: 30, marginTop: 2 }} name="fingerprint" />
+									<Text style={{ color: '#c0c0c0', marginTop: 6 }}>Touch ID</Text>
+								</View>
+							</View>
+						</TouchableHighlight>
+					</>
+				) : null}
 			</View>
 		</View>
 	);
