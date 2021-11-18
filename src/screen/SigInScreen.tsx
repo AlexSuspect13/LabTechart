@@ -1,11 +1,22 @@
 import * as React from 'react';
-import { Alert, StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity } from 'react-native';
+import {
+	Alert,
+	StyleSheet,
+	TextInput,
+	View,
+	StatusBar,
+	Text,
+	TouchableOpacity,
+	KeyboardAvoidingView,
+	Platform,
+	TouchableWithoutFeedback,
+	Keyboard,
+} from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
-import { AppLoader } from '../components/AppLoader';
 import { Button } from 'react-native-elements';
-import { color } from 'react-native-elements/dist/helpers';
+
 export function SignInScreen() {
 	const [username, setUsername] = React.useState('');
 	const [password, setPassword] = React.useState('');
@@ -17,9 +28,9 @@ export function SignInScreen() {
 	const dispatch = useDispatch();
 
 	return (
-		<>
-			<View style={styles.container}>
-				<StatusBar backgroundColor="#ff1493" />
+		<View style={styles.container}>
+			<View style={{ flex: 1 }}>
+				<StatusBar backgroundColor="#fff" />
 				<View style={styles.header}>
 					<Text
 						style={{
@@ -52,57 +63,74 @@ export function SignInScreen() {
 						onChangeText={setPassword}
 						secureTextEntry
 					/>
-					<View style={{ height: 1, width: 300, backgroundColor: '#636363', marginBottom: 5 }} />
+
+					<View style={{ height: 1, width: 300, backgroundColor: '#636363', marginBottom: 10 }} />
 					<TouchableOpacity>
 						<Text style={styles.forgotPassword}>FORGOT PASSWORD</Text>
 					</TouchableOpacity>
-					<Button
-						title="Login"
-						onPress={() => {
-							let email = /^[\w-\.]+@itechart.com$/;
-							if (email.test(username) && password === 'admin') {
-								setLoadingPending(true);
-								setTimeout(() => {
-									dispatch({ type: 'SIGN_IN', token: 'sdsd' });
-								}, 1000);
-							} else {
-								pressHandler();
-							}
-						}}
-						loading={loadinPending}
-						buttonStyle={{ backgroundColor: '#ff1493', borderRadius: 20, marginLeft: 5, marginTop: '20%' }}
-					/>
-					<Text style={{ color: '#c0c0c0', marginLeft: 80, marginTop: 80, marginBottom: 20 }}>
-						Lets test 2 ways to log in
-					</Text>
-
-					{
-						<TouchableHighlight style={{ marginLeft: '3%' }}>
-							<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-								<View style={styles.idButton}>
-									<Icon style={{ marginLeft: 30, marginTop: 2 }} name="face" />
-									<Text style={{ color: '#c0c0c0', marginTop: 6 }}>Face ID</Text>
-								</View>
-								<View style={styles.idButton}>
-									<Icon style={{ marginLeft: 30, marginTop: 2 }} name="fingerprint" />
-									<Text style={{ color: '#c0c0c0', marginTop: 6 }}>Touch ID</Text>
-								</View>
-							</View>
-						</TouchableHighlight>
-					}
 				</View>
 			</View>
-		</>
+			<View style={{ height: 130, backgroundColor: '#000', width: '100%' }}>
+				<Button
+					title="Login"
+					//TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+					onPress={() => {
+						Keyboard.dismiss;
+						setLoadingPending(true);
+						let email = /^[\w-\.]+@itechart.com$/;
+						if (email.test(username) && password === 'admin') {
+							setTimeout(() => {
+								dispatch({ type: 'SIGN_IN', token: 'sdsd' });
+							}, 1000);
+						} else {
+							setLoadingPending(false);
+							pressHandler();
+						}
+					}}
+					loading={loadinPending}
+					buttonStyle={
+						{
+							backgroundColor: '#ff1493',
+							borderRadius: 20,
+							marginLeft: 30,
+							width: 300,
+						}
+						//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+					}
+				/>
+
+				<Text style={{ color: '#c0c0c0', marginTop: 15, marginLeft: 120, marginBottom: 10 }}>
+					Lets test 2 ways to log in
+				</Text>
+
+				<TouchableHighlight style={{ marginLeft: 35 }}>
+					<View style={{ flexDirection: 'row' }}>
+						<View style={styles.idButton}>
+							<Icon style={{ marginLeft: 30, marginTop: 2 }} name="face" />
+							<Text style={{ color: '#c0c0c0', marginTop: 6 }}>Face ID</Text>
+						</View>
+						<View style={styles.idButton}>
+							<Icon style={{ marginLeft: 30, marginTop: 2 }} name="fingerprint" />
+							<Text style={{ color: '#c0c0c0', marginTop: 6 }}>Touch ID</Text>
+						</View>
+					</View>
+				</TouchableHighlight>
+			</View>
+		</View>
 	);
 }
 
 const styles = StyleSheet.create({
 	container: {
+		display: 'flex',
+		flex: 1,
+		flexDirection: 'column',
 		alignItems: 'flex-start',
 		justifyContent: 'flex-start',
 		backgroundColor: '#fff',
 	},
 	idButton: {
+		marginRight: 30,
 		borderWidth: 1,
 		borderColor: '#c0c0c0',
 		height: 30,
@@ -118,7 +146,7 @@ const styles = StyleSheet.create({
 	},
 	forgotPassword: {
 		color: '#ff1493',
-		marginBottom: 50,
+		marginBottom: '30%',
 		marginLeft: 180,
 		fontFamily: 'SF-Pro-Rounded-Bold',
 	},
@@ -137,10 +165,11 @@ const styles = StyleSheet.create({
 		color: '#000',
 	},
 	header: {
+		alignItems: 'flex-start',
 		backgroundColor: '#fff',
 		width: '100%',
 		height: 150,
-		marginTop: -40,
+		marginTop: -60,
 	},
 	loginwin: {
 		marginTop: 10,
