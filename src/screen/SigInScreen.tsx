@@ -4,17 +4,14 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
 import { Button } from 'react-native-elements';
-import { color } from 'react-native-elements/dist/helpers';
+import { sigIn } from '../services/authentification';
 
 export function SignInScreen() {
-	const [username, setUsername] = React.useState('');
+	const [email, setEmail] = React.useState('');
 	const [password, setPassword] = React.useState('');
 	const [loadinPending, setLoadingPending] = React.useState(false);
-	const pressHandler = () => {
-		Alert.alert('Ошибка', 'Вход в аккаунт не выполнен!', [{ text: 'ok', onPress: () => console.log('Хорошо!') }]);
-	};
-
 	const [keyboardStatus, setKeyboardStatus] = React.useState(true);
+	const [enteristake, SetEnterMistake] = React.useState('');
 
 	React.useEffect(() => {
 		const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -43,8 +40,8 @@ export function SignInScreen() {
 					placeholder="Your email addres"
 					placeholderTextColor="#c0c0c0"
 					style={styles.txtinput}
-					value={username}
-					onChangeText={setUsername}
+					value={email}
+					onChangeText={setEmail}
 				/>
 				<View style={{ height: 1, backgroundColor: '#636363', marginBottom: 5 }} />
 				<Text style={{ color: '#636363', fontSize: 20, fontFamily: 'SF-Pro-Rounded-Medium' }}>Password</Text>
@@ -61,22 +58,23 @@ export function SignInScreen() {
 						FORGOT PASSWORD
 					</Text>
 				</TouchableOpacity>
+				<Text style={{ textAlign: 'left', color: 'red', opacity: 1 }}>{enteristake}</Text>
 			</View>
-			<View style={{ padding: 15 }}>
+			<View style={styles.item2}>
 				<Button
 					title="Login"
 					//TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-					onPress={() => {
+					onPress={async () => {
+						SetEnterMistake('');
 						Keyboard.dismiss();
 						setLoadingPending(true);
-						let email = /^[\w-\.]+@itechart.com$/;
-						if (email.test(username) && password === 'admin') {
-							setTimeout(() => {
-								dispatch({ type: 'SIGN_IN', token: 'sdsd' });
-							}, 1000);
-						} else {
+						try {
+							const a = await sigIn(password, email);
+							dispatch({ type: 'SIGN_IN_FULFILLED', token: a });
+						} catch (e) {
 							setLoadingPending(false);
-							pressHandler();
+							SetEnterMistake(e.message);
+							dispatch({ type: 'SIGN_IN_REJECTED', error: e.message });
 						}
 					}}
 					loading={loadinPending}
@@ -123,6 +121,9 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: '#fff',
 		padding: 20,
+	},
+	item2: {
+		padding: 15,
 	},
 	hairline: {
 		backgroundColor: '#ff1493',
