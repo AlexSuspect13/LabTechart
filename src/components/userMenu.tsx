@@ -6,7 +6,6 @@ import { ListItem } from 'react-native-elements';
 
 export function UserMenu() {
 	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
-	const { signOut } = React.useContext(AuthContext);
 
 	const hideUserMenu = () => {
 		setUserMenuVisible(false);
@@ -25,7 +24,7 @@ export function UserMenu() {
 				<TouchableWithoutFeedback onPress={hideUserMenu}>
 					<View style={StyleSheet.absoluteFillObject} />
 				</TouchableWithoutFeedback>
-				<ListItem style={styles.userMenuContent} onPress={signOut}>
+				<ListItem style={styles.userMenuContent}>
 					<ListItem.Content>
 						<ListItem.Title>Log out</ListItem.Title>
 					</ListItem.Content>

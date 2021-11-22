@@ -23,15 +23,6 @@ export type HomeScreenNavigation = CompositeScreenProps<
 	BottomTabScreenProps<RootBottomTabNavigator, 'HomeTabs'>,
 	StackScreenProps<RootStackParamList>
 >;
-export type CheckingScreenNavigation = CompositeScreenProps<
-	BottomTabScreenProps<RootBottomTabNavigator, 'Checking'>,
-	StackScreenProps<RootStackParamList>
->;
-
-export type SavingScreenNavigation = CompositeScreenProps<
-	BottomTabScreenProps<RootBottomTabNavigator, 'Saving'>,
-	StackScreenProps<RootStackParamList>
->;
 
 export type AccountsScreenNavigation = CompositeScreenProps<
 	BottomTabScreenProps<RootBottomTabNavigator, 'Accounts'>,
@@ -40,3 +31,5 @@ export type AccountsScreenNavigation = CompositeScreenProps<
 export type GivingScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Giving'>;
 export type PaymentsScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Payments'>;
 export type CardScreenNavigation = BottomTabNavigationProp<RootBottomTabNavigator, 'Card'>;
+export type CheckingScreenNavigation = StackScreenProps<RootStackParamList, 'Checking'>;
+export type SavingsScreenNavigation = StackScreenProps<RootStackParamList, 'Saving'>;

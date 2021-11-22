@@ -29,21 +29,17 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 			<Surface style={styles.header}>
 				<StatusBar backgroundColor="#ff1493" />
 				<View style={styles.view}>
-					{
-						<TouchableOpacity>
-							<Feather style={{ marginRight: 80 }} name="menu" size={24} color={'white'} />
-						</TouchableOpacity>
-					}
+					<TouchableOpacity>
+						<Feather style={{ marginRight: 80 }} name="menu" size={24} color={'white'} />
+					</TouchableOpacity>
 				</View>
 				<View style={styles.view}>
 					<Image source={require('../../assets/img/logo.png')} />
 				</View>
 				<View style={styles.view}>
-					{
-						<TouchableOpacity onPress={showUserMenu}>
-							<Image style={{ marginLeft: 70 }} source={require('../../assets/img/oval.png')} />
-						</TouchableOpacity>
-					}
+					<TouchableOpacity onPress={showUserMenu}>
+						<Image style={{ marginLeft: 70 }} source={require('../../assets/img/oval.png')} />
+					</TouchableOpacity>
 					<Modal visible={userMenuVisible} transparent>
 						<TouchableWithoutFeedback onPress={hideUserMenu}>
 							<View style={styles.userMenuOverlay} />
@@ -51,7 +47,7 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 						<ListItem
 							style={styles.userMenuContent}
 							onPress={() => {
-								dispatch({ type: 'SIGN_OUT', token: null });
+								dispatch({ type: 'SIGN_OUT' });
 							}}>
 							<ListItem.Content>
 								<ListItem.Title>Log out</ListItem.Title>

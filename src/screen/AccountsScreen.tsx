@@ -42,11 +42,10 @@ export function Account({ navigation }: AccountScreenProps) {
 					<Text style={{ color: 'white', fontSize: 20 }}>Account</Text>
 				</View>
 				<View style={styles.view}>
-					{
-						<TouchableOpacity onPress={showUserMenu}>
-							<Image style={{ marginLeft: 70 }} source={require('../../assets/img/oval.png')} />
-						</TouchableOpacity>
-					}
+					<TouchableOpacity onPress={showUserMenu}>
+						<Image style={{ marginLeft: 70 }} source={require('../../assets/img/oval.png')} />
+					</TouchableOpacity>
+
 					<Modal visible={userMenuVisible} transparent>
 						<TouchableWithoutFeedback onPress={hideUserMenu}>
 							<View style={styles.userMenuOverlay} />

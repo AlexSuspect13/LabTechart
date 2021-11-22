@@ -1,4 +1,4 @@
-const initialState = {
+export const initialState = {
 	isLoading: false,
 	userToken: null,
 	authError: null,
@@ -10,11 +10,13 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				userToken: action.token,
+				isLoading: false,
 			};
 		case 'SIGN_IN_REJECTED':
 			return {
 				...state,
 				authError: action.error,
+				isLoading: false,
 			};
 		case 'SIGN_OUT':
 			return {
@@ -25,6 +27,7 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				isLoading: true,
+				authError: null,
 			};
 		default:
 			return state;

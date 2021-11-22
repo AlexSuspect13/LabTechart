@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export function ComingSoon() {
+export default function ComingSoon() {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.text}>Coming soon</Text>

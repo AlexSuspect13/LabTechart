@@ -2,16 +2,14 @@ import * as React from 'react';
 import { StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity, Keyboard } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-native-elements';
-import { sigIn } from '../services/authentification';
-
+import { sigIn } from '../services/authentication';
+import { RootState } from '../Redux/store';
 export function SignInScreen() {
 	const [email, setEmail] = React.useState('');
 	const [password, setPassword] = React.useState('');
-	const [loadinPending, setLoadingPending] = React.useState(false);
 	const [keyboardStatus, setKeyboardStatus] = React.useState(true);
-	const [enteristake, SetEnterMistake] = React.useState('');
 
 	React.useEffect(() => {
 		const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -28,6 +26,9 @@ export function SignInScreen() {
 	}, []);
 
 	const dispatch = useDispatch();
+
+	const isLoading = useSelector((state: RootState) => state.user.isLoading);
+	const authError = useSelector((state: RootState) => state.user.authError);
 
 	return (
 		<View style={styles.container}>
@@ -55,7 +56,7 @@ export function SignInScreen() {
 				/>
 				<View style={{ height: 1, backgroundColor: '#636363', marginBottom: 5 }} />
 				<TouchableOpacity>
-					<Text style={{ textAlign: 'left', color: 'red', opacity: 1 }}>{enteristake}</Text>
+					<Text style={{ textAlign: 'left', color: 'red', opacity: 0.1 }}>{authError}</Text>
 
 					<Text style={{ textAlign: 'right', color: '#ff1493', fontFamily: 'SF-Pro-Rounded-Bold' }}>
 						FORGOT PASSWORD
@@ -65,46 +66,42 @@ export function SignInScreen() {
 			<View style={styles.item2}>
 				<Button
 					title="Login"
-					//TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 					onPress={async () => {
-						SetEnterMistake('');
 						Keyboard.dismiss();
-						setLoadingPending(true);
+						dispatch({ type: 'SIGN_IN_PENDING' });
 						try {
 							const a = await sigIn(password, email);
 							dispatch({ type: 'SIGN_IN_FULFILLED', token: a });
 						} catch (e) {
-							setLoadingPending(false);
-							SetEnterMistake(e.message);
-							dispatch({ type: 'SIGN_IN_REJECTED', error: e.message });
+							const errorMessage = (e as Error).message;
+							dispatch({ type: 'SIGN_IN_REJECTED', error: errorMessage });
 						}
 					}}
-					loading={loadinPending}
-					buttonStyle={
-						{
-							backgroundColor: '#ff1493',
-							borderRadius: 20,
-							marginBottom: 10,
-						}
-						//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-					}
+					loading={isLoading}
+					buttonStyle={{
+						backgroundColor: '#ff1493',
+						borderRadius: 20,
+						marginBottom: 10,
+					}}
 				/>
 				{keyboardStatus ? (
 					<>
 						<Text style={{ color: '#c0c0c0', textAlign: 'center', marginBottom: 10 }}>Lets test 2 ways to log in</Text>
 
-						<TouchableHighlight>
-							<View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+						<View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+							<TouchableHighlight>
 								<View style={styles.idButton}>
 									<Icon name="face" />
 									<Text style={{ color: '#c0c0c0' }}>Face ID</Text>
 								</View>
+							</TouchableHighlight>
+							<TouchableHighlight>
 								<View style={styles.idButton}>
 									<Icon name="fingerprint" />
 									<Text style={{ color: '#c0c0c0' }}>Touch ID</Text>
 								</View>
-							</View>
-						</TouchableHighlight>
+							</TouchableHighlight>
+						</View>
 					</>
 				) : null}
 			</View>

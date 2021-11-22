@@ -1,12 +1,32 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeTabs, SignInScreen, Giving, Account, Payments, Card, Saving, Checking } from '../src';
+import { HomeTabs, SignInScreen, Giving, Account, Payments, CardScreen, Saving, CheckingScreen } from '../src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { RootBottomTabNavigator } from '../src/types/navigation';
+import { RootBottomTabNavigator } from './types/navigation';
 import { useSelector } from 'react-redux';
 
 const Tab = createBottomTabNavigator<RootBottomTabNavigator>();
+
+const getIconByRouteName = (routeName: keyof RootBottomTabNavigator) => {
+	if (routeName === 'Accounts') {
+		return 'ios-person-outline';
+	}
+
+	if (routeName === 'Card') {
+		return 'card-outline';
+	}
+
+	if (routeName === 'Giving') {
+		return 'ios-heart-outline';
+	}
+
+	if (routeName === 'Payments') {
+		return 'ios-wallet-outline';
+	}
+
+	return 'home';
+};
 
 function HomeTab() {
 	return (
@@ -14,30 +34,16 @@ function HomeTab() {
 			screenOptions={({ route }) => ({
 				headerShown: false,
 				tabBarIcon: ({ color, size }) => {
-					let iconName;
-					if (route.name === 'HomeTabs') {
-						iconName = 'home';
-					}
-					if (route.name === 'Accounts') {
-						iconName = 'ios-person-outline';
-					}
-					if (route.name === 'Card') {
-						iconName = 'card-outline';
-					}
-					if (route.name === 'Giving') {
-						iconName = 'ios-heart-outline';
-					}
-					if (route.name === 'Payments') {
-						iconName = 'ios-wallet-outline';
-					}
+					const iconName = getIconByRouteName(route.name);
+
 					return <Ionicons name={iconName} size={size} color={color} />;
 				},
 			})}>
 			<Tab.Screen name="HomeTabs" component={HomeTabs} />
-			<Tab.Screen name="Giving" component={Giving} />
 			<Tab.Screen name="Accounts" component={Account} />
+			<Tab.Screen name="Giving" component={Giving} />
 			<Tab.Screen name="Payments" component={Payments} options={{}} />
-			<Tab.Screen name="Card" component={Card} />
+			<Tab.Screen name="Card" component={CardScreen} />
 		</Tab.Navigator>
 	);
 }
@@ -64,7 +70,7 @@ export default function Navigation() {
 				<>
 					<Stack.Screen name="Home" component={HomeTab} />
 					<Stack.Screen name="Saving" component={Saving} />
-					<Stack.Screen name="Checking" component={Checking} />
+					<Stack.Screen name="Checking" component={CheckingScreen} />
 				</>
 			)}
 		</Stack.Navigator>
