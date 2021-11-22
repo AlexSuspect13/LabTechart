@@ -6,7 +6,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RootBottomTabNavigator } from '../src/types/navigation';
 import { useSelector } from 'react-redux';
 
-const StackAuth = createStackNavigator();
 const Tab = createBottomTabNavigator<RootBottomTabNavigator>();
 
 function HomeTab() {
@@ -19,7 +18,7 @@ function HomeTab() {
 					if (route.name === 'HomeTabs') {
 						iconName = 'home';
 					}
-					if (route.name === 'Account') {
+					if (route.name === 'Accounts') {
 						iconName = 'ios-person-outline';
 					}
 					if (route.name === 'Card') {
@@ -36,7 +35,7 @@ function HomeTab() {
 			})}>
 			<Tab.Screen name="HomeTabs" component={HomeTabs} />
 			<Tab.Screen name="Giving" component={Giving} />
-			<Tab.Screen name="Account" component={Account} />
+			<Tab.Screen name="Accounts" component={Account} />
 			<Tab.Screen name="Payments" component={Payments} options={{}} />
 			<Tab.Screen name="Card" component={Card} />
 		</Tab.Navigator>

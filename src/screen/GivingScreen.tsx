@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal, StatusBar } from 'react-native';
-import { AuthContext } from '../utils';
 import { Surface, Text } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';

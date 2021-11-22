@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity, Keyboard } from 'react-native';
+import { StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity, Keyboard } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
@@ -51,14 +51,16 @@ export function SignInScreen() {
 					style={styles.txtinput}
 					value={password}
 					onChangeText={setPassword}
+					secureTextEntry
 				/>
 				<View style={{ height: 1, backgroundColor: '#636363', marginBottom: 5 }} />
 				<TouchableOpacity>
+					<Text style={{ textAlign: 'left', color: 'red', opacity: 1 }}>{enteristake}</Text>
+
 					<Text style={{ textAlign: 'right', color: '#ff1493', fontFamily: 'SF-Pro-Rounded-Bold' }}>
 						FORGOT PASSWORD
 					</Text>
 				</TouchableOpacity>
-				<Text style={{ textAlign: 'left', color: 'red', opacity: 1 }}>{enteristake}</Text>
 			</View>
 			<View style={styles.item2}>
 				<Button

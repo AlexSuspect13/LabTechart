@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal, StatusBar, Text } from 'react-native';
+import { StyleSheet, View, Image, Modal, StatusBar, Text } from 'react-native';
 import { Surface } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { AuthContext } from '../utils';
 import Feather from 'react-native-vector-icons/Feather';
-import { color } from 'react-native-elements/dist/helpers';
 import { CheckingScreenRouteProp, HomeScreenNavigation } from '../types/navigation';
 
 interface CheckingScreenProps {

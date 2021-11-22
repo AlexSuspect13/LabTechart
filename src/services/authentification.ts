@@ -1,5 +1,3 @@
-import { useDispatch } from 'react-redux';
-
 const delay = (ms: number) => {
 	return new Promise((resolve) => setTimeout(resolve, ms));
 };
@@ -10,5 +8,5 @@ export const sigIn = async (password: string, userEmail: string) => {
 	if (email.test(userEmail) && password === 'admin') {
 		return 'вход выполнен';
 	}
-	throw new Error('Oшибка ввода данных');
+	throw new Error('Data entry error');
 };

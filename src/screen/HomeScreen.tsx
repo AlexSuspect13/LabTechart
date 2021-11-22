@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TouchableWithoutFeedback, StyleSheet, Button, View, Image, Modal, ScrollView, StatusBar } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Surface, Text } from 'react-native-paper';
+import { Surface } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { ListItem } from 'react-native-elements';
