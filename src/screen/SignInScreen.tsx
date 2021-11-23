@@ -34,9 +34,9 @@ export function SignInScreen() {
 		<View style={styles.container}>
 			<StatusBar backgroundColor="#fff" />
 			<View style={styles.item1}>
-				<Text style={{ color: '#000', fontSize: 45, fontFamily: 'SF-Pro-Rounded-Medium' }}>Login</Text>
+				<Text style={styles.textLogin}>Login</Text>
 				<View style={styles.hairline} />
-				<Text style={{ color: '#636363', fontSize: 20, fontFamily: 'SF-Pro-Rounded-Medium' }}>Email</Text>
+				<Text style={styles.EmailPasswordText}>Email</Text>
 				<TextInput
 					placeholder="Your email addres"
 					placeholderTextColor="#c0c0c0"
@@ -44,8 +44,8 @@ export function SignInScreen() {
 					value={email}
 					onChangeText={setEmail}
 				/>
-				<View style={{ height: 1, backgroundColor: '#636363', marginBottom: 5 }} />
-				<Text style={{ color: '#636363', fontSize: 20, fontFamily: 'SF-Pro-Rounded-Medium' }}>Password</Text>
+				<View style={styles.lineUnderInput} />
+				<Text style={styles.EmailPasswordText}>Password</Text>
 				<TextInput
 					placeholder="Password"
 					placeholderTextColor="#c0c0c0"
@@ -54,13 +54,11 @@ export function SignInScreen() {
 					onChangeText={setPassword}
 					secureTextEntry
 				/>
-				<View style={{ height: 1, backgroundColor: '#636363', marginBottom: 5 }} />
+				<View style={styles.lineUnderInput} />
 				<TouchableOpacity>
-					<Text style={{ textAlign: 'left', color: 'red', opacity: 0.1 }}>{authError}</Text>
+					<Text style={styles.authError}>{authError}</Text>
 
-					<Text style={{ textAlign: 'right', color: '#ff1493', fontFamily: 'SF-Pro-Rounded-Bold' }}>
-						FORGOT PASSWORD
-					</Text>
+					<Text style={styles.forgotPassword}>FORGOT PASSWORD</Text>
 				</TouchableOpacity>
 			</View>
 			<View style={styles.item2}>
@@ -78,27 +76,23 @@ export function SignInScreen() {
 						}
 					}}
 					loading={isLoading}
-					buttonStyle={{
-						backgroundColor: '#ff1493',
-						borderRadius: 20,
-						marginBottom: 10,
-					}}
+					buttonStyle={styles.loadingButton}
 				/>
 				{keyboardStatus ? (
 					<>
-						<Text style={{ color: '#c0c0c0', textAlign: 'center', marginBottom: 10 }}>Lets test 2 ways to log in</Text>
+						<Text style={styles.letsTest}>Lets test 2 ways to log in</Text>
 
-						<View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+						<View style={styles.idButtonContainer}>
 							<TouchableHighlight>
 								<View style={styles.idButton}>
 									<Icon name="face" />
-									<Text style={{ color: '#c0c0c0' }}>Face ID</Text>
+									<Text style={styles.idButtonText}>Face ID</Text>
 								</View>
 							</TouchableHighlight>
 							<TouchableHighlight>
 								<View style={styles.idButton}>
 									<Icon name="fingerprint" />
-									<Text style={{ color: '#c0c0c0' }}>Touch ID</Text>
+									<Text style={styles.idButtonText}>Touch ID</Text>
 								</View>
 							</TouchableHighlight>
 						</View>
@@ -116,6 +110,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		backgroundColor: '#fff',
 	},
+	textLogin: { color: '#000', fontSize: 45, fontFamily: 'SF-Pro-Rounded-Medium' },
 	item1: {
 		flex: 1,
 		backgroundColor: '#fff',
@@ -124,12 +119,15 @@ const styles = StyleSheet.create({
 	item2: {
 		padding: 15,
 	},
+	forgotPassword: { textAlign: 'right', color: '#ff1493', fontFamily: 'SF-Pro-Rounded-Bold' },
+	EmailPasswordText: { color: '#636363', fontSize: 20, fontFamily: 'SF-Pro-Rounded-Medium' },
 	hairline: {
 		backgroundColor: '#ff1493',
 		height: 4,
 		width: '35%',
 		marginBottom: 20,
 	},
+	lineUnderInput: { height: 1, backgroundColor: '#636363', marginBottom: 5 },
 	idButton: {
 		marginRight: 10,
 		marginLeft: 10,
@@ -142,7 +140,16 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 	},
+	idButtonContainer: { flexDirection: 'row', justifyContent: 'center' },
 	txtinput: {
 		color: '#000',
 	},
+	idButtonText: { color: '#c0c0c0' },
+	authError: { textAlign: 'left', color: 'red' },
+	loadingButton: {
+		backgroundColor: '#ff1493',
+		borderRadius: 20,
+		marginBottom: 10,
+	},
+	letsTest: { color: '#c0c0c0', textAlign: 'center', marginBottom: 10 },
 });
