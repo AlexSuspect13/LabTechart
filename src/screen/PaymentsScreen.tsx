@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { ComingSoon } from '../components/comingSoon';
+import { StyleSheet, Text, View } from 'react-native';
+import ComingSoon from '../components/comingSoon';
 
-export function PaymentsScreen() {
-	return <ComingSoon />
+export function Payments() {
+	return <ComingSoon />;
 }

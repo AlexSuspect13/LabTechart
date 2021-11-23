@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export function ComingSoon() {
+export default function ComingSoon() {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.text}>Coming soon</Text>
@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 	text: {
-    color: 'red',
-    fontSize: 20,
-  },
+		color: 'red',
+		fontSize: 20,
+	},
 });

@@ -1,5 +1,5 @@
 export * from './screen/HomeScreen';
-export * from './screen/SigInScreen';
+export * from './screen/SignInScreen';
 export * from './screen/GivingScreen';
 export * from './screen/AccountsScreen';
 export * from './screen/CardScreen';

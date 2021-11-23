@@ -1,6 +1,6 @@
-import React from 'react';
-import { ComingSoon } from '../components/comingSoon';
+import * as React from 'react';
+import ComingSoon from '../components/comingSoon';
 
-export function GivingScreen() {
-	return <ComingSoon />
+export function Giving() {
+	return <ComingSoon />;
 }

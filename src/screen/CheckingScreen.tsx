@@ -12,20 +12,18 @@ export function CheckingScreen({ route, navigation }: CheckingScreenProps) {
 		<Surface style={styles.header}>
 			<StatusBar backgroundColor="#ff1493" />
 			<View style={styles.view}>
-				{
-					<TouchableOpacity>
-						<Feather
-							style={{ marginRight: 80 }}
-							name="chevron-left"
-							size={30}
-							color={'white'}
-							onPress={() => navigation.goBack()}
-						/>
-					</TouchableOpacity>
-				}
+				<TouchableOpacity>
+					<Feather
+						style={styles.goBack}
+						name="chevron-left"
+						size={30}
+						color={'white'}
+						onPress={() => navigation.goBack()}
+					/>
+				</TouchableOpacity>
 			</View>
 			<View style={styles.view}>
-				<Text style={{ color: '#fff', fontSize: 20 }}>Checking</Text>
+				<Text style={styles.headerText}>Checking</Text>
 				<Text style={styles.text}>{route.params.textParam}</Text>
 			</View>
 			<View style={styles.view}>
@@ -43,11 +41,13 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		elevation: 4,
 	},
+	headerText: { color: '#fff', fontSize: 20 },
 	view: {
 		flex: 1,
 		margin: 5,
 		alignItems: 'center',
 	},
+	goBack: { marginRight: 80 },
 	body: {
 		backgroundColor: '#dcdcdc',
 		height: '100%',

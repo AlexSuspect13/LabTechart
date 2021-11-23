@@ -6,27 +6,25 @@ import Feather from 'react-native-vector-icons/Feather';
 import { AccountsScreenNavigation } from '../types/navigation';
 import { UserMenu } from '../components/userMenu';
 
-interface AccountsScreenProps extends AccountsScreenNavigation{}
+interface AccountScreenProps extends AccountsScreenNavigation {}
 
-export function AccountsScreen({ navigation }: AccountsScreenProps) {
+export function Account({ navigation }: AccountScreenProps) {
 	return (
 		<View>
 			<Surface style={styles.header}>
 				<View style={styles.view}>
-					{
-						<TouchableOpacity>
-							<Feather
-								style={{ marginRight: 80 }}
-								name="chevron-left"
-								size={30}
-								color={'white'}
-								onPress={() => navigation.goBack()}
-							/>
-						</TouchableOpacity>
-					}
+					<TouchableOpacity>
+						<Feather
+							style={styles.goBack}
+							name="chevron-left"
+							size={30}
+							color={'white'}
+							onPress={() => navigation.navigate('HomeTabs')}
+						/>
+					</TouchableOpacity>
 				</View>
 				<View style={styles.view}>
-					<Text style={{ color: 'white', fontSize: 20 }}>Account</Text>
+					<Text style={styles.headerText}>Account</Text>
 				</View>
 				<View style={styles.view}>
 					<UserMenu />
@@ -50,6 +48,10 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		elevation: 4,
 	},
+	userPhoto: {
+		marginLeft: 70,
+	},
+	goBack: { marginRight: 80 },
 	view: {
 		flex: 1,
 		margin: 5,
@@ -59,4 +61,12 @@ const styles = StyleSheet.create({
 		backgroundColor: '#dcdcdc',
 		height: '100%',
 	},
+	userMenuContent: {
+		position: 'absolute',
+
+		right: 10,
+		width: 100,
+	},
+	headerText: { color: 'white', fontSize: 20 },
+	userMenuOverlay: StyleSheet.absoluteFillObject,
 });

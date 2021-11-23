@@ -3,10 +3,10 @@ import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal } from 'react-
 import { AuthContext } from '../utils';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ListItem } from 'react-native-elements';
+import { useDispatch } from 'react-redux';
 
 export function UserMenu() {
 	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
-	const { signOut } = React.useContext(AuthContext);
 
 	const hideUserMenu = () => {
 		setUserMenuVisible(false);
@@ -15,6 +15,8 @@ export function UserMenu() {
 	const showUserMenu = () => {
 		setUserMenuVisible(true);
 	};
+
+	const dispatch = useDispatch();
 
 	return (
 		<>
@@ -25,7 +27,11 @@ export function UserMenu() {
 				<TouchableWithoutFeedback onPress={hideUserMenu}>
 					<View style={StyleSheet.absoluteFillObject} />
 				</TouchableWithoutFeedback>
-				<ListItem style={styles.userMenuContent} onPress={signOut}>
+				<ListItem
+					style={styles.userMenuContent}
+					onPress={() => {
+						dispatch({ type: 'SIGN_OUT', token: null });
+					}}>
 					<ListItem.Content>
 						<ListItem.Title>Log out</ListItem.Title>
 					</ListItem.Content>

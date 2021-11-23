@@ -1,32 +1,29 @@
 import * as React from 'react';
-import { StyleSheet, View, StatusBar, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, StatusBar, Text } from 'react-native';
 import { Surface } from 'react-native-paper';
-
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
-import { UserMenu } from '../components/userMenu';
 import { SavingsScreenNavigation } from '../types/navigation';
+import { UserMenu } from '../components/userMenu';
 
 interface SavingScreenProps extends SavingsScreenNavigation {}
-
-export function SavingScreen({ route, navigation }: SavingScreenProps) {
+export function Savings({ route, navigation }: SavingScreenProps) {
 	return (
 		<Surface style={styles.header}>
 			<StatusBar backgroundColor="#ff1493" />
 			<View style={styles.view}>
-				{
-					<TouchableOpacity>
-						<Feather
-							style={{ marginRight: 80 }}
-							name="chevron-left"
-							size={30}
-							color={'white'}
-							onPress={() => navigation.navigate('HomeTabs')}
-						/>
-					</TouchableOpacity>
-				}
+				<TouchableOpacity>
+					<Feather
+						style={styles.goBack}
+						name="chevron-left"
+						size={30}
+						color={'white'}
+						onPress={() => navigation.goBack()}
+					/>
+				</TouchableOpacity>
 			</View>
 			<View style={styles.view}>
-				<Text style={{ color: '#fff', fontSize: 20 }}>Saving</Text>
+				<Text style={styles.headerText}>Saving</Text>
 				<Text style={styles.text}>{route.params.textParam}</Text>
 			</View>
 			<View style={styles.view}>
@@ -57,4 +54,7 @@ const styles = StyleSheet.create({
 		color: '#fff',
 		fontSize: 10,
 	},
+	goBack: { marginRight: 80 },
+	headerText: { color: '#fff', fontSize: 20 },
+	userPhoto: { marginLeft: 70 },
 });

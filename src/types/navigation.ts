@@ -3,30 +3,28 @@ import { CompositeScreenProps } from '@react-navigation/core';
 import { StackScreenProps } from '@react-navigation/stack';
 
 export type RootBottomTabNavigator = {
-	Home: undefined;
+	HomeTabs: undefined;
 	Accounts: undefined;
 	Giving: undefined;
 	Payments: undefined;
 	Card: undefined;
 };
 export type RootStackParamList = {
-	SigInScreen: undefined
-	HomeTabs: undefined
+	SignInScreen: undefined;
+	HomeTabs: undefined;
 	Savings: { textParam: string };
 	Checking: { textParam: string };
 };
 
-// Root bottom tab
 export type HomeScreenNavigation = CompositeScreenProps<
-	BottomTabScreenProps<RootBottomTabNavigator, 'Home'>,
+	BottomTabScreenProps<RootBottomTabNavigator, 'HomeTabs'>,
 	StackScreenProps<RootStackParamList>
 >;
 
 export type AccountsScreenNavigation = CompositeScreenProps<
-	BottomTabScreenProps<RootBottomTabNavigator, "Accounts">,
+	BottomTabScreenProps<RootBottomTabNavigator, 'Accounts'>,
 	StackScreenProps<RootStackParamList>
 >;
 
-export type CheckingScreenNavigation = StackScreenProps<RootStackParamList, "Checking">
-export type SavingsScreenNavigation = StackScreenProps<RootStackParamList, "Savings">;
-
+export type CheckingScreenNavigation = StackScreenProps<RootStackParamList, 'Checking'>;
+export type SavingsScreenNavigation = StackScreenProps<RootStackParamList, 'Savings'>;
