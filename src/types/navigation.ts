@@ -15,10 +15,6 @@ export type RootStackParamList = {
 	Saving: { textParam: string };
 	Checking: { textParam: string };
 };
-
-export type CheckingScreenRouteProp = RouteProp<RootStackParamList, 'Checking'>;
-export type SavingScreenRouteProp = RouteProp<RootStackParamList, 'Saving'>;
-
 export type HomeScreenNavigation = CompositeScreenProps<
 	BottomTabScreenProps<RootBottomTabNavigator, 'HomeTabs'>,
 	StackScreenProps<RootStackParamList>
