@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-native-elements';
 import { sigIn } from '../services/authentication';
 import { RootState } from '../Redux/store';
+
 export function SignInScreen() {
 	const [email, setEmail] = React.useState('');
 	const [password, setPassword] = React.useState('');

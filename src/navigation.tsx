@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeTabs, SignInScreen, Giving, Account, Payments, CardScreen, Saving, CheckingScreen } from '../src';
+import { HomeTabs, SignInScreen, Giving, Account, Payments, CardScreen, Savings, CheckingScreen } from '../src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RootBottomTabNavigator } from './types/navigation';
 import { useSelector } from 'react-redux';
-
+import { RootState } from './Redux/store';
 const Tab = createBottomTabNavigator<RootBottomTabNavigator>();
 
 const getIconByRouteName = (routeName: keyof RootBottomTabNavigator) => {
@@ -51,7 +51,7 @@ function HomeTab() {
 function AuthStack() {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="SigInScreen">
-			<Stack.Screen name="SigInScreen" component={SignInScreen} />
+			<Stack.Screen name="SignInScreen" component={SignInScreen} />
 		</Stack.Navigator>
 	);
 }
@@ -59,7 +59,7 @@ function AuthStack() {
 const Stack = createStackNavigator();
 
 export default function Navigation() {
-	const userToken = useSelector((state) => state.user.userToken);
+	const userToken = useSelector((state: RootState) => state.user.userToken);
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
 			{userToken == null ? (
@@ -69,7 +69,7 @@ export default function Navigation() {
 			) : (
 				<>
 					<Stack.Screen name="Home" component={HomeTab} />
-					<Stack.Screen name="Saving" component={Saving} />
+					<Stack.Screen name="Savings" component={Savings} />
 					<Stack.Screen name="Checking" component={CheckingScreen} />
 				</>
 			)}

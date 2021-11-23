@@ -4,12 +4,11 @@ import { Surface, Text } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { ListItem } from 'react-native-elements';
-import { HomeScreenNavigation } from '../types/navigation';
+import { AccountsScreenNavigation } from '../types/navigation';
 import { useDispatch } from 'react-redux';
+import { UserMenu } from '../components/userMenu';
 
-interface AccountScreenProps {
-	navigation: HomeScreenNavigation;
-}
+interface AccountScreenProps extends AccountsScreenNavigation {}
 
 export function Account({ navigation }: AccountScreenProps) {
 	const dispatch = useDispatch();
@@ -40,24 +39,7 @@ export function Account({ navigation }: AccountScreenProps) {
 					<Text style={styles.headerText}>Account</Text>
 				</View>
 				<View style={styles.view}>
-					<TouchableOpacity onPress={showUserMenu}>
-						<Image style={styles.userPhoto} source={require('../../assets/img/oval.png')} />
-					</TouchableOpacity>
-
-					<Modal visible={userMenuVisible} transparent>
-						<TouchableWithoutFeedback onPress={hideUserMenu}>
-							<View style={styles.userMenuOverlay} />
-						</TouchableWithoutFeedback>
-						<ListItem
-							style={styles.userMenuContent}
-							onPress={() => {
-								dispatch({ type: 'SIGN_OUT', token: null });
-							}}>
-							<ListItem.Content>
-								<ListItem.Title>Log out</ListItem.Title>
-							</ListItem.Content>
-						</ListItem>
-					</Modal>
+					<UserMenu />
 				</View>
 			</Surface>
 		</View>

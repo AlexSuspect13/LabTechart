@@ -1,16 +1,13 @@
 import * as React from 'react';
-import { StyleSheet, View, Image, Modal, StatusBar, Text } from 'react-native';
+import { StyleSheet, View, Image, StatusBar, Text } from 'react-native';
 import { Surface } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
-import { HomeScreenNavigation, SavingScreenRouteProp } from '../types/navigation';
+import { SavingsScreenNavigation } from '../types/navigation';
+import { UserMenu } from '../components/userMenu';
 
-interface HomeScreenProps {
-	navigation: HomeScreenNavigation;
-	route: SavingScreenRouteProp;
-}
-
-export function Saving({ route, navigation }: HomeScreenProps) {
+interface SavingScreenProps extends SavingsScreenNavigation {}
+export function Savings({ route, navigation }: SavingScreenProps) {
 	return (
 		<Surface style={styles.header}>
 			<StatusBar backgroundColor="#ff1493" />
@@ -21,7 +18,7 @@ export function Saving({ route, navigation }: HomeScreenProps) {
 						name="chevron-left"
 						size={30}
 						color={'white'}
-						onPress={() => navigation.navigate('HomeTabs')}
+						onPress={() => navigation.goBack()}
 					/>
 				</TouchableOpacity>
 			</View>
@@ -30,9 +27,7 @@ export function Saving({ route, navigation }: HomeScreenProps) {
 				<Text style={styles.text}>{route.params.textParam}</Text>
 			</View>
 			<View style={styles.view}>
-				<TouchableOpacity>
-					<Image style={styles.userPhoto} source={require('../../assets/img/oval.png')} />
-				</TouchableOpacity>
+				<UserMenu />
 			</View>
 		</Surface>
 	);

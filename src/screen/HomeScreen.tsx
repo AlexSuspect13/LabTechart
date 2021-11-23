@@ -7,8 +7,7 @@ import Feather from 'react-native-vector-icons/Feather';
 import { ListItem } from 'react-native-elements';
 import { HomeScreenNavigation } from '../types/navigation';
 import { useDispatch } from 'react-redux';
-
-const Stack = createStackNavigator();
+import { UserMenu } from '../components/userMenu';
 
 interface HomeScreenProps extends HomeScreenNavigation {}
 
@@ -37,23 +36,7 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 					<Image source={require('../../assets/img/logo.png')} />
 				</View>
 				<View style={styles.view}>
-					<TouchableOpacity onPress={showUserMenu}>
-						<Image style={styles.userPhoto} source={require('../../assets/img/oval.png')} />
-					</TouchableOpacity>
-					<Modal visible={userMenuVisible} transparent>
-						<TouchableWithoutFeedback onPress={hideUserMenu}>
-							<View style={styles.userMenuOverlay} />
-						</TouchableWithoutFeedback>
-						<ListItem
-							style={styles.userMenuContent}
-							onPress={() => {
-								dispatch({ type: 'SIGN_OUT' });
-							}}>
-							<ListItem.Content>
-								<ListItem.Title>Log out</ListItem.Title>
-							</ListItem.Content>
-						</ListItem>
-					</Modal>
+					<UserMenu />
 				</View>
 			</Surface>
 			<View style={styles.body}>
@@ -61,7 +44,7 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 					<Button
 						title="Go to Saving"
 						onPress={() => {
-							navigation.navigate('Saving', { textParam: 'buy a house | 4044|' });
+							navigation.navigate('Savings', { textParam: 'buy a house | 4044|' });
 						}}
 					/>
 					<Button
