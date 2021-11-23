@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { TouchableWithoutFeedback, StyleSheet, Button, View, Image, Modal } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Surface, Text } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { AccountsScreenNavigation } from '../types/navigation';
-import { useDispatch } from 'react-redux';
 import { UserMenu } from '../components/userMenu';
 
 interface AccountScreenProps extends AccountsScreenNavigation {}

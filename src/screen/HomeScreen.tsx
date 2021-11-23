@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { TouchableWithoutFeedback, StyleSheet, Button, View, Image, Modal, ScrollView, StatusBar } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { StyleSheet, Button, View, Image, Modal, ScrollView, StatusBar } from 'react-native';
 import { Surface } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
-import { ListItem } from 'react-native-elements';
 import { HomeScreenNavigation } from '../types/navigation';
-import { useDispatch } from 'react-redux';
 import { UserMenu } from '../components/userMenu';
 
 interface HomeScreenProps extends HomeScreenNavigation {}
