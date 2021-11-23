@@ -3,7 +3,6 @@ import { TouchableWithoutFeedback, StyleSheet, Button, View, Image, Modal } from
 import { Surface, Text } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
-import { ListItem } from 'react-native-elements';
 import { AccountsScreenNavigation } from '../types/navigation';
 import { useDispatch } from 'react-redux';
 import { UserMenu } from '../components/userMenu';
@@ -11,16 +10,6 @@ import { UserMenu } from '../components/userMenu';
 interface AccountScreenProps extends AccountsScreenNavigation {}
 
 export function Account({ navigation }: AccountScreenProps) {
-	const dispatch = useDispatch();
-
-	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
-
-	const hideUserMenu = () => {
-		setUserMenuVisible(false);
-	};
-	const showUserMenu = () => {
-		setUserMenuVisible(true);
-	};
 	return (
 		<View>
 			<Surface style={styles.header}>

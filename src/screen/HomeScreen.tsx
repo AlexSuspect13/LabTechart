@@ -12,17 +12,6 @@ import { UserMenu } from '../components/userMenu';
 interface HomeScreenProps extends HomeScreenNavigation {}
 
 export function HomeTabs({ navigation }: HomeScreenProps) {
-	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
-
-	const hideUserMenu = () => {
-		setUserMenuVisible(false);
-	};
-	const showUserMenu = () => {
-		setUserMenuVisible(true);
-	};
-
-	const dispatch = useDispatch();
-
 	return (
 		<View>
 			<Surface style={styles.header}>
