@@ -26,9 +26,8 @@ export function SignInScreen() {
 	}, []);
 
 	const dispatch = useDispatch();
-
-	const isLoading = useSelector((state: RootState) => state.user.isLoading);
 	const authError = useSelector((state: RootState) => state.user.authError);
+	const isLoading = useSelector((state: RootState) => state.user.isLoading);
 
 	return (
 		<View style={styles.container}>
@@ -56,9 +55,8 @@ export function SignInScreen() {
 				/>
 				<View style={styles.lineUnderInput} />
 				<TouchableOpacity>
-					<Text style={styles.authError}>{authError}</Text>
-
 					<Text style={styles.forgotPassword}>FORGOT PASSWORD</Text>
+					<Text style={styles.authError}>{authError}</Text>
 				</TouchableOpacity>
 			</View>
 			<View style={styles.item2}>

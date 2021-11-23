@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { StyleSheet, View, Image, Modal, StatusBar, Text } from 'react-native';
 import { Surface } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -16,28 +15,24 @@ export function Saving({ route, navigation }: HomeScreenProps) {
 		<Surface style={styles.header}>
 			<StatusBar backgroundColor="#ff1493" />
 			<View style={styles.view}>
-				{
-					<TouchableOpacity>
-						<Feather
-							style={{ marginRight: 80 }}
-							name="chevron-left"
-							size={30}
-							color={'white'}
-							onPress={() => navigation.navigate('HomeTabs')}
-						/>
-					</TouchableOpacity>
-				}
+				<TouchableOpacity>
+					<Feather
+						style={styles.goBack}
+						name="chevron-left"
+						size={30}
+						color={'white'}
+						onPress={() => navigation.navigate('HomeTabs')}
+					/>
+				</TouchableOpacity>
 			</View>
 			<View style={styles.view}>
-				<Text style={{ color: '#fff', fontSize: 20 }}>Saving</Text>
+				<Text style={styles.headerText}>Saving</Text>
 				<Text style={styles.text}>{route.params.textParam}</Text>
 			</View>
 			<View style={styles.view}>
-				{
-					<TouchableOpacity>
-						<Image style={{ marginLeft: 70 }} source={require('../../assets/img/oval.png')} />
-					</TouchableOpacity>
-				}
+				<TouchableOpacity>
+					<Image style={styles.userPhoto} source={require('../../assets/img/oval.png')} />
+				</TouchableOpacity>
 			</View>
 		</Surface>
 	);
@@ -64,4 +59,7 @@ const styles = StyleSheet.create({
 		color: '#fff',
 		fontSize: 10,
 	},
+	goBack: { marginRight: 80 },
+	headerText: { color: '#fff', fontSize: 20 },
+	userPhoto: { marginLeft: 70 },
 });

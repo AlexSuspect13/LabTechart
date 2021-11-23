@@ -8,23 +8,21 @@ interface buttonBackProps {
 	navigation: HomeScreenNavigation;
 }
 
-export const ButtonBack = ({ navigation }: buttonBackProps) => {
+export default function goBacks({ navigation }: buttonBackProps) {
 	return (
 		<View style={styles.view}>
-			{
-				<TouchableOpacity>
-					<Feather
-						style={{ marginRight: 80 }}
-						name="chevron-left"
-						size={30}
-						color={'white'}
-						onPress={() => navigation.navigate('HomeTabs')}
-					/>
-				</TouchableOpacity>
-			}
+			<TouchableOpacity>
+				<Feather
+					style={{ marginRight: 80 }}
+					name="chevron-left"
+					size={30}
+					color={'white'}
+					onPress={() => navigation.navigate('HomeTabs')}
+				/>
+			</TouchableOpacity>
 		</View>
 	);
-};
+}
 
 const styles = StyleSheet.create({
 	header: {

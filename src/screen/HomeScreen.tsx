@@ -30,7 +30,7 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 				<StatusBar backgroundColor="#ff1493" />
 				<View style={styles.view}>
 					<TouchableOpacity>
-						<Feather style={{ marginRight: 80 }} name="menu" size={24} color={'white'} />
+						<Feather style={styles.goBack} name="menu" size={24} color={'white'} />
 					</TouchableOpacity>
 				</View>
 				<View style={styles.view}>
@@ -38,7 +38,7 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 				</View>
 				<View style={styles.view}>
 					<TouchableOpacity onPress={showUserMenu}>
-						<Image style={{ marginLeft: 70 }} source={require('../../assets/img/oval.png')} />
+						<Image style={styles.userPhoto} source={require('../../assets/img/oval.png')} />
 					</TouchableOpacity>
 					<Modal visible={userMenuVisible} transparent>
 						<TouchableWithoutFeedback onPress={hideUserMenu}>
@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		elevation: 4,
 	},
+	goBack: { marginRight: 80 },
 	view: {
 		flex: 1,
 		margin: 5,
@@ -105,5 +106,6 @@ const styles = StyleSheet.create({
 		right: 10,
 		width: 100,
 	},
+	userPhoto: { marginLeft: 70 },
 	userMenuOverlay: StyleSheet.absoluteFillObject,
 });

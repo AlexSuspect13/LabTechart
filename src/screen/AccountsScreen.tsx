@@ -26,24 +26,22 @@ export function Account({ navigation }: AccountScreenProps) {
 		<View>
 			<Surface style={styles.header}>
 				<View style={styles.view}>
-					{
-						<TouchableOpacity>
-							<Feather
-								style={{ marginRight: 80 }}
-								name="chevron-left"
-								size={30}
-								color={'white'}
-								onPress={() => navigation.navigate('HomeTabs')}
-							/>
-						</TouchableOpacity>
-					}
+					<TouchableOpacity>
+						<Feather
+							style={styles.goBack}
+							name="chevron-left"
+							size={30}
+							color={'white'}
+							onPress={() => navigation.navigate('HomeTabs')}
+						/>
+					</TouchableOpacity>
 				</View>
 				<View style={styles.view}>
-					<Text style={{ color: 'white', fontSize: 20 }}>Account</Text>
+					<Text style={styles.headerText}>Account</Text>
 				</View>
 				<View style={styles.view}>
 					<TouchableOpacity onPress={showUserMenu}>
-						<Image style={{ marginLeft: 70 }} source={require('../../assets/img/oval.png')} />
+						<Image style={styles.userPhoto} source={require('../../assets/img/oval.png')} />
 					</TouchableOpacity>
 
 					<Modal visible={userMenuVisible} transparent>
@@ -80,6 +78,10 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		elevation: 4,
 	},
+	userPhoto: {
+		marginLeft: 70,
+	},
+	goBack: { marginRight: 80 },
 	view: {
 		flex: 1,
 		margin: 5,
@@ -95,5 +97,6 @@ const styles = StyleSheet.create({
 		right: 10,
 		width: 100,
 	},
+	headerText: { color: 'white', fontSize: 20 },
 	userMenuOverlay: StyleSheet.absoluteFillObject,
 });
