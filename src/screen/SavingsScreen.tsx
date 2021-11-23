@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Image, StatusBar, Text } from 'react-native';
+import { StyleSheet, View, StatusBar, Text } from 'react-native';
 import { Surface } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
