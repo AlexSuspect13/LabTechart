@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { HomeScreenNavigation } from '../types/navigation';
 import { UserMenu } from '../components/userMenu';
+import { Card } from '../components/cards';
 
 interface HomeScreenProps extends HomeScreenNavigation {}
 
@@ -40,6 +41,7 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 						}}
 					/>
 				</ScrollView>
+				<Card/>
 			</View>
 		</View>
 	);
