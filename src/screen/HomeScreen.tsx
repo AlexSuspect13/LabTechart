@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Button, View, Image, Modal, ScrollView, StatusBar } from 'react-native';
+import { StyleSheet, Button, View, Image, SafeAreaView, ScrollView, StatusBar } from 'react-native';
 import { Surface } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
@@ -11,7 +11,7 @@ interface HomeScreenProps extends HomeScreenNavigation {}
 
 export function HomeTabs({ navigation }: HomeScreenProps) {
 	return (
-		<View>
+		<SafeAreaView >
 			<Surface style={styles.header}>
 				<StatusBar backgroundColor="#ff1493" />
 				<View style={styles.view}>
@@ -43,7 +43,7 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 				</ScrollView>
 				<Card/>
 			</View>
-		</View>
+		</SafeAreaView>
 	);
 }
 

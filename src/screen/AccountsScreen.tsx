@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View,SafeAreaView } from 'react-native';
 import { Surface, Text } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
@@ -10,7 +10,7 @@ interface AccountScreenProps extends AccountsScreenNavigation {}
 
 export function Account({ navigation }: AccountScreenProps) {
 	return (
-		<View>
+		<SafeAreaView>
 			<Surface style={styles.header}>
 				<View style={styles.view}>
 					<TouchableOpacity>
@@ -19,7 +19,7 @@ export function Account({ navigation }: AccountScreenProps) {
 							name="chevron-left"
 							size={30}
 							color={'white'}
-							onPress={() => navigation.navigate('HomeTabs')}
+							onPress={() => navigation.goBack()}
 						/>
 					</TouchableOpacity>
 				</View>
@@ -30,7 +30,7 @@ export function Account({ navigation }: AccountScreenProps) {
 					<UserMenu />
 				</View>
 			</Surface>
-		</View>
+		</SafeAreaView>
 	);
 }
 

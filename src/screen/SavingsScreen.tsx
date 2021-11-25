@@ -5,10 +5,12 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { SavingsScreenNavigation } from '../types/navigation';
 import { UserMenu } from '../components/userMenu';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface SavingScreenProps extends SavingsScreenNavigation {}
 export function Savings({ route, navigation }: SavingScreenProps) {
 	return (
+		<SafeAreaView>
 		<Surface style={styles.header}>
 			<StatusBar backgroundColor="#ff1493" />
 			<View style={styles.view}>
@@ -30,6 +32,7 @@ export function Savings({ route, navigation }: SavingScreenProps) {
 				<UserMenu />
 			</View>
 		</Surface>
+		</SafeAreaView>
 	);
 }
 const styles = StyleSheet.create({

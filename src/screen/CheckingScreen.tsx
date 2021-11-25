@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, StatusBar, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, StatusBar, Text, TouchableOpacity,SafeAreaView } from 'react-native';
 import { Surface } from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
 import { UserMenu } from '../components/userMenu';
@@ -9,6 +9,7 @@ interface CheckingScreenProps extends CheckingScreenNavigation {}
 
 export function CheckingScreen({ route, navigation }: CheckingScreenProps) {
 	return (
+		<SafeAreaView>
 		<Surface style={styles.header}>
 			<StatusBar backgroundColor="#ff1493" />
 			<View style={styles.view}>
@@ -30,6 +31,7 @@ export function CheckingScreen({ route, navigation }: CheckingScreenProps) {
 				<UserMenu />
 			</View>
 		</Surface>
+		</SafeAreaView>
 	);
 }
 const styles = StyleSheet.create({

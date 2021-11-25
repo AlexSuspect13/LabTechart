@@ -18,7 +18,7 @@ export const Card = ()=>{
         </View>
     </View>
     <Image source={require("../../assets/img/rectangle2.png")}></Image>
-    <Text>Danny, Your donation helped 5 fvfxing kids get much needed cancer sergery, thanks for being amazing! </Text>
+    <Text>Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing! </Text>
     <Button icon={
       <Icon name = 'ios-arrow-redo-outline'/>
     }></Button>
@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   headerContainer:{
-    flexDirection: 'column'
+    flexDirection: 'column',
+    padding: 10,
 },
 infoAboutPost:{
   flexDirection: 'row',
