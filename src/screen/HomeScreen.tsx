@@ -27,20 +27,7 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 				</View>
 			</Surface>
 			<View style={styles.body}>
-				<ScrollView style={styles.scrollView}>
-					<Button
-						title="Go to Saving"
-						onPress={() => {
-							navigation.navigate('Savings', { textParam: 'buy a house | 4044|' });
-						}}
-					/>
-					<Button
-						title="Go to Cheking"
-						onPress={() => {
-							navigation.navigate('Checking', { textParam: 'main account(2932)' });
-						}}
-					/>
-				</ScrollView>
+				<Card/>
 				<Card/>
 			</View>
 		</SafeAreaView>
@@ -48,11 +35,6 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 }
 
 const styles = StyleSheet.create({
-	scrollView: {
-		backgroundColor: 'pink',
-		height: '100%',
-		width: '100%',
-	},
 	header: {
 		justifyContent: 'space-between',
 		height: 50,
@@ -68,7 +50,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	body: {
-		backgroundColor: '#dcdcdc',
+		backgroundColor: '#F8F8FF',
 		height: '100%',
 	},
 	userMenuContent: {

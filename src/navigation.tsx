@@ -32,6 +32,7 @@ function HomeTab() {
 	return (
 		<Tab.Navigator
 			screenOptions={({ route }) => ({
+				backgroundColor: 'transparent',
 				headerShown: false,
 				tabBarIcon: ({ color, size }) => {
 					const iconName = getIconByRouteName(route.name);

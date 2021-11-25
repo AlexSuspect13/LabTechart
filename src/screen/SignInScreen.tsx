@@ -102,7 +102,7 @@ export function SignInScreen() {
 	);
 }
 
-const margginTopBut = Platform.OS === 'ios' ? 10:0
+const margginTopBut = Platform.OS === 'ios' ? 10 : 0
 
 const styles = StyleSheet.create({
 	container: {

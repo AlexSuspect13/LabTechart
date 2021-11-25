@@ -17,11 +17,14 @@ export const Card = ()=>{
             </View>
         </View>
     </View>
-    <Image source={require("../../assets/img/rectangle2.png")}></Image>
-    <Text>Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing! </Text>
-    <Button icon={
-      <Icon name = 'ios-arrow-redo-outline'/>
-    }></Button>
+    <Image style={styles.kidsPhoto} source={require("../../assets/img/rectangle2.png")}></Image>
+    <Text style={styles.textAboutKids}>Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing! </Text>
+  
+      <Button title={'Share to spread the word'} buttonStyle={styles.cardButton} icon={
+       <Icon color={'#fff'} size={13} name = 'share'/>
+       }/>
+       
+
   </View>
   )
   
@@ -32,26 +35,43 @@ export const Card = ()=>{
 const styles = StyleSheet.create({
   container:{
     display: 'flex',
-    flex: 1,
+    borderWidth: 1,
     backgroundColor: 'white',
     color: 'black',
-    borderRadius: 5,
+    borderRadius: 7,
+    borderColor: "#DCDCDC",
+    margin: 15
   },
   headerContainer:{
-    flexDirection: 'column',
+    flexDirection: 'row',
     padding: 10,
 },
 infoAboutPost:{
-  flexDirection: 'row',
-  alignItems: 'flex-start'
-  
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  justifyContent: 'center'
+},
+kidsPhoto:{
+width: '100%'
+},
+
+textAboutKids:{
+padding: 10
 },
 point:{
-  height:1,
-  width:1,
-  backgroundColor: "#ff1493"
+  height:5,
+  width:5,
+  backgroundColor: "#ff1493",
+  borderRadius: 40,
+
 },
 dateName:{
-  flexDirection: 'column'
+  flexDirection: 'row'
+},
+cardButton:{
+fontSize: 10,
+margin: 20,
+backgroundColor: '#ff1493',
+borderRadius: 20
 }
 })
