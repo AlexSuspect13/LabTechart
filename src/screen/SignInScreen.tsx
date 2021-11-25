@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity, Keyboard, SafeAreaView } from 'react-native';
+import { StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity, Keyboard, SafeAreaView, Platform } from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
@@ -102,6 +102,8 @@ export function SignInScreen() {
 	);
 }
 
+const margginTopBut = Platform.OS === 'ios' ? 10:0
+
 const styles = StyleSheet.create({
 	container: {
 		display: 'flex',
@@ -142,6 +144,8 @@ const styles = StyleSheet.create({
 	idButtonContainer: { flexDirection: 'row', justifyContent: 'center' },
 	txtinput: {
 		color: '#000',
+		marginTop: margginTopBut,
+		marginBottom: margginTopBut,
 	},
 	idButtonText: { color: '#c0c0c0' },
 	authError: { textAlign: 'left', color: 'red' },
