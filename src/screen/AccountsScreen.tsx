@@ -13,15 +13,13 @@ export function Account({ navigation }: AccountScreenProps) {
 		<SafeAreaView>
 			<Surface style={styles.header}>
 				<View style={styles.view}>
-					<TouchableOpacity>
-						<Feather
-							style={styles.goBack}
-							name="chevron-left"
-							size={30}
-							color={'white'}
-							onPress={() => navigation.goBack()}
-						/>
-					</TouchableOpacity>
+					<Feather
+						style={styles.goBack}
+						name="chevron-left"
+						size={30}
+						color={'white'}
+						onPress={()=> navigation.goBack()}
+					/>
 				</View>
 				<View style={styles.view}>
 					<Text style={styles.headerText}>Account</Text>
