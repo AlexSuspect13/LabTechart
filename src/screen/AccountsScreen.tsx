@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, View,SafeAreaView } from 'react-native';
 import { Surface, Text } from 'react-native-paper';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { AccountsScreenNavigation } from '../types/navigation';
 import { UserMenu } from '../components/userMenu';
