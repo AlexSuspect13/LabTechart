@@ -3,7 +3,12 @@ import { View, Text, StyleSheet,Image } from "react-native"
 import { Button} from "react-native-elements";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export const Card = ()=>{
+
+
+
+
+
+export const Card = ({kidsImg})=>{
   return(
     <View style = {styles.container}>
     <View style = {styles.headerContainer}>
@@ -17,7 +22,7 @@ export const Card = ()=>{
             </View>
         </View>
     </View>
-    <Image style={styles.kidsPhoto} source={require("../../assets/img/rectangle2.png")}></Image>
+    <Image style={styles.kidsPhoto} source={kidsImg}></Image>
     <Text style={styles.textAboutKids}>Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing! </Text>
   
       <Button title={'Share to spread the word'} buttonStyle={styles.cardButton} icon={

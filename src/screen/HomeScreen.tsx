@@ -1,15 +1,58 @@
 import * as React from 'react';
-import { StyleSheet, Button, View, Image, SafeAreaView, ScrollView, StatusBar } from 'react-native';
-import { Surface } from 'react-native-paper';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, View, Image, SafeAreaView, StatusBar } from 'react-native';
+import { Surface, Title } from 'react-native-paper';
+import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { HomeScreenNavigation } from '../types/navigation';
 import { UserMenu } from '../components/userMenu';
 import { Card } from '../components/cards';
+import { Text } from 'react-native-elements';
 
 interface HomeScreenProps extends HomeScreenNavigation {}
 
+
+const Data=[
+  {
+   img: require("../../assets/img/rectangle2.png")	
+	},
+	{
+   img: require("../../assets/img/rectangle.png")	
+  },
+	{
+   img: require("../../assets/img/rectangle.png")	
+  },
+	{
+   img: require("../../assets/img/rectangle2.png")	
+  },
+	{
+   img: require("../../assets/img/rectangle.png")	
+  },
+	{
+    img: require("../../assets/img/rectangle.png")	
+  },
+	{
+    img: require("../../assets/img/rectangle2.png")	
+  },
+	{
+  	img: require("../../assets/img/rectangle2.png")	
+  },
+	{
+   img: require("../../assets/img/rectangle2.png")	
+	}
+]
+
+
+
+
 export function HomeTabs({ navigation }: HomeScreenProps) {
+
+	const renderItem=({item})=>{
+return (
+	<Card kidsImg ={item.img}/>
+)
+	}
+
+
 	return (
 		<SafeAreaView >
 			<Surface style={styles.header}>
@@ -27,8 +70,9 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 				</View>
 			</Surface>
 			<View style={styles.body}>
-				<Card/>
-				<Card/>
+				<FlatList
+				data={Data}
+				renderItem={renderItem}/>
 			</View>
 		</SafeAreaView>
 	);
@@ -61,4 +105,13 @@ const styles = StyleSheet.create({
 	},
 	userPhoto: { marginLeft: 70 },
 	userMenuOverlay: StyleSheet.absoluteFillObject,
+	item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+  },
+  title: {
+    fontSize: 32,
+  },
 });
