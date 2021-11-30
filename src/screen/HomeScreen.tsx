@@ -7,6 +7,7 @@ import { HomeScreenNavigation } from '../types/navigation';
 import { UserMenu } from '../components/userMenu';
 import { Card } from '../components/cards';
 import { AccountOverview } from '../components/AccountOverview';
+import { VideoCards } from '../components/goodnesCard';
 
 
 
@@ -15,32 +16,27 @@ interface HomeScreenProps extends HomeScreenNavigation {}
 
 const Data=[
   {
-   img: require("../../assets/img/rectangle2.png")	
+   video: require('../../assets/video/video1.mp4')	
 	},
 	{
-   img: require("../../assets/img/rectangle.png")	
-  },
-	{
-   img: require("../../assets/img/rectangle.png")	
-  },
-	{
-   img: require("../../assets/img/rectangle2.png")	
-  },
-	{
-   img: require("../../assets/img/rectangle.png")	
-  },
-	{
-    img: require("../../assets/img/rectangle.png")	
-  },
-	{
-    img: require("../../assets/img/rectangle2.png")	
-  },
-	{
-  	img: require("../../assets/img/rectangle2.png")	
-  },
-	{
-   img: require("../../assets/img/rectangle2.png")	
-	}
+		video: require('../../assets/video/video1.mp4')	
+	 },
+	 {
+		video: require('../../assets/video/video1.mp4')	
+	 },
+	 {
+		video: require('../../assets/video/video1.mp4')	
+	 },
+	 {
+		video: require('../../assets/video/video1.mp4')	
+	 },
+	 {
+		video: require('../../assets/video/video1.mp4')	
+	 },
+	 {
+		video: require('../../assets/video/video1.mp4')	
+	 },
+
 ]
 
 
@@ -52,7 +48,7 @@ export function HomeTabs({ navigation }: HomeScreenProps) {
 
 	const renderItem=({item})=>{
 return (
-	<Card kidsImg ={item.img}/>
+	<VideoCards kidsVideo={item.video}/>
 )
 	}
 

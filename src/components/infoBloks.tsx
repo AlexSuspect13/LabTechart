@@ -2,8 +2,6 @@ import { useNavigation, useRoute } from '@react-navigation/core';
 import React from 'react';
 import {  StyleSheet, Text, View,TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { Savings } from '..';
-import { HomeScreenNavigation } from '../types/navigation';
 
 
 export const InfoBlock = ({ text, infotxt, dollar, cent}) => {
