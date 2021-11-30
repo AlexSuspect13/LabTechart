@@ -13,7 +13,7 @@ export function CheckingScreen({ route, navigation }: CheckingScreenProps) {
 		<Surface style={styles.header}>
 			<StatusBar backgroundColor="#ff1493" />
 			<View style={styles.view}>
-				<TouchableOpacity>
+		
 					<Feather
 						style={styles.goBack}
 						name="chevron-left"
@@ -21,7 +21,7 @@ export function CheckingScreen({ route, navigation }: CheckingScreenProps) {
 						color={'white'}
 						onPress={() => navigation.goBack()}
 					/>
-				</TouchableOpacity>
+			
 			</View>
 			<View style={styles.view}>
 				<Text style={styles.headerText}>Checking</Text>

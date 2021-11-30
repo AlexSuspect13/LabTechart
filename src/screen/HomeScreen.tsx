@@ -6,8 +6,9 @@ import Feather from 'react-native-vector-icons/Feather';
 import { HomeScreenNavigation } from '../types/navigation';
 import { UserMenu } from '../components/userMenu';
 import { Card } from '../components/cards';
-import { Text } from 'react-native-elements';
 import { AccountOverview } from '../components/AccountOverview';
+
+
 
 interface HomeScreenProps extends HomeScreenNavigation {}
 
@@ -74,6 +75,7 @@ return (
 			</Surface>
 			
 			<View style={styles.body}>
+		
 				<FlatList
 				ListHeaderComponent={AccountOverview}
 				data={Data}

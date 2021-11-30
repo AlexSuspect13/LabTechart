@@ -1,8 +1,13 @@
+import { useNavigation, useRoute } from '@react-navigation/core';
 import React from 'react';
-import { PanResponder, StyleSheet, Text, View } from 'react-native';
+import {  StyleSheet, Text, View,TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { Savings } from '..';
+import { HomeScreenNavigation } from '../types/navigation';
 
-export const InfoBlock = ({ text, infotxt, dollar, cent }) => {
+
+export const InfoBlock = ({ text, infotxt, dollar, cent}) => {
+	const navigation = useNavigation();
 	return (
 		<View style={styles.infoBlock}>
 			<View style={styles.infoAbtPage}>
@@ -15,7 +20,10 @@ export const InfoBlock = ({ text, infotxt, dollar, cent }) => {
 					{dollar}
 					<Text style={{ fontSize: 16, color: '#000' }}>.{cent}</Text>
 				</Text>
-				<Icon style={styles.chevron} color={'#ff1493'} name={'chevron-right'} />
+				<TouchableOpacity onPress={() =>navigation.navigate(text,{textParam: infotxt})}>
+				<Icon style={styles.chevron} color={'#ff1493'} name={'chevron-right'}/>
+				</TouchableOpacity>
+				
 			</View>
 		</View>
 	);
