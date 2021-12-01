@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Button } from 'react-native-elements';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Video from 'react-native-video';
 
-export const VideoCards = ({ kidsVideo }) => {
+export const VideoCards = () => {
+	const [pause, setPause] = React.useState(true);
 	return (
 		<View style={styles.container}>
 			<View style={styles.headerContainer}>
@@ -18,7 +20,13 @@ export const VideoCards = ({ kidsVideo }) => {
 					</View>
 				</View>
 			</View>
-		<Video source={{uri: 'https://www.youtube.com/watch?v=8qB8EGNOtr8'}}/>
+			<TouchableOpacity
+				onPress={() => {
+					setPause(!pause);
+				}}>
+				<Video style={styles.videos} source={require('../../assets/video/video1.mp4')} paused={pause} />
+			</TouchableOpacity>
+
 			<Text style={styles.textAboutKids}>
 				Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!{' '}
 			</Text>
@@ -41,6 +49,10 @@ const styles = StyleSheet.create({
 		borderRadius: 7,
 		borderColor: '#DCDCDC',
 		margin: 15,
+	},
+	videos: {
+		height: 200,
+		width: '100%',
 	},
 	headerContainer: {
 		flexDirection: 'row',

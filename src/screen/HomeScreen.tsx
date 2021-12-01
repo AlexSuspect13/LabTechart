@@ -9,52 +9,37 @@ import { Card } from '../components/cards';
 import { AccountOverview } from '../components/AccountOverview';
 import { VideoCards } from '../components/goodnesCard';
 
-
-
-interface HomeScreenProps extends HomeScreenNavigation {}
-
-
-const Data=[
-  {
-   video: require('../../assets/video/video1.mp4')	
+const Data = [
+	{
+		video: require('../../assets/video/video1.mp4'),
 	},
 	{
-		video: require('../../assets/video/video1.mp4')	
-	 },
-	 {
-		video: require('../../assets/video/video1.mp4')	
-	 },
-	 {
-		video: require('../../assets/video/video1.mp4')	
-	 },
-	 {
-		video: require('../../assets/video/video1.mp4')	
-	 },
-	 {
-		video: require('../../assets/video/video1.mp4')	
-	 },
-	 {
-		video: require('../../assets/video/video1.mp4')	
-	 },
+		video: require('../../assets/video/video1.mp4'),
+	},
+	{
+		video: require('../../assets/video/video1.mp4'),
+	},
+	{
+		video: require('../../assets/video/video1.mp4'),
+	},
+	{
+		video: require('../../assets/video/video1.mp4'),
+	},
+	{
+		video: require('../../assets/video/video1.mp4'),
+	},
+	{
+		video: require('../../assets/video/video1.mp4'),
+	},
+];
 
-]
-
-
-
-
-export function HomeTabs({ navigation }: HomeScreenProps) {
-
-
-
-	const renderItem=({item})=>{
-return (
-	<VideoCards kidsVideo={item.video}/>
-)
-	}
-
+export function HomeTabs() {
+	const renderItem = () => {
+		return <VideoCards />;
+	};
 
 	return (
-		<SafeAreaView >
+		<SafeAreaView>
 			<Surface style={styles.header}>
 				<StatusBar backgroundColor="#ff1493" />
 				<View style={styles.view}>
@@ -69,13 +54,9 @@ return (
 					<UserMenu />
 				</View>
 			</Surface>
-			
+
 			<View style={styles.body}>
-		
-				<FlatList
-				ListHeaderComponent={AccountOverview}
-				data={Data}
-				renderItem={renderItem}/>
+				<FlatList ListHeaderComponent={AccountOverview} data={Data} renderItem={renderItem} />
 			</View>
 		</SafeAreaView>
 	);
@@ -109,12 +90,12 @@ const styles = StyleSheet.create({
 	userPhoto: { marginLeft: 70 },
 	userMenuOverlay: StyleSheet.absoluteFillObject,
 	item: {
-    backgroundColor: '#f9c2ff',
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 32,
-  },
+		backgroundColor: '#f9c2ff',
+		padding: 20,
+		marginVertical: 8,
+		marginHorizontal: 16,
+	},
+	title: {
+		fontSize: 32,
+	},
 });
