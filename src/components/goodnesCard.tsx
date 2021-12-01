@@ -18,12 +18,7 @@ export const VideoCards = ({ kidsVideo }) => {
 					</View>
 				</View>
 			</View>
-			<Video
-				source={{ uri: 'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4?_=1' }}
-				style={{ width: 300, height: 300 }}
-				controls={true}
- 			/>
-
+		<Video source={{uri: 'https://www.youtube.com/watch?v=8qB8EGNOtr8'}}/>
 			<Text style={styles.textAboutKids}>
 				Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!{' '}
 			</Text>

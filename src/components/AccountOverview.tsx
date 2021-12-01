@@ -24,7 +24,6 @@ export const AccountOverview = () => {
 				<View style={styles.hairline} />
 				<InfoBlock  text="Savings" infotxt="Buy a house|...4044|" dollar="5,000" cent="20" />
 				<View style={styles.hairline} />
-			
 			</View>
 		</View>
 		</>
