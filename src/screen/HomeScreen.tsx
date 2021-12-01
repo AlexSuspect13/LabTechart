@@ -1,41 +1,57 @@
 import * as React from 'react';
-import { StyleSheet, View, Image, SafeAreaView, StatusBar } from 'react-native';
-import { Surface, Title } from 'react-native-paper';
+import { StyleSheet, View, Image, SafeAreaView, StatusBar, Animated } from 'react-native';
+import { Surface } from 'react-native-paper';
 import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
-import { HomeScreenNavigation } from '../types/navigation';
 import { UserMenu } from '../components/userMenu';
-import { Card } from '../components/cards';
 import { AccountOverview } from '../components/AccountOverview';
 import { VideoCards } from '../components/goodnesCard';
+import { Card } from '../components/cards';
 
-const Data = [
+type onViewItemsCnaged = {
+	viewableItems: any;
+	changed: any;
+};
+
+const viewabilityConfig = {
+	waitForInteraction: true,
+	viewAreaCoveragePercentThreshold: 100,
+};
+const data = [
 	{
+		kidsPhoto: require('../../assets/img/rectangle2.png'),
 		video: require('../../assets/video/video1.mp4'),
+		kidsPhotoForVideo: require('../../assets/img/rectangle.png'),
 	},
 	{
-		video: require('../../assets/video/video1.mp4'),
-	},
-	{
-		video: require('../../assets/video/video1.mp4'),
-	},
-	{
-		video: require('../../assets/video/video1.mp4'),
-	},
-	{
-		video: require('../../assets/video/video1.mp4'),
-	},
-	{
-		video: require('../../assets/video/video1.mp4'),
-	},
-	{
+		kidsPhoto: require('../../assets/img/rectangle2.png'),
 		video: require('../../assets/video/video1.mp4'),
 	},
 ];
 
+type renderItem = {
+	item: any;
+};
 export function HomeTabs() {
-	const renderItem = () => {
-		return <VideoCards />;
+	const [isPause, setIsPaused] = React.useState(true);
+	const onViewableItemsChanged = ({ viewableItems, changed }: onViewItemsCnaged) => {
+		if (viewableItems[0]?.isViewable) {
+			setIsPaused(false);
+		}
+		if (changed[0].is?.isViewable) {
+			setIsPaused(true);
+		}
+	};
+
+	const viewabilityConfigCallbackPairs = React.useRef([{ viewabilityConfig, onViewableItemsChanged }]);
+	const renderItem = ({ item }: renderItem) => {
+		return (
+			<>
+				<Card kidsImg={item.kidsPhoto} />
+				<VideoCards video={item.video} isPause={isPause} />
+				<Card kidsImg={item.kidsPhoto} />
+			</>
+		);
 	};
 
 	return (
@@ -56,7 +72,13 @@ export function HomeTabs() {
 			</Surface>
 
 			<View style={styles.body}>
-				<FlatList ListHeaderComponent={AccountOverview} data={Data} renderItem={renderItem} />
+				<FlatList
+					viewabilityConfig={viewabilityConfig}
+					viewabilityConfigCallbackPairs={viewabilityConfigCallbackPairs.current}
+					ListHeaderComponent={AccountOverview}
+					data={data}
+					renderItem={renderItem}
+				/>
 			</View>
 		</SafeAreaView>
 	);

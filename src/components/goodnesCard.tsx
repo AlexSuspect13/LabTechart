@@ -5,8 +5,11 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Video from 'react-native-video';
 
-export const VideoCards = () => {
-	const [pause, setPause] = React.useState(true);
+type VideoCards = {
+	video: any;
+	isPause: boolean;
+};
+export const VideoCards = ({ video, isPause }: VideoCards) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.headerContainer}>
@@ -20,11 +23,8 @@ export const VideoCards = () => {
 					</View>
 				</View>
 			</View>
-			<TouchableOpacity
-				onPress={() => {
-					setPause(!pause);
-				}}>
-				<Video style={styles.videos} source={require('../../assets/video/video1.mp4')} paused={pause} />
+			<TouchableOpacity onPress={() => {}}>
+				<Video style={styles.videos} source={video} paused={pause} />
 			</TouchableOpacity>
 
 			<Text style={styles.textAboutKids}>

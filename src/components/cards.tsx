@@ -2,8 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
-export const Card = ({ kidsImg }) => {
+type Cards = {
+	kidsImg: any;
+};
+export const Card = ({ kidsImg }: Cards) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.headerContainer}>
