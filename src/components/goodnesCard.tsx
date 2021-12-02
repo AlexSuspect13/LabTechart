@@ -10,6 +10,8 @@ type VideoCards = {
 	isPause: boolean;
 };
 export const VideoCards = ({ video, isPause }: VideoCards) => {
+	const [pause, setPause] = React.useState(false);
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.headerContainer}>
@@ -23,8 +25,11 @@ export const VideoCards = ({ video, isPause }: VideoCards) => {
 					</View>
 				</View>
 			</View>
-			<TouchableOpacity onPress={() => {}}>
-				<Video style={styles.videos} source={video} paused={pause} />
+			<TouchableOpacity
+				onPress={() => {
+					setPause(!pause);
+				}}>
+				<Video style={styles.videos} source={video} paused={isPause} />
 			</TouchableOpacity>
 
 			<Text style={styles.textAboutKids}>

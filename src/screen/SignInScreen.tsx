@@ -1,5 +1,15 @@
 import * as React from 'react';
-import { StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity, Keyboard, SafeAreaView, Platform } from 'react-native';
+import {
+	StyleSheet,
+	TextInput,
+	View,
+	StatusBar,
+	Text,
+	TouchableOpacity,
+	Keyboard,
+	SafeAreaView,
+	Platform,
+} from 'react-native';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
@@ -102,7 +112,7 @@ export function SignInScreen() {
 	);
 }
 
-const margginTopBut = Platform.OS === 'ios' ? 10 : 0
+const margginTopBut = Platform.OS === 'ios' ? 10 : 0;
 
 const styles = StyleSheet.create({
 	container: {
