@@ -11,10 +11,8 @@ type VideoCards = {
 	kidsPhotoForVideo: any
 };
 export const VideoCards = ({ video, isPause, kidsPhotoForVideo }: VideoCards) => {
-	const [pause, setPause] = React.useState(false)
-const videoContent =()=>{
-	
-}
+	const [pause, setPause] = React.useState(true)
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.headerContainer}>

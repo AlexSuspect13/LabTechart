@@ -35,10 +35,10 @@ export default function DateNow(){
   return(
     <View style={styles.container}>
      
-      <Text>{generateGreetings()} </Text>
-      <Text style={styles.text}>{userName} </Text>
+      <Text style={styles.text}>{generateGreetings()}</Text>
+      <Text style={styles.text}>Alex</Text>
       <View style={styles.hairline}/>
-      <Text>  {date}</Text>
+      <Text style={styles.text}>{date}</Text>
     </View>
   );
 }
@@ -51,11 +51,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   text:{
-    fontSize: 15,
+    marginRight: 5,
+    fontSize: 15, 
+    color: '#c0c0c0'
   },
   hairline:{
     height:16,
     width:2,
-    backgroundColor: 'black'
+    backgroundColor: 'black',
+    marginRight: 5,
+    marginLeft: 5
   }
 })
