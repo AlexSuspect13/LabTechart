@@ -8,10 +8,13 @@ import Video from 'react-native-video';
 type VideoCards = {
 	video: any;
 	isPause: boolean;
+	kidsPhotoForVideo: any
 };
-export const VideoCards = ({ video, isPause }: VideoCards) => {
-	const [pause, setPause] = React.useState(false);
-
+export const VideoCards = ({ video, isPause, kidsPhotoForVideo }: VideoCards) => {
+	const [pause, setPause] = React.useState(false)
+const videoContent =()=>{
+	
+}
 	return (
 		<View style={styles.container}>
 			<View style={styles.headerContainer}>
@@ -28,12 +31,18 @@ export const VideoCards = ({ video, isPause }: VideoCards) => {
 			<TouchableOpacity
 				onPress={() => {
 					setPause(!pause);
+					console.log(pause);
+					
 				}}>
-				<Video style={styles.videos} source={video} paused={isPause} />
-			</TouchableOpacity>
 
+					{
+						pause ? isPause ?	<Image style={styles.kidsimg} source={kidsPhotoForVideo} /> :  <Video style={styles.videos} source={video} paused={isPause}/> : <Video style={styles.videos} source={video} paused={pause}/>
+					} 
+			
+			</TouchableOpacity>
+			
 			<Text style={styles.textAboutKids}>
-				Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!{' '}
+				Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!
 			</Text>
 
 			<Button
@@ -63,6 +72,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		padding: 10,
 	},
+	kidsimg:{width: '100%'},
 	infoAboutPost: {
 		flexDirection: 'column',
 		alignItems: 'flex-start',
@@ -97,3 +107,13 @@ const styles = StyleSheet.create({
 		borderRadius: 20,
 	},
 });
+{
+//	if(pause && !isPause){
+		
+//	}
+//	else if (!pause) {
+//		<Video style={styles.videos} source={video} paused={isPause} />
+//	} else {
+//		<Image style={styles.kidsimg} source={kidsPhotoForVideo} />
+//	}
+}

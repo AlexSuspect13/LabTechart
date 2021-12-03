@@ -14,7 +14,7 @@ type onViewItemsCnaged = {
 };
 
 const viewabilityConfig = {
-	waitForInteraction: true,
+	
 	viewAreaCoveragePercentThreshold: 100,
 };
 const data = [
@@ -22,11 +22,9 @@ const data = [
 		kidsPhoto: require('../../assets/img/rectangle2.png'),
 		video: require('../../assets/video/video1.mp4'),
 		kidsPhotoForVideo: require('../../assets/img/rectangle.png'),
+		index: 0
 	},
-	{
-		kidsPhoto: require('../../assets/img/rectangle2.png'),
-		video: require('../../assets/video/video1.mp4'),
-	},
+	
 ];
 
 type renderItem = {
@@ -35,20 +33,32 @@ type renderItem = {
 export function HomeTabs() {
 	const [isPause, setIsPaused] = React.useState(true);
 	const onViewableItemsChanged = ({ viewableItems, changed }: onViewItemsCnaged) => {
-		if (viewableItems[0]?.isViewable) {
+		console.log(viewableItems)
+		console.log(changed)
+		if (viewableItems[0]?.isViewable && viewableItems[0]?.index == data[0].index ) {
 			setIsPaused(false);
+			setTimeout(() => {
+				setIsPaused(true);
+			}, 5000);
 		}
-		if (changed[0].is?.isViewable) {
+		else{
 			setIsPaused(true);
 		}
+	
+		
 	};
 
 	const viewabilityConfigCallbackPairs = React.useRef([{ viewabilityConfig, onViewableItemsChanged }]);
 	const renderItem = ({ item }: renderItem) => {
 		return (
 			<>
+				{
+					console.log(isPause)
+					
+				}
 				<Card kidsImg={item.kidsPhoto} />
-				<VideoCards video={item.video} isPause={isPause} />
+				
+				<VideoCards video={item.video} isPause={isPause} kidsPhotoForVideo={item.kidsPhotoForVideo} />
 				<Card kidsImg={item.kidsPhoto} />
 			</>
 		);
