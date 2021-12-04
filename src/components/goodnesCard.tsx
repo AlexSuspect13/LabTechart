@@ -34,15 +34,15 @@ export const VideoCards = ({ video, isPause, kidsPhotoForVideo }: VideoCards) =>
 				}}>
 
 					{
-						pause ? isPause ?	<Image style={styles.kidsimg} source={kidsPhotoForVideo} /> :  <Video style={styles.videos} source={video} paused={isPause}/> : <Video style={styles.videos} source={video} paused={pause}/>
+						pause ? isPause ?	<Image style={styles.kidsimg} source={kidsPhotoForVideo} /> :  <Video style={styles.videos} source={video} muted={true} controls paused={isPause}/> : <Video style={styles.videos} muted={true} controls source={video} paused={pause}/>
 					} 
 			
-			</TouchableOpacity>
+			
 			
 			<Text style={styles.textAboutKids}>
 				Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!
 			</Text>
-
+			</TouchableOpacity>
 			<Button
 				title={'Share to spread the word'}
 				buttonStyle={styles.cardButton}
