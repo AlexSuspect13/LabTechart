@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		backgroundColor: '#fff',
 	},
-	textLogin: { color: '#000', fontSize: 45, fontFamily: 'SF-Pro-Rounded-Medium' },
+	textLogin: { color: '#000', fontSize: 45, fontFamily: 'SFRounded-Medium' },
 	item1: {
 		flex: 1,
 		backgroundColor: '#fff',
@@ -130,8 +130,8 @@ const styles = StyleSheet.create({
 	item2: {
 		padding: 15,
 	},
-	forgotPassword: { textAlign: 'right', color: '#ff1493', fontFamily: 'SF-Pro-Rounded-Bold' },
-	EmailPasswordText: { color: '#636363', fontSize: 20, fontFamily: 'SF-Pro-Rounded-Medium' },
+	forgotPassword: { textAlign: 'right', color: '#ff1493', fontFamily: 'SFRounded-Bold' },
+	EmailPasswordText: { color: '#636363', fontSize: 20, fontFamily: 'SFRounded-Medium' },
 	hairline: {
 		backgroundColor: '#ff1493',
 		height: 4,

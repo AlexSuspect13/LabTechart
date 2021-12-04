@@ -13,7 +13,11 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		18393DFA3BD2AC09B40CD882 /* libPods-ItechartProj-ItechartProjTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDA5A79ED034004005D7D1DA /* libPods-ItechartProj-ItechartProjTests.a */; };
 		1BD4AF237A313558D2D04CEF /* libPods-ItechartProj.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 790D110138645B5FE027336C /* libPods-ItechartProj.a */; };
+		76649EAFE34E455C98184BEF /* SFRounded-Ultralight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 706FB76B63EC4BE8A76E201C /* SFRounded-Ultralight.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		9F89D60FFB4E4DA9853FA1FD /* SFProRounded-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1C6C1F874FB440DF822CEE26 /* SFProRounded-Regular.ttf */; };
+		A23EAF75545843DAA5C4ECC5 /* SFRounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28E5808D34004CB69C9738F4 /* SFRounded-Bold.ttf */; };
+		C267E21E42DD46CF82B9DD36 /* SFRounded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A497C8649E5E46078C30BFC0 /* SFRounded-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +35,8 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* ItechartProjTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItechartProjTests.m; sourceTree = "<group>"; };
 		057B0B90EA234A258F138751 /* SF Pro Rounded Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF Pro Rounded Regular.ttf"; path = "../assets/fonts/SF Pro Rounded Regular.ttf"; sourceTree = "<group>"; };
+		05AA63CCAA16451A9580539B /* sfProRoundedBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = sfProRoundedBold.ttf; path = ../assets/fonts/sfProRoundedBold.ttf; sourceTree = "<group>"; };
+		0B073780FD7748BAB729CADA /* sfProRoundedUltralight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = sfProRoundedUltralight.ttf; path = ../assets/fonts/sfProRoundedUltralight.ttf; sourceTree = "<group>"; };
 		0BB4AD1FEC864B76B0768677 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		0C0B852F066E3F1791E4468A /* Pods-ItechartProj-ItechartProjTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ItechartProj-ItechartProjTests.debug.xcconfig"; path = "Target Support Files/Pods-ItechartProj-ItechartProjTests/Pods-ItechartProj-ItechartProjTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0E5AEF1D7FB84791927660D5 /* SF-Pro-Rounded-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Bold.ttf"; path = "../assets/fonts/SF-Pro-Rounded-Bold.ttf"; sourceTree = "<group>"; };
@@ -40,21 +46,30 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ItechartProj/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ItechartProj/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ItechartProj/main.m; sourceTree = "<group>"; };
+		1C6C1F874FB440DF822CEE26 /* SFProRounded-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProRounded-Regular.ttf"; path = "../assets/fonts/SFProRounded-Regular.ttf"; sourceTree = "<group>"; };
+		218EDD62BFA34D7F870C69B9 /* sfProRoundedMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = sfProRoundedMedium.ttf; path = ../assets/fonts/sfProRoundedMedium.ttf; sourceTree = "<group>"; };
 		257C3FE6D53142FE807B161A /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		28E5808D34004CB69C9738F4 /* SFRounded-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFRounded-Bold.ttf"; path = "../assets/fonts/SFRounded-Bold.ttf"; sourceTree = "<group>"; };
 		30E26F91329E4F74A35B7DFF /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		30ED43D2D3084306A6632BD2 /* Pods-ItechartProj.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ItechartProj.debug.xcconfig"; path = "Target Support Files/Pods-ItechartProj/Pods-ItechartProj.debug.xcconfig"; sourceTree = "<group>"; };
 		43229C79871B9B998031EEAF /* Pods-ItechartProj-ItechartProjTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ItechartProj-ItechartProjTests.release.xcconfig"; path = "Target Support Files/Pods-ItechartProj-ItechartProjTests/Pods-ItechartProj-ItechartProjTests.release.xcconfig"; sourceTree = "<group>"; };
+		51373C2E9289423281F646B8 /* SFProRoundedRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SFProRoundedRegular.ttf; path = ../assets/fonts/SFProRoundedRegular.ttf; sourceTree = "<group>"; };
 		58AC660D65B8499C88B158DF /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		5A268D7D6B584FA0B17E7139 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		5F954CD522A94653AC9046C7 /* SF-Pro-Rounded-Ultralight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Ultralight.ttf"; path = "../assets/fonts/SF-Pro-Rounded-Ultralight.ttf"; sourceTree = "<group>"; };
 		613FF3862DEB452C8D367E76 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		6DBB5813CA254C9FADE8DCB1 /* SFProRoundedBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SFProRoundedBold.ttf; path = ../assets/fonts/SFProRoundedBold.ttf; sourceTree = "<group>"; };
+		706FB76B63EC4BE8A76E201C /* SFRounded-Ultralight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFRounded-Ultralight.ttf"; path = "../assets/fonts/SFRounded-Ultralight.ttf"; sourceTree = "<group>"; };
 		7909E8C582EB4498B1460B73 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		790D110138645B5FE027336C /* libPods-ItechartProj.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ItechartProj.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A44C78612DA42C18A23EDDA /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ItechartProj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8EF1C501763C44949F2537F7 /* SFProRoundedUltralight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SFProRoundedUltralight.ttf; path = ../assets/fonts/SFProRoundedUltralight.ttf; sourceTree = "<group>"; };
+		9F591242AEE44E0495584E5F /* SFProRoundedMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SFProRoundedMedium.ttf; path = ../assets/fonts/SFProRoundedMedium.ttf; sourceTree = "<group>"; };
 		9F926BA5985B481B9E813FBD /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		A25E9D1CADEE438E8FEA4331 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-ionicons/fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		A44EA62E19B44026B13EFE8B /* SF-Pro-Rounded-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SF-Pro-Rounded-Medium.ttf"; path = "../assets/fonts/SF-Pro-Rounded-Medium.ttf"; sourceTree = "<group>"; };
+		A497C8649E5E46078C30BFC0 /* SFRounded-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFRounded-Medium.ttf"; path = "../assets/fonts/SFRounded-Medium.ttf"; sourceTree = "<group>"; };
 		B145B7B2A3724DF0807B6D4D /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		C5D00424F5A74EF68D74E587 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		C7EA2CE377E91437ECA79C3E /* Pods-ItechartProj.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ItechartProj.release.xcconfig"; path = "Target Support Files/Pods-ItechartProj/Pods-ItechartProj.release.xcconfig"; sourceTree = "<group>"; };
@@ -64,6 +79,7 @@
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F1EAF07E2FA24F869F274140 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		F7FEAF968D854953AE1DF3F7 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		FA0035DF57794A0D8825A23C /* sfProRoundedRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = sfProRoundedRegular.ttf; path = ../assets/fonts/sfProRoundedRegular.ttf; sourceTree = "<group>"; };
 		FDA5A79ED034004005D7D1DA /* libPods-ItechartProj-ItechartProjTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ItechartProj-ItechartProjTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -128,6 +144,18 @@
 				A44EA62E19B44026B13EFE8B /* SF-Pro-Rounded-Medium.ttf */,
 				5F954CD522A94653AC9046C7 /* SF-Pro-Rounded-Ultralight.ttf */,
 				A25E9D1CADEE438E8FEA4331 /* Ionicons.ttf */,
+				6DBB5813CA254C9FADE8DCB1 /* SFProRoundedBold.ttf */,
+				9F591242AEE44E0495584E5F /* SFProRoundedMedium.ttf */,
+				51373C2E9289423281F646B8 /* SFProRoundedRegular.ttf */,
+				8EF1C501763C44949F2537F7 /* SFProRoundedUltralight.ttf */,
+				05AA63CCAA16451A9580539B /* sfProRoundedBold.ttf */,
+				218EDD62BFA34D7F870C69B9 /* sfProRoundedMedium.ttf */,
+				FA0035DF57794A0D8825A23C /* sfProRoundedRegular.ttf */,
+				0B073780FD7748BAB729CADA /* sfProRoundedUltralight.ttf */,
+				1C6C1F874FB440DF822CEE26 /* SFProRounded-Regular.ttf */,
+				28E5808D34004CB69C9738F4 /* SFRounded-Bold.ttf */,
+				A497C8649E5E46078C30BFC0 /* SFRounded-Medium.ttf */,
+				706FB76B63EC4BE8A76E201C /* SFRounded-Ultralight.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -294,6 +322,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				9F89D60FFB4E4DA9853FA1FD /* SFProRounded-Regular.ttf in Resources */,
+				A23EAF75545843DAA5C4ECC5 /* SFRounded-Bold.ttf in Resources */,
+				C267E21E42DD46CF82B9DD36 /* SFRounded-Medium.ttf in Resources */,
+				76649EAFE34E455C98184BEF /* SFRounded-Ultralight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
