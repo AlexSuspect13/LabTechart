@@ -23,7 +23,6 @@ export const Card = ({ kidsImg }: Cards) => {
 			<Text style={styles.textAboutKids}>
 				Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!{' '}
 			</Text>
-
 			<Button
 				title={'Share to spread the word'}
 				buttonStyle={styles.cardButton}

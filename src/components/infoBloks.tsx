@@ -1,17 +1,30 @@
 import { useNavigation, useRoute } from '@react-navigation/core';
 import React from 'react';
-import {  StyleSheet, Text, View,TouchableOpacity } from 'react-native';
+import {  StyleSheet, Text, View,TouchableOpacity, RecyclerViewBackedScrollViewBase } from 'react-native';
+import { Image } from 'react-native-elements/dist/image/Image';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-
-export const InfoBlock = ({ text, infotxt, dollar, cent}) => {
+type infoblock={
+	text: any,
+	infotxt: string,
+	dollar: string,
+	cent: string
+}
+export const InfoBlock = ({ text, infotxt, dollar, cent}:infoblock) => {
 	const navigation = useNavigation();
 	return (
 		<View style={styles.infoBlock}>
 			<View style={styles.infoAbtPage}>
+				<View style={styles.goodnescard}>
 				<Text style={styles.namePage}>{text}</Text>
+				
+				{
+						text == 'Goodnes' ? <Image source={require('../../assets/img/heart.png')} style={styles.goodnesimg}/> : null
+				}
+				</View>
 				<Text style={styles.info}>{infotxt}</Text>
 			</View>
+		
 			<View style={styles.Accountinf}>
 				<Icon size={20} name="dollar" />
 				<Text style={styles.infAbtAccount}>
@@ -21,7 +34,6 @@ export const InfoBlock = ({ text, infotxt, dollar, cent}) => {
 				<TouchableOpacity onPress={() =>navigation.navigate(text,{textParam: infotxt})}>
 				<Icon style={styles.chevron} color={'#ff1493'} name={'chevron-right'}/>
 				</TouchableOpacity>
-				
 			</View>
 		</View>
 	);
@@ -59,4 +71,8 @@ const styles = StyleSheet.create({
 		alignSelf: 'center',
 		margin: 5,
 	},
+	goodnescard:{
+		flexDirection: 'row'
+	},
+	goodnesimg:{height: 15, width: 15, margin: 5}
 });

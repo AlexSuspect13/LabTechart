@@ -45,7 +45,6 @@ export default function DateNow(){
 
 const styles = StyleSheet.create({
   container:{
-
     padding: 15,
     color: "black",
     flexDirection: 'row'
