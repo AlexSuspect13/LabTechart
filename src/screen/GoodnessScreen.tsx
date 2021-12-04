@@ -2,12 +2,12 @@ import * as React from 'react';
 import { StyleSheet, View, StatusBar, Text } from 'react-native';
 import { Surface } from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
-import { GoodnesScreenNavigation } from '../types/navigation';
+import { GoodnessScreenNavigation } from '../types/navigation';
 import { UserMenu } from '../components/userMenu';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-interface GoodnesScreenProps extends GoodnesScreenNavigation {}
-export function Goodnes({ route, navigation }: GoodnesScreenProps) {
+interface GoodnessScreenProps extends GoodnessScreenNavigation {}
+export function Goodness({ route, navigation }: GoodnessScreenProps) {
 	return (
 		<SafeAreaView>
 		<Surface style={styles.header}>
@@ -24,7 +24,7 @@ export function Goodnes({ route, navigation }: GoodnesScreenProps) {
 				
 			</View>
 			<View style={styles.view}>
-				<Text style={styles.headerText}>Goodnes</Text>
+				<Text style={styles.headerText}>Goodness</Text>
 				<Text style={styles.text}>{route.params.textParam}</Text>
 			</View>
 			<View style={styles.view}>

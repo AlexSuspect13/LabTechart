@@ -15,7 +15,7 @@ export type RootStackParamList = {
 	HomeTabs: undefined;
 	Savings: { textParam: string };
 	Checking: { textParam: string };
-	Goodnes: { textParam: string };
+	Goodness: { textParam: string };
 };
 
 export type HomeScreenNavigation = CompositeScreenProps<
@@ -30,5 +30,5 @@ export type AccountsScreenNavigation = CompositeScreenProps<
 
 export type CheckingScreenNavigation = StackScreenProps<RootStackParamList, 'Checking'>;
 export type SavingsScreenNavigation = StackScreenProps<RootStackParamList, 'Savings'>;
-export type GoodnesScreenNavigation = StackScreenProps<RootStackParamList, 'Goodnes'>;
+export type GoodnessScreenNavigation = StackScreenProps<RootStackParamList, 'Goodness'>;
 

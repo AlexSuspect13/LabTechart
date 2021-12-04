@@ -6,4 +6,4 @@ export * from './screen/CardScreen';
 export * from './screen/PaymentsScreen';
 export * from './screen/SavingsScreen';
 export * from './screen/CheckingScreen';
-export * from './screen/GoodnesScreen';
+export * from './screen/GoodnessScreen';

@@ -19,12 +19,12 @@ export const AccountOverview = () => {
 				</View>
 				<Text style={styles.totalCash}>Total Avaliable cash</Text>
 			</View>
-			<View>
+			<View >
 				<InfoBlock  text="Checking" infotxt="Main account|...0353|" dollar="1,500" cent="20" />
 				<View style={styles.hairline} />
 				<InfoBlock  text="Savings" infotxt="Buy a house|...4044|" dollar="5,000" cent="20" />
 				<View style={styles.hairline} />
-				<InfoBlock  text="Goodnes" infotxt="Cash rewards" dollar="500" cent="40" />
+				<InfoBlock  text="Goodness" infotxt="Cash rewards" dollar="500" cent="40" />
 				<View style={styles.hairline} />
 			</View>
 		</View>
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		marginBottom: 20,
+		
 	},
 	mainText: {
 		fontSize: 17,
@@ -89,7 +90,3 @@ const styles = StyleSheet.create({
 		alignContent: 'flex-end',
 	},
 });
-/*{
-	<InfoBlock screenname="Savings" text="Goodnes" infotxt="Cash Rewards" dollar="500" cent="40" />
-	<View style={styles.hairline} />
-}*/

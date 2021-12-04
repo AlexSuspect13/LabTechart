@@ -34,7 +34,7 @@ export function Account({ navigation }: AccountScreenProps) {
 const styles = StyleSheet.create({
 	scrollView: {
 		backgroundColor: '#1e90ff',
-		height: '100%',
+	
 		width: '100%',
 	},
 	header: {
@@ -56,11 +56,10 @@ const styles = StyleSheet.create({
 	},
 	body: {
 		backgroundColor: '#dcdcdc',
-		height: '100%',
+		height: '80%',
 	},
 	userMenuContent: {
 		position: 'absolute',
-
 		right: 10,
 		width: 100,
 	},

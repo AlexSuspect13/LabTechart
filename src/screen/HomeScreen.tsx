@@ -14,17 +14,19 @@ type onViewItemsCnaged = {
 };
 
 const viewabilityConfig = {
-	
 	viewAreaCoveragePercentThreshold: 100,
 };
 const data = [
-	{
-		kidsPhoto: require('../../assets/img/rectangle2.png'),
-		video: require('../../assets/video/video1.mp4'),
-		kidsPhotoForVideo: require('../../assets/img/rectangle.png'),
-		index: 0
-	},
-	
+  {
+    kidsPhoto: require("../../assets/img/rectangle2.png"),
+  },
+  {
+    video: require("../../assets/video/video1.mp4"),
+    kidsPhotoForVideo: require("../../assets/img/rectangle.png"),
+  },
+  {
+    kidsPhoto: require("../../assets/img/rectangle2.png"),
+  },
 ];
 
 type renderItem = {
@@ -48,7 +50,6 @@ export function HomeTabs() {
 		
 	};
 
-	const viewabilityConfigCallbackPairs = React.useRef([{ viewabilityConfig, onViewableItemsChanged }]);
 	const renderItem = ({ item }: renderItem) => {
 		return (
 			<>
@@ -84,7 +85,7 @@ export function HomeTabs() {
 			<View style={styles.body}>
 				<FlatList
 					viewabilityConfig={viewabilityConfig}
-					viewabilityConfigCallbackPairs={viewabilityConfigCallbackPairs.current}
+					onViewableItemsChanged={onViewableItemsChanged}
 					ListHeaderComponent={AccountOverview}
 					data={data}
 					renderItem={renderItem}
