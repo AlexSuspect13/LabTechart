@@ -16,9 +16,7 @@ function generateGreetings() {
 	if (currentHour >= 15 && currentHour < 20) {
 		return 'Good Evening';
 	}
-	if (currentHour >= 20 && currentHour < 3) {
-		return 'Good Night';
-	}
+	return 'Good Night';
 }
 
 export default function DateNow() {
@@ -48,8 +46,8 @@ const styles = StyleSheet.create({
 	},
 	hairline: {
 		height: 16,
-		width: 2,
-		backgroundColor: 'black',
-    marginHorizontal: 5
+		width: 1,
+		backgroundColor: '#c0c0c0',
+		marginHorizontal: 5,
 	},
 });

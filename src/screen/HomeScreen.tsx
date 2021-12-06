@@ -17,16 +17,16 @@ const viewabilityConfig = {
 	viewAreaCoveragePercentThreshold: 100,
 };
 const data = [
-  {
-    kidsPhoto: require("../../assets/img/rectangle2.png"),
-  },
-  {
-    video: require("../../assets/video/video1.mp4"),
-    kidsPhotoForVideo: require("../../assets/img/rectangle.png"),
-  },
-  {
-    kidsPhoto: require("../../assets/img/rectangle2.png"),
-  },
+	{
+		kidsPhoto: require('../../assets/img/rectangle2.png'),
+	},
+	{
+		video: require('../../assets/video/video1.mp4'),
+		kidsPhotoForVideo: require('../../assets/img/rectangle.png'),
+	},
+	{
+		kidsPhoto: require('../../assets/img/rectangle2.png'),
+	},
 ];
 
 type renderItem = {
@@ -35,31 +35,19 @@ type renderItem = {
 export function HomeTabs() {
 	const [isPause, setIsPaused] = React.useState(true);
 	const onViewableItemsChanged = ({ viewableItems, changed }: onViewItemsCnaged) => {
-		console.log(viewableItems)
-		console.log(changed)
-		if (viewableItems[0]?.isViewable && viewableItems[0]?.index == data[0].index ) {
+		if (viewableItems[0]?.isViewable && viewableItems[0]?.index == data[0].index) {
 			setIsPaused(false);
-			setTimeout(() => {
-				setIsPaused(true);
-			}, 5000);
-		}
-		else{
+		} else {
 			setIsPaused(true);
 		}
-	
-		
 	};
 
 	const renderItem = ({ item }: renderItem) => {
 		return (
 			<>
-				{
-					console.log(isPause)
-					
-				}
 				<Card kidsImg={item.kidsPhoto} />
-				
-				<VideoCards video={item.video} isPause={isPause} kidsPhotoForVideo={item.kidsPhotoForVideo} />
+
+				<VideoCards video={item.video} isPaused={isPause} kidsPhotoForVideo={item.kidsPhotoForVideo} />
 				<Card kidsImg={item.kidsPhoto} />
 			</>
 		);

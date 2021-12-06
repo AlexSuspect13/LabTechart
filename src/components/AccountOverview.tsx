@@ -7,27 +7,27 @@ import { InfoBlock } from './infoBloks';
 export const AccountOverview = () => {
 	return (
 		<>
-		<DateNow/>
-		<View style={styles.container}>
-			<View style={styles.headInfo}>
-				<Text style={styles.mainText}>Accounts Overview</Text>
-				<View style={styles.moneyInfo}>
-					<Icon size={26} name="dollar" />
-					<Text style={styles.money}>
-						7,000<Text style={{ fontSize: 16, color: '#000' }}>.80</Text>
-					</Text>
+			<DateNow />
+			<View style={styles.container}>
+				<View style={styles.headInfo}>
+					<Text style={styles.mainText}>Accounts Overview</Text>
+					<View style={styles.moneyInfo}>
+						<Icon size={26} name="dollar" />
+						<Text style={styles.money}>
+							7,000<Text style={{ fontSize: 16, color: '#000' }}>.80</Text>
+						</Text>
+					</View>
+					<Text style={styles.totalCash}>Total Avaliable cash</Text>
 				</View>
-				<Text style={styles.totalCash}>Total Avaliable cash</Text>
+				<View>
+					<InfoBlock text="Checking" infotxt="Main account|...0353|" dollar="1,500" cent="20" />
+					<View style={styles.hairline} />
+					<InfoBlock text="Savings" infotxt="Buy a house|...4044|" dollar="5,000" cent="20" />
+					<View style={styles.hairline} />
+					<InfoBlock text="Goodness" infotxt="Cash rewards" dollar="500" cent="40" />
+					<View style={styles.hairline} />
+				</View>
 			</View>
-			<View >
-				<InfoBlock  text="Checking" infotxt="Main account|...0353|" dollar="1,500" cent="20" />
-				<View style={styles.hairline} />
-				<InfoBlock  text="Savings" infotxt="Buy a house|...4044|" dollar="5,000" cent="20" />
-				<View style={styles.hairline} />
-				<InfoBlock  text="Goodness" infotxt="Cash rewards" dollar="500" cent="40" />
-				<View style={styles.hairline} />
-			</View>
-		</View>
 		</>
 	);
 };
@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		borderWidth: 1,
 		backgroundColor: 'white',
-		color: 'black',
 		borderRadius: 7,
 		borderColor: '#DCDCDC',
 		margin: 15,
@@ -46,7 +45,6 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		marginBottom: 20,
-		
 	},
 	mainText: {
 		fontSize: 17,

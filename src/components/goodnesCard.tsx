@@ -7,11 +7,11 @@ import Video from 'react-native-video';
 
 type VideoCards = {
 	video: any;
-	isPause: boolean;
-	kidsPhotoForVideo: any
+	isPaused: boolean;
+	kidsPhotoForVideo: any;
 };
-export const VideoCards = ({ video, isPause, kidsPhotoForVideo }: VideoCards) => {
-	const [pause, setPause] = React.useState(true)
+export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) => {
+	const [pause, setPause] = React.useState(true);
 
 	return (
 		<View style={styles.container}>
@@ -29,19 +29,20 @@ export const VideoCards = ({ video, isPause, kidsPhotoForVideo }: VideoCards) =>
 			<TouchableOpacity
 				onPress={() => {
 					setPause(!pause);
-					console.log(pause);
-					
 				}}>
+				{pause ? (
+					isPaused ? (
+						<Image style={styles.kidsimg} source={kidsPhotoForVideo} />
+					) : (
+						<Video style={styles.videos} source={video} muted={true} controls paused={isPaused} />
+					)
+				) : (
+					<Video style={styles.videos} muted={true} controls source={video} paused={pause} />
+				)}
 
-					{
-						pause ? isPause ?	<Image style={styles.kidsimg} source={kidsPhotoForVideo} /> :  <Video style={styles.videos} source={video} muted={true} controls paused={isPause}/> : <Video style={styles.videos} muted={true} controls source={video} paused={pause}/>
-					} 
-			
-			
-			
-			<Text style={styles.textAboutKids}>
-				Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!
-			</Text>
+				<Text style={styles.textAboutKids}>
+					Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!
+				</Text>
 			</TouchableOpacity>
 			<Button
 				title={'Share to spread the word'}
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		padding: 10,
 	},
-	kidsimg:{width: '100%'},
+	kidsimg: { width: '100%' },
 	infoAboutPost: {
 		flexDirection: 'column',
 		alignItems: 'flex-start',
@@ -106,12 +107,11 @@ const styles = StyleSheet.create({
 	},
 });
 {
-//	if(pause && !isPause){
-		
-//	}
-//	else if (!pause) {
-//		<Video style={styles.videos} source={video} paused={isPause} />
-//	} else {
-//		<Image style={styles.kidsimg} source={kidsPhotoForVideo} />
-//	}
+	//	if(pause && !isPause){
+	//	}
+	//	else if (!pause) {
+	//		<Video style={styles.videos} source={video} paused={isPause} />
+	//	} else {
+	//		<Image style={styles.kidsimg} source={kidsPhotoForVideo} />
+	//	}
 }
