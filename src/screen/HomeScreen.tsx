@@ -30,17 +30,15 @@ const data: Item[] = [
 ];
 
 export function HomeTabs() {
-	const [isPause, setIsPaused] = React.useState(true);
+	const [isPaused, setIsPaused] = React.useState(true);
 
-	const onViewableItemsChanged = React.useRef(({ viewableItems, changed }: onViewItemsCnaged) => {
-		if (changed[0].index == 1) {
-			if (viewableItems[0].isViewable) {
-				setIsPaused(false);
+	const onViewableItemsChanged = ({ viewableItems, changed }: onViewItemsCnaged) => {
+		changed.forEach((item: any) => {
+			if (item.index === 1) {
+				setIsPaused(!item.isViewable);
 			}
-		} else {
-			setIsPaused(true);
-		}
-	});
+		});
+	};
 
 	return (
 		<SafeAreaView>
@@ -61,14 +59,14 @@ export function HomeTabs() {
 
 			<View style={styles.body}>
 				<FlatList<Item>
-					onViewableItemsChanged={onViewableItemsChanged.current}
+					onViewableItemsChanged={onViewableItemsChanged}
 					viewabilityConfig={{ viewAreaCoveragePercentThreshold: 100 }}
 					ListHeaderComponent={AccountOverview}
 					data={data}
-					renderItem={({ item, index }) => (
+					renderItem={({ item }) => (
 						<>
 							{item.video ? (
-								<VideoCards video={item.video} isPaused={isPause} kidsPhotoForVideo={item.photo} />
+								<VideoCards video={item.video} isPaused={isPaused} kidsPhotoForVideo={item.photo} />
 							) : (
 								<Card kidsImg={item.photo} />
 							)}
@@ -97,8 +95,7 @@ const styles = StyleSheet.create({
 	},
 	body: {
 		backgroundColor: '#F8F8FF',
-		height: '100%'
-		
+		height: '100%',
 	},
 	userMenuContent: {
 		position: 'absolute',
