@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { StyleSheet, View, Image, SafeAreaView, StatusBar, Animated } from 'react-native';
+import { StyleSheet, View, Image, SafeAreaView, StatusBar, FlatList, ImageRequireSource } from 'react-native';
 import { Surface } from 'react-native-paper';
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { UserMenu } from '../components/userMenu';
 import { AccountOverview } from '../components/AccountOverview';
@@ -12,46 +12,35 @@ type onViewItemsCnaged = {
 	viewableItems: any;
 	changed: any;
 };
-
-const viewabilityConfig = {
-	viewAreaCoveragePercentThreshold: 100,
+type Item = {
+	photo: ImageRequireSource;
+	video?: ImageRequireSource;
 };
-const data = [
+const data: Item[] = [
 	{
-		kidsPhoto: require('../../assets/img/rectangle2.png'),
+		photo: require('../../assets/img/rectangle2.png'),
 	},
 	{
 		video: require('../../assets/video/video1.mp4'),
-		kidsPhotoForVideo: require('../../assets/img/rectangle.png'),
+		photo: require('../../assets/img/rectangle.png'),
 	},
 	{
-		kidsPhoto: require('../../assets/img/rectangle2.png'),
+		photo: require('../../assets/img/rectangle2.png'),
 	},
 ];
 
-type renderItem = {
-	item: any;
-};
 export function HomeTabs() {
 	const [isPause, setIsPaused] = React.useState(true);
-	const onViewableItemsChanged = ({ viewableItems, changed }: onViewItemsCnaged) => {
-		if (viewableItems[0]?.isViewable && viewableItems[0]?.index == data[0].index) {
-			setIsPaused(false);
+
+	const onViewableItemsChanged = React.useRef(({ viewableItems, changed }: onViewItemsCnaged) => {
+		if (changed[0].index == 1) {
+			if (viewableItems[0].isViewable) {
+				setIsPaused(false);
+			}
 		} else {
 			setIsPaused(true);
 		}
-	};
-
-	const renderItem = ({ item }: renderItem) => {
-		return (
-			<>
-				<Card kidsImg={item.kidsPhoto} />
-
-				<VideoCards video={item.video} isPaused={isPause} kidsPhotoForVideo={item.kidsPhotoForVideo} />
-				<Card kidsImg={item.kidsPhoto} />
-			</>
-		);
-	};
+	});
 
 	return (
 		<SafeAreaView>
@@ -71,12 +60,20 @@ export function HomeTabs() {
 			</Surface>
 
 			<View style={styles.body}>
-				<FlatList
-					viewabilityConfig={viewabilityConfig}
-					onViewableItemsChanged={onViewableItemsChanged}
+				<FlatList<Item>
+					onViewableItemsChanged={onViewableItemsChanged.current}
+					viewabilityConfig={{ viewAreaCoveragePercentThreshold: 100 }}
 					ListHeaderComponent={AccountOverview}
 					data={data}
-					renderItem={renderItem}
+					renderItem={({ item, index }) => (
+						<>
+							{item.video ? (
+								<VideoCards video={item.video} isPaused={isPause} kidsPhotoForVideo={item.photo} />
+							) : (
+								<Card kidsImg={item.photo} />
+							)}
+						</>
+					)}
 				/>
 			</View>
 		</SafeAreaView>
@@ -100,7 +97,8 @@ const styles = StyleSheet.create({
 	},
 	body: {
 		backgroundColor: '#F8F8FF',
-		height: '100%',
+		height: '100%'
+		
 	},
 	userMenuContent: {
 		position: 'absolute',

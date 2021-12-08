@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View,SafeAreaView } from 'react-native';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
 import { Surface, Text } from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
 import { AccountsScreenNavigation } from '../types/navigation';
@@ -17,7 +17,7 @@ export function Account({ navigation }: AccountScreenProps) {
 						name="chevron-left"
 						size={30}
 						color={'white'}
-						onPress={()=> navigation.goBack()}
+						onPress={() => navigation.goBack()}
 					/>
 				</View>
 				<View style={styles.view}>
@@ -34,7 +34,7 @@ export function Account({ navigation }: AccountScreenProps) {
 const styles = StyleSheet.create({
 	scrollView: {
 		backgroundColor: '#1e90ff',
-	
+
 		width: '100%',
 	},
 	header: {

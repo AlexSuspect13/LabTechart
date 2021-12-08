@@ -4,6 +4,8 @@ import moment from 'moment';
 import { useSelector } from 'react-redux';
 import { RootState } from '../Redux/store';
 
+const date = moment().format('MMM DD,YYYY');
+
 function generateGreetings() {
 	const currentHour = parseInt(moment().format('HH'));
 
@@ -21,8 +23,6 @@ function generateGreetings() {
 
 export default function DateNow() {
 	const userName = useSelector((state: RootState) => state.userName.user);
-
-	const date = moment().format('MMM DD,YYYY');
 
 	return (
 		<View style={styles.container}>

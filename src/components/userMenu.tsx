@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal,  } from 'react-native';
+import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ListItem } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
@@ -45,6 +45,6 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		right: 10,
 		width: 100,
-		marginTop:50
+		marginTop: 50,
 	},
 });

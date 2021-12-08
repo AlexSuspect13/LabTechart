@@ -10,27 +10,25 @@ interface GoodnessScreenProps extends GoodnessScreenNavigation {}
 export function Goodness({ route, navigation }: GoodnessScreenProps) {
 	return (
 		<SafeAreaView>
-		<Surface style={styles.header}>
-			<StatusBar backgroundColor="#ff1493" />
-			<View style={styles.view}>
-			
+			<Surface style={styles.header}>
+				<StatusBar backgroundColor="#ff1493" />
+				<View style={styles.view}>
 					<Feather
 						style={styles.goBack}
 						name="chevron-left"
 						size={30}
 						color={'white'}
-						onPress={()=>navigation.goBack()}
+						onPress={() => navigation.goBack()}
 					/>
-				
-			</View>
-			<View style={styles.view}>
-				<Text style={styles.headerText}>Goodness</Text>
-				<Text style={styles.text}>{route.params.textParam}</Text>
-			</View>
-			<View style={styles.view}>
-				<UserMenu />
-			</View>
-		</Surface>
+				</View>
+				<View style={styles.view}>
+					<Text style={styles.headerText}>Goodness</Text>
+					<Text style={styles.text}>{route.params.textParam}</Text>
+				</View>
+				<View style={styles.view}>
+					<UserMenu />
+				</View>
+			</Surface>
 		</SafeAreaView>
 	);
 }

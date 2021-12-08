@@ -11,7 +11,7 @@ type VideoCards = {
 	kidsPhotoForVideo: any;
 };
 export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) => {
-	const [pause, setPause] = React.useState(true);
+	const [playNow, setPlayNow] = React.useState(true);
 
 	return (
 		<View style={styles.container}>
@@ -28,16 +28,16 @@ export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) =
 			</View>
 			<TouchableOpacity
 				onPress={() => {
-					setPause(!pause);
+					setPlayNow(!playNow);
 				}}>
-				{pause ? (
+				{playNow ? (
 					isPaused ? (
 						<Image style={styles.kidsimg} source={kidsPhotoForVideo} />
 					) : (
 						<Video style={styles.videos} source={video} muted={true} controls paused={isPaused} />
 					)
 				) : (
-					<Video style={styles.videos} muted={true} controls source={video} paused={pause} />
+					<Video style={styles.videos} muted={true} controls source={video} paused={playNow} />
 				)}
 
 				<Text style={styles.textAboutKids}>
