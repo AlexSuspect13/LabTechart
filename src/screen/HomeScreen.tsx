@@ -32,13 +32,13 @@ const data: Item[] = [
 export function HomeTabs() {
 	const [isPaused, setIsPaused] = React.useState(true);
 
-	const onViewableItemsChanged = ({ viewableItems, changed }: onViewItemsCnaged) => {
+	const onViewableItemsChanged = React.useCallback(({ changed }: onViewItemsCnaged) => {
 		changed.forEach((item: any) => {
 			if (item.index === 1) {
 				setIsPaused(!item.isViewable);
 			}
 		});
-	};
+	}, []);
 
 	return (
 		<SafeAreaView>
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
 	},
 	body: {
 		backgroundColor: '#F8F8FF',
-		height: '100%',
+		height: '93%',
 	},
 	userMenuContent: {
 		position: 'absolute',
