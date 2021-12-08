@@ -99,7 +99,6 @@ const styles = StyleSheet.create({
 	},
 	userMenuContent: {
 		position: 'absolute',
-
 		right: 10,
 		width: 100,
 	},

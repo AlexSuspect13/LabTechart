@@ -25,7 +25,6 @@ export const AccountOverview = () => {
 					<InfoBlock text="Savings" infotxt="Buy a house|...4044|" dollar="5,000" cent="20" />
 					<View style={styles.hairline} />
 					<InfoBlock text="Goodness" infotxt="Cash rewards" dollar="500" cent="40" />
-					<View style={styles.hairline} />
 				</View>
 			</View>
 		</>
@@ -39,7 +38,7 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white',
 		borderRadius: 7,
 		borderColor: '#DCDCDC',
-		margin: 15,
+		marginHorizontal: 15,
 	},
 	headInfo: {
 		justifyContent: 'center',
