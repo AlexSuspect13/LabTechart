@@ -13,21 +13,35 @@ type VideoCards = {
 export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) => {
 	const [muted, setMuted] = React.useState(true);
 
-	const volume =()=>{
-		if(muted){
-			return 'volume-off'
+	const volumeIcon = () => {
+		if (muted) {
+			return 'volume-off';
 		}
-		return 'volume-up'
-	}
-	const videos = () => {
+		return 'volume-up';
+	};
+
+	const isVideo = () => {
+		return (
+			<View style={styles.videoContainer}>
+				<Video style={styles.videos} muted={muted} controls source={video} paused={isPaused} />
+				<Icon
+					style={styles.videoicon}
+					color={'#fff'}
+					size={30}
+					name={volumeIcon()}
+					onPress={() => {
+						setMuted(!muted);
+					}}
+				/>
+			</View>
+		);
+	};
+
+	const videosChange = () => {
 		if (isPaused) {
 			return <Image style={styles.kidsimg} source={kidsPhotoForVideo} />;
 		} else {
-			return <Video style={styles.videos} muted={muted} controls source={video} paused={isPaused}>
-				<TouchableOpacity onPress={()=>setMuted(!muted)}>
-				<Icon name ={volume()} size={30} color={'white'}/>
-				</TouchableOpacity>
-			</Video>;
+			return isVideo();
 		}
 	};
 	return (
@@ -44,7 +58,7 @@ export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) =
 				</View>
 			</View>
 			<TouchableOpacity>
-				{videos()}
+				{videosChange()}
 				<Text style={styles.textAboutKids}>
 					Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!
 				</Text>
@@ -71,6 +85,11 @@ const styles = StyleSheet.create({
 		height: 200,
 		width: '100%',
 	},
+	videoicon: {
+		position: 'absolute',
+		alignSelf: 'flex-end',
+		padding: 15,
+	},
 	headerContainer: {
 		flexDirection: 'row',
 		padding: 10,
@@ -84,7 +103,9 @@ const styles = StyleSheet.create({
 	kidsPhoto: {
 		width: '100%',
 	},
-
+	videoContainer: {
+		justifyContent: 'flex-end',
+	},
 	text: {
 		color: '#000',
 	},
