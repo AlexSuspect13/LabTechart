@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleSheet, View, StatusBar, Text, SafeAreaView } from 'react-native';
 import { Surface } from 'react-native-paper';
 import Feather from 'react-native-vector-icons/Feather';
+import { SecondaryPages } from '../components/SecondaryPages';
 import { UserMenu } from '../components/userMenu';
 import { CheckingScreenNavigation } from '../types/navigation';
 
@@ -12,22 +13,7 @@ export function CheckingScreen({ route, navigation }: CheckingScreenProps) {
 		<SafeAreaView>
 			<Surface style={styles.header}>
 				<StatusBar backgroundColor="#ff1493" />
-				<View style={styles.view}>
-					<Feather
-						style={styles.goBack}
-						name="chevron-left"
-						size={30}
-						color={'white'}
-						onPress={() => navigation.goBack()}
-					/>
-				</View>
-				<View style={styles.view}>
-					<Text style={styles.headerText}>Checking</Text>
-					<Text style={styles.text}>{route.params.textParam}</Text>
-				</View>
-				<View style={styles.view}>
-					<UserMenu />
-				</View>
+				<SecondaryPages routeText={route.params.textParam} screenName={'Checking'} />
 			</Surface>
 		</SafeAreaView>
 	);

@@ -29,7 +29,7 @@ const data: Item[] = [
 	},
 ];
 
-export function HomeTabs() {
+export function Home() {
 	const [isPaused, setIsPaused] = React.useState(true);
 
 	const onViewableItemsChanged = React.useCallback(({ changed }: onViewItemsCnaged) => {

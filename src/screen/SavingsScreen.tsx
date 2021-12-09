@@ -1,33 +1,17 @@
 import * as React from 'react';
-import { StyleSheet, View, StatusBar, Text } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { Surface } from 'react-native-paper';
-import Feather from 'react-native-vector-icons/Feather';
 import { SavingsScreenNavigation } from '../types/navigation';
-import { UserMenu } from '../components/userMenu';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { SecondaryPages } from '../components/SecondaryPages';
 
 interface SavingScreenProps extends SavingsScreenNavigation {}
-export function Savings({ route, navigation }: SavingScreenProps) {
+export function Savings({ route }: SavingScreenProps) {
 	return (
 		<SafeAreaView>
 			<Surface style={styles.header}>
 				<StatusBar backgroundColor="#ff1493" />
-				<View style={styles.view}>
-					<Feather
-						style={styles.goBack}
-						name="chevron-left"
-						size={30}
-						color={'white'}
-						onPress={() => navigation.goBack()}
-					/>
-				</View>
-				<View style={styles.view}>
-					<Text style={styles.headerText}>Saving</Text>
-					<Text style={styles.text}>{route.params.textParam}</Text>
-				</View>
-				<View style={styles.view}>
-					<UserMenu />
-				</View>
+				<SecondaryPages routeText={route.params.textParam} screenName={'Savings'} />
 			</Surface>
 		</SafeAreaView>
 	);

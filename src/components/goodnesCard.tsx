@@ -104,12 +104,3 @@ const styles = StyleSheet.create({
 		borderRadius: 20,
 	},
 });
-{
-	//	if(pause && !isPause){
-	//	}
-	//	else if (!pause) {
-	//		<Video style={styles.videos} source={video} paused={isPause} />
-	//	} else {
-	//		<Image style={styles.kidsimg} source={kidsPhotoForVideo} />
-	//	}
-}

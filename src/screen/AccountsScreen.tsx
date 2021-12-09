@@ -32,11 +32,6 @@ export function Account({ navigation }: AccountScreenProps) {
 }
 
 const styles = StyleSheet.create({
-	scrollView: {
-		backgroundColor: '#1e90ff',
-
-		width: '100%',
-	},
 	header: {
 		justifyContent: 'space-between',
 		height: 50,
@@ -45,24 +40,11 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		elevation: 4,
 	},
-	userPhoto: {
-		marginLeft: 70,
-	},
 	goBack: { marginRight: 80 },
 	view: {
 		flex: 1,
 		margin: 5,
 		alignItems: 'center',
 	},
-	body: {
-		backgroundColor: '#dcdcdc',
-		height: '80%',
-	},
-	userMenuContent: {
-		position: 'absolute',
-		right: 10,
-		width: 100,
-	},
 	headerText: { color: 'white', fontSize: 20 },
-	userMenuOverlay: StyleSheet.absoluteFillObject,
 });

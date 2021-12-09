@@ -1,16 +1,16 @@
-import { useNavigation, useRoute } from '@react-navigation/core';
+import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Image } from 'react-native-elements/dist/image/Image';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-type infoblock = {
+type infoblockProps = {
 	text: any;
 	infotxt: string;
 	dollar: string;
 	cent: string;
 };
-export const InfoBlock = ({ text, infotxt, dollar, cent }: infoblock) => {
+export const InfoBlock = ({ text, infotxt, dollar, cent }: infoblockProps) => {
 	const navigation = useNavigation();
 	return (
 		<TouchableOpacity onPress={() => navigation.navigate(text, { textParam: infotxt })}>
@@ -18,7 +18,7 @@ export const InfoBlock = ({ text, infotxt, dollar, cent }: infoblock) => {
 				<View style={styles.infoAbtPage}>
 					<View style={styles.goodnescard}>
 						<Text style={styles.namePage}>{text}</Text>
-						{text == 'Goodness' ? (
+						{text === 'Goodness' ? (
 							<Image source={require('../../assets/img/heart.png')} style={styles.goodnesimg} />
 						) : null}
 					</View>
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
 	Accountinf: {
 		flexDirection: 'row',
 		justifyContent: 'flex-end',
+		alignItems: 'center',
 	},
 	chevron: {
 		alignSelf: 'center',
