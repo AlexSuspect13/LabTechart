@@ -100,9 +100,7 @@ const styles = StyleSheet.create({
 		alignItems: 'flex-start',
 		justifyContent: 'center',
 	},
-	kidsPhoto: {
-		width: '100%',
-	},
+
 	videoContainer: {
 		justifyContent: 'flex-end',
 	},

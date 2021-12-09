@@ -24,7 +24,7 @@ export const AccountOverview = () => {
 					<View style={styles.hairline} />
 					<InfoBlock text="Savings" infotxt="Buy a house|...4044|" dollar="5,000" cent="20" routeName="Savings" />
 					<View style={styles.hairline} />
-					<InfoBlock text="Goodness" infotxt="Cash rewards" dollar="500" cent="40"  routeName="Goodness" />
+					<InfoBlock text="Goodness" infotxt="Cash rewards" dollar="500" cent="40" routeName="Goodness" />
 				</View>
 			</View>
 		</>
@@ -71,25 +71,9 @@ const styles = StyleSheet.create({
 		color: '#c0c0c0',
 		fontSize: 11,
 	},
-	infoBlock: {
-		width: '100%',
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
-	infoAbtPage: {
-		padding: 10,
-		flexDirection: 'column',
-	},
-	infAbtAccount: {
-		fontSize: 20,
-	},
 	hairline: {
 		backgroundColor: '#c0c0c0',
 		height: 1,
 		width: '100%',
-	},
-	Accountinf: {
-		flexDirection: 'row',
-		alignContent: 'flex-end',
 	},
 });

@@ -33,14 +33,6 @@ export const SecondaryPages = ({ routeText, screenName }: SecondaryPagesProps) =
 	);
 };
 const styles = StyleSheet.create({
-	header: {
-		justifyContent: 'space-between',
-		height: 50,
-		alignItems: 'center',
-		backgroundColor: '#ff1493',
-		flexDirection: 'row',
-		elevation: 4,
-	},
 	headerText: { color: '#fff', fontSize: 20 },
 	view: {
 		flex: 1,
@@ -48,10 +40,6 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	goBack: { marginRight: 80 },
-	body: {
-		backgroundColor: '#dcdcdc',
-		height: '100%',
-	},
 	text: {
 		color: '#fff',
 		fontSize: 10,
