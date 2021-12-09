@@ -140,8 +140,7 @@ const styles = StyleSheet.create({
 	},
 	lineUnderInput: { height: 1, backgroundColor: '#636363', marginBottom: 5 },
 	idButton: {
-		marginRight: 10,
-		marginLeft: 10,
+		marginHorizontal: 10,
 		borderWidth: 1,
 		borderColor: '#c0c0c0',
 		height: 30,

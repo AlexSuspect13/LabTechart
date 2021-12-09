@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
 	},
 	body: {
 		backgroundColor: '#F8F8FF',
-		height: '93%',
+		height: '94%',
 	},
 	userMenuContent: {
 		position: 'absolute',

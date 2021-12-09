@@ -34,7 +34,6 @@ const getIconByRouteName = (routeName: keyof RootBottomTabNavigator) => {
 	if (routeName === 'Payments') {
 		return 'ios-wallet-outline';
 	}
-
 	return 'home';
 };
 
@@ -44,10 +43,9 @@ function HomeTab() {
 			screenOptions={({ route }) => ({
 				backgroundColor: 'transparent',
 				headerShown: false,
-				tabBarIcon: ({ color, size }) => {
+				tabBarIcon: ({ size }) => {
 					const iconName = getIconByRouteName(route.name);
-
-					return <Ionicons name={iconName} size={size} color={color} />;
+					return <Ionicons name={iconName} size={size} color={'black'} />;
 				},
 			})}>
 			<Tab.Screen name="HomeTabs" component={HomeTabs} />

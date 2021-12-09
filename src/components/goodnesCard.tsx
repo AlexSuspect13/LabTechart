@@ -12,7 +12,15 @@ type VideoCards = {
 };
 export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) => {
 	const [playNow, setPlayNow] = React.useState(true);
-
+	const videos = () => {
+		if (playNow && isPaused) {
+			return <Image style={styles.kidsimg} source={kidsPhotoForVideo} />;
+		} else if (playNow && !isPaused) {
+			return <Video style={styles.videos} source={video} muted={true} controls paused={isPaused} />;
+		} else {
+			return <Video style={styles.videos} muted={true} controls source={video} paused={playNow} />;
+		}
+	};
 	return (
 		<View style={styles.container}>
 			<View style={styles.headerContainer}>
@@ -30,16 +38,7 @@ export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) =
 				onPress={() => {
 					setPlayNow(!playNow);
 				}}>
-				{playNow ? (
-					isPaused ? (
-						<Image style={styles.kidsimg} source={kidsPhotoForVideo} />
-					) : (
-						<Video style={styles.videos} source={video} muted={true} controls paused={isPaused} />
-					)
-				) : (
-					<Video style={styles.videos} muted={true} controls source={video} paused={playNow} />
-				)}
-
+				{videos()}
 				<Text style={styles.textAboutKids}>
 					Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!
 				</Text>
@@ -58,7 +57,6 @@ const styles = StyleSheet.create({
 		display: 'flex',
 		borderWidth: 1,
 		backgroundColor: 'white',
-		color: 'black',
 		borderRadius: 7,
 		borderColor: '#DCDCDC',
 		margin: 15,

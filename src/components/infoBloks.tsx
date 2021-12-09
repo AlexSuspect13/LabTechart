@@ -1,6 +1,6 @@
 import { useNavigation, useRoute } from '@react-navigation/core';
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, RecyclerViewBackedScrollViewBase } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Image } from 'react-native-elements/dist/image/Image';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -28,7 +28,7 @@ export const InfoBlock = ({ text, infotxt, dollar, cent }: infoblock) => {
 					<Icon size={20} name="dollar" />
 					<Text style={styles.infAbtAccount}>
 						{dollar}
-						<Text style={{ fontSize: 16, color: '#000' }}>.{cent}</Text>
+						<Text style={styles.cent}>.{cent}</Text>
 					</Text>
 					<Icon style={styles.chevron} color={'#ff1493'} name={'chevron-right'} />
 				</View>
@@ -43,6 +43,11 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'space-between',
 		padding: 10,
+	},
+	cent: {
+		fontSize: 16,
+		color: '#000',
+		fontFamily: 'SFRounded-Medium',
 	},
 	infoAbtPage: {
 		flexDirection: 'column',
@@ -60,7 +65,6 @@ const styles = StyleSheet.create({
 		color: '#000',
 	},
 	Accountinf: {
-		flex: 1,
 		flexDirection: 'row',
 		justifyContent: 'flex-end',
 	},
@@ -71,5 +75,9 @@ const styles = StyleSheet.create({
 	goodnescard: {
 		flexDirection: 'row',
 	},
-	goodnesimg: { height: 15, width: 15, margin: 5 },
+	goodnesimg: {
+		height: 15,
+		width: 15,
+		margin: 5,
+	},
 });

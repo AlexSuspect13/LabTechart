@@ -12,7 +12,7 @@ export const AccountOverview = () => {
 				<View style={styles.headInfo}>
 					<Text style={styles.mainText}>Accounts Overview</Text>
 					<View style={styles.moneyInfo}>
-						<Icon size={26} name="dollar" />
+						<Icon style={styles.dollar} size={23} name="dollar" />
 						<Text style={styles.money}>
 							7,000<Text style={{ fontSize: 16, color: '#000' }}>.80</Text>
 						</Text>
@@ -54,8 +54,11 @@ const styles = StyleSheet.create({
 	moneyInfo: {
 		flexDirection: 'row',
 	},
+	dollar: {
+		margin: 5,
+	},
 	money: {
-		fontSize: 24,
+		fontSize: 28,
 		fontWeight: '300',
 		marginLeft: 5,
 		color: '#000',
