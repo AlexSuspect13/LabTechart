@@ -25,20 +25,5 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		elevation: 4,
 	},
-	view: {
-		flex: 1,
-		margin: 5,
-		alignItems: 'center',
-	},
-	body: {
-		backgroundColor: '#dcdcdc',
-		height: '100%',
-	},
-	text: {
-		color: '#fff',
-		fontSize: 10,
-	},
-	goBack: { marginRight: 80 },
-	headerText: { color: '#fff', fontSize: 20 },
-	userPhoto: { marginLeft: 70 },
+
 });

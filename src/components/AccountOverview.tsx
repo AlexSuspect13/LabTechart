@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DateNow from './DateNow';
-import { InfoBlock } from './infoBloks';
+import { InfoBlock } from './InfoBloсks';
 
 export const AccountOverview = () => {
 	return (
@@ -20,11 +20,11 @@ export const AccountOverview = () => {
 					<Text style={styles.totalCash}>Total Avaliable cash</Text>
 				</View>
 				<View>
-					<InfoBlock text="Checking" infotxt="Main account|...0353|" dollar="1,500" cent="20" />
+					<InfoBlock text="Checking" infotxt="Main account|...0353|" dollar="1,500" cent="20" routeName="Checking" />
 					<View style={styles.hairline} />
-					<InfoBlock text="Savings" infotxt="Buy a house|...4044|" dollar="5,000" cent="20" />
+					<InfoBlock text="Savings" infotxt="Buy a house|...4044|" dollar="5,000" cent="20" routeName="Savings" />
 					<View style={styles.hairline} />
-					<InfoBlock text="Goodness" infotxt="Cash rewards" dollar="500" cent="40" />
+					<InfoBlock text="Goodness" infotxt="Cash rewards" dollar="500" cent="40"  routeName="Goodness" />
 				</View>
 			</View>
 		</>

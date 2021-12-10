@@ -27,19 +27,4 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		elevation: 4,
 	},
-	headerText: { color: '#fff', fontSize: 20 },
-	view: {
-		flex: 1,
-		margin: 5,
-		alignItems: 'center',
-	},
-	goBack: { marginRight: 80 },
-	body: {
-		backgroundColor: '#dcdcdc',
-		height: '100%',
-	},
-	text: {
-		color: '#fff',
-		fontSize: 10,
-	},
 });

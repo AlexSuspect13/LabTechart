@@ -33,10 +33,14 @@ function HomeTab() {
 			screenOptions={({ route }) => ({
 				backgroundColor: 'transparent',
 				headerShown: false,
-				tabBarIcon: ({ size }) => {
+			
+				tabBarIcon: ({ size,focused }) => {
 					const iconName = getIconByRouteName(route.name);
-					return <Ionicons name={iconName} size={size} color={'black'} />;
+					const IconColor = focused ? '#ff1493' : 'black'
+					return <Ionicons name={iconName} size={size} color={IconColor} />;
+				
 				},
+				
 			})}>
 			<Tab.Screen name="Home" component={Home} />
 			<Tab.Screen name="Accounts" component={Account} />

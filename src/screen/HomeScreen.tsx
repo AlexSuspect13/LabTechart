@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Image, SafeAreaView, StatusBar, FlatList, ImageRequireSource } from 'react-native';
+import { StyleSheet, View, Image, SafeAreaView, StatusBar, FlatList, ImageRequireSource, FlatListProps } from 'react-native';
 import { Surface } from 'react-native-paper';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
@@ -32,13 +32,14 @@ const data: Item[] = [
 export function Home() {
 	const [isPaused, setIsPaused] = React.useState(true);
 
-	const onViewableItemsChanged = React.useCallback(({ changed }: onViewItemsCnaged) => {
-		changed.forEach((item: any) => {
+	const onViewableItemsChanged = React.useCallback<NonNullable<FlatListProps<Item>["onViewableItemsChanged"]>>(({ changed }) => {
+		changed.forEach((item) => {
 			if (item.index === 1) {
 				setIsPaused(!item.isViewable);
 			}
 		});
-	}, []);
+	}, [])
+
 
 	return (
 		<SafeAreaView>
@@ -63,15 +64,13 @@ export function Home() {
 					viewabilityConfig={{ viewAreaCoveragePercentThreshold: 100 }}
 					ListHeaderComponent={AccountOverview}
 					data={data}
-					renderItem={({ item }) => (
-						<>
-							{item.video ? (
-								<VideoCards video={item.video} isPaused={isPaused} kidsPhotoForVideo={item.photo} />
-							) : (
-								<Card kidsImg={item.photo} />
-							)}
-						</>
-					)}
+					renderItem={({ item }) => {
+						if (item.video) {
+							return <VideoCards video={item.video} isPaused={isPaused} kidsPhotoForVideo={item.photo} />
+						}
+						
+						return <Card kidsImg={item.photo} />
+					}}
 				/>
 			</View>
 		</SafeAreaView>
@@ -95,22 +94,6 @@ const styles = StyleSheet.create({
 	},
 	body: {
 		backgroundColor: '#F8F8FF',
-		height: '94%',
-	},
-	userMenuContent: {
-		position: 'absolute',
-		right: 10,
-		width: 100,
-	},
-	userPhoto: { marginLeft: 70 },
-	userMenuOverlay: StyleSheet.absoluteFillObject,
-	item: {
-		backgroundColor: '#f9c2ff',
-		padding: 20,
-		marginVertical: 8,
-		marginHorizontal: 16,
-	},
-	title: {
-		fontSize: 32,
+		marginBottom: 100
 	},
 });

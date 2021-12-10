@@ -4,16 +4,17 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Image } from 'react-native-elements/dist/image/Image';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-type infoblockProps = {
+type InfoBlockProps = {
 	text: any;
 	infotxt: string;
 	dollar: string;
 	cent: string;
+	routeName: "Checking" | "Savings" | "Goodness"
 };
-export const InfoBlock = ({ text, infotxt, dollar, cent }: infoblockProps) => {
+export const InfoBlock = ({ text, infotxt, dollar, cent,routeName }: InfoBlockProps) => {
 	const navigation = useNavigation();
 	return (
-		<TouchableOpacity onPress={() => navigation.navigate(text, { textParam: infotxt })}>
+		<TouchableOpacity onPress={() => navigation.navigate(routeName, { textParam: infotxt })}>
 			<View style={styles.infoBlock}>
 				<View style={styles.infoAbtPage}>
 					<View style={styles.goodnescard}>

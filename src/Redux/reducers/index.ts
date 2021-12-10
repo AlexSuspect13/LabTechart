@@ -2,9 +2,9 @@ import { combineReducers } from 'redux';
 
 import userReducer from './userReducer';
 
-import nameReducer from './nameReducer';
+import UserProfilReducer from './UserProfileReducer';
 
 export const rootReducer = combineReducers({
 	user: userReducer,
-	userName: nameReducer,
+	userName: UserProfilReducer,
 });

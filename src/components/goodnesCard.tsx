@@ -11,14 +11,23 @@ type VideoCards = {
 	kidsPhotoForVideo: any;
 };
 export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) => {
-	const [playNow, setPlayNow] = React.useState(true);
+	const [muted, setMuted] = React.useState(true);
+
+	const volume =()=>{
+		if(muted){
+			return 'volume-off'
+		}
+		return 'volume-up'
+	}
 	const videos = () => {
-		if (playNow && isPaused) {
+		if (isPaused) {
 			return <Image style={styles.kidsimg} source={kidsPhotoForVideo} />;
-		} else if (playNow && !isPaused) {
-			return <Video style={styles.videos} source={video} muted={true} controls paused={isPaused} />;
 		} else {
-			return <Video style={styles.videos} muted={true} controls source={video} paused={playNow} />;
+			return <Video style={styles.videos} muted={muted} controls source={video} paused={isPaused}>
+				<TouchableOpacity onPress={()=>setMuted(!muted)}>
+				<Icon name ={volume()} size={30} color={'white'}/>
+				</TouchableOpacity>
+			</Video>;
 		}
 	};
 	return (
@@ -34,10 +43,7 @@ export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) =
 					</View>
 				</View>
 			</View>
-			<TouchableOpacity
-				onPress={() => {
-					setPlayNow(!playNow);
-				}}>
+			<TouchableOpacity>
 				{videos()}
 				<Text style={styles.textAboutKids}>
 					Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!

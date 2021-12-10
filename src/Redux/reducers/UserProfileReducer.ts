@@ -1,10 +1,10 @@
 export const nameState = {
-	user: 'admin'
+	user: 'Alex'
 };
 
-export default (state = nameState, action) => {
+export default (state = nameState, action:any) => {
 	switch (action.type) {
-		case 'SIGN_IN_PENDING':
+		case 'RENAME_USER':
 			return {
 				...state,
 				user: action.name,

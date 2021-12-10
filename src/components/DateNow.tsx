@@ -27,7 +27,7 @@ export default function DateNow() {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.text}>{generateGreetings()}</Text>
-			<Text style={styles.text}>Alex</Text>
+			<Text style={styles.text}>{userName}</Text>
 			<View style={styles.hairline} />
 			<Text style={styles.text}>{date}</Text>
 		</View>
