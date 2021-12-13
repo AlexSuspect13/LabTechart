@@ -1,15 +1,6 @@
 import * as React from 'react';
-import {
-	StyleSheet,
-	TextInput,
-	View,
-	StatusBar,
-	Text,
-	TouchableOpacity,
-	Keyboard,
-	SafeAreaView,
-	Platform,
-} from 'react-native';
+import { StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity, Keyboard, Platform } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
@@ -41,7 +32,7 @@ export function SignInScreen() {
 	const isLoading = useSelector((state: RootState) => state.user.isLoading);
 
 	return (
-		<SafeAreaView style={styles.container}>
+		<SafeAreaView edges={['left', 'right']} style={styles.container}>
 			<StatusBar backgroundColor="#fff" />
 			<View style={styles.item1}>
 				<Text style={styles.textLogin}>Login</Text>

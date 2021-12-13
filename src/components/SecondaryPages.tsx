@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { UserMenu } from './userMenu';
 import Feather from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/core';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 type SecondaryPagesProps = {
 	routeText: string;
@@ -12,7 +13,7 @@ type SecondaryPagesProps = {
 export const SecondaryPages = ({ routeText, screenName }: SecondaryPagesProps) => {
 	const navigation = useNavigation();
 	return (
-		<>
+		<SafeAreaView>
 			<View style={styles.view}>
 				<Feather
 					style={styles.goBack}
@@ -29,7 +30,7 @@ export const SecondaryPages = ({ routeText, screenName }: SecondaryPagesProps) =
 			<View style={styles.view}>
 				<UserMenu />
 			</View>
-		</>
+		</SafeAreaView>
 	);
 };
 const styles = StyleSheet.create({

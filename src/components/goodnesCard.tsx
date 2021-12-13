@@ -14,10 +14,7 @@ export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) =
 	const [muted, setMuted] = React.useState(true);
 
 	const volumeIcon = () => {
-		if (muted) {
-			return 'volume-off';
-		}
-		return 'volume-up';
+		return muted ? 'volume-off' : 'volume-up';
 	};
 
 	const isVideo = () => {
@@ -57,12 +54,25 @@ export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) =
 					</View>
 				</View>
 			</View>
-			<TouchableOpacity>
-				{videosChange()}
-				<Text style={styles.textAboutKids}>
-					Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!
-				</Text>
-			</TouchableOpacity>
+			{isPaused ? (
+				<Image style={styles.kidsimg} source={kidsPhotoForVideo} />
+			) : (
+				<View style={styles.videoContainer}>
+					<Video style={styles.videos} muted={muted} controls source={video} paused={isPaused} />
+					<Icon
+						style={styles.videoicon}
+						color={'#fff'}
+						size={30}
+						name={volumeIcon()}
+						onPress={() => {
+							setMuted(!muted);
+						}}
+					/>
+				</View>
+			)}
+			<Text style={styles.textAboutKids}>
+				Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!
+			</Text>
 			<Button
 				title={'Share to spread the word'}
 				buttonStyle={styles.cardButton}
@@ -87,7 +97,8 @@ const styles = StyleSheet.create({
 	},
 	videoicon: {
 		position: 'absolute',
-		alignSelf: 'flex-end',
+		right: 15,
+		bottom: 15,
 		padding: 15,
 	},
 	headerContainer: {

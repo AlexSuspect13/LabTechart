@@ -1,18 +1,16 @@
 import * as React from 'react';
-import { StyleSheet, View, StatusBar, Text } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { Surface } from 'react-native-paper';
-import Feather from 'react-native-vector-icons/Feather';
 import { GoodnessScreenNavigation } from '../types/navigation';
-import { UserMenu } from '../components/userMenu';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { SecondaryPages } from '../components/SecondaryPages';
 
 interface GoodnessScreenProps extends GoodnessScreenNavigation {}
 export function Goodness({ route }: GoodnessScreenProps) {
 	return (
-		<SafeAreaView>
+		<SafeAreaView edges={['left', 'right']}>
 			<Surface style={styles.header}>
-				<StatusBar backgroundColor="#ff1493" />
+				<StatusBar backgroundColor="#ff1493" barStyle="light-content" />
 				<SecondaryPages routeText={route.params.textParam} screenName={'Goodness'} />
 			</Surface>
 		</SafeAreaView>

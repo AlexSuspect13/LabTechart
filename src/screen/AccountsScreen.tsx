@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { StyleSheet, View, SafeAreaView } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Surface, Text } from 'react-native-paper';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
 import { AccountsScreenNavigation } from '../types/navigation';
 import { UserMenu } from '../components/userMenu';
@@ -9,7 +10,7 @@ interface AccountScreenProps extends AccountsScreenNavigation {}
 
 export function Account({ navigation }: AccountScreenProps) {
 	return (
-		<SafeAreaView>
+		<SafeAreaView edges={['left', 'right']}>
 			<Surface style={styles.header}>
 				<View style={styles.view}>
 					<Feather

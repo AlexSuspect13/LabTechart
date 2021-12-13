@@ -1,17 +1,13 @@
 import * as React from 'react';
-import { StyleSheet, View, Image, SafeAreaView, StatusBar, FlatList, ImageRequireSource, FlatListProps } from 'react-native';
+import { StyleSheet, View, Image, StatusBar, FlatList, ImageRequireSource, FlatListProps } from 'react-native';
 import { Surface } from 'react-native-paper';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { UserMenu } from '../components/userMenu';
 import { AccountOverview } from '../components/AccountOverview';
 import { VideoCards } from '../components/goodnesCard';
 import { Card } from '../components/cards';
-
-type onViewItemsCnaged = {
-	viewableItems: any;
-	changed: any;
-};
 type Item = {
 	photo: ImageRequireSource;
 	video?: ImageRequireSource;
@@ -32,17 +28,19 @@ const data: Item[] = [
 export function Home() {
 	const [isPaused, setIsPaused] = React.useState(true);
 
-	const onViewableItemsChanged = React.useCallback<NonNullable<FlatListProps<Item>["onViewableItemsChanged"]>>(({ changed }) => {
-		changed.forEach((item) => {
-			if (item.index === 1) {
-				setIsPaused(!item.isViewable);
-			}
-		});
-	}, [])
-
+	const onViewableItemsChanged = React.useCallback<NonNullable<FlatListProps<Item>['onViewableItemsChanged']>>(
+		({ changed }) => {
+			changed.forEach((item) => {
+				if (item.index === 1) {
+					setIsPaused(!item.isViewable);
+				}
+			});
+		},
+		[],
+	);
 
 	return (
-		<SafeAreaView>
+		<SafeAreaView edges={['left', 'right']}>
 			<Surface style={styles.header}>
 				<StatusBar backgroundColor="#ff1493" />
 				<View style={styles.view}>
@@ -66,10 +64,10 @@ export function Home() {
 					data={data}
 					renderItem={({ item }) => {
 						if (item.video) {
-							return <VideoCards video={item.video} isPaused={isPaused} kidsPhotoForVideo={item.photo} />
+							return <VideoCards video={item.video} isPaused={isPaused} kidsPhotoForVideo={item.photo} />;
 						}
-						
-						return <Card kidsImg={item.photo} />
+
+						return <Card kidsImg={item.photo} />;
 					}}
 				/>
 			</View>
@@ -94,6 +92,5 @@ const styles = StyleSheet.create({
 	},
 	body: {
 		backgroundColor: '#F8F8FF',
-		marginBottom: 100
 	},
 });

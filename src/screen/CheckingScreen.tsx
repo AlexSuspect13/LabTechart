@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { StyleSheet, View, StatusBar, Text, SafeAreaView } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
 import { Surface } from 'react-native-paper';
-import Feather from 'react-native-vector-icons/Feather';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 import { SecondaryPages } from '../components/SecondaryPages';
-import { UserMenu } from '../components/userMenu';
 import { CheckingScreenNavigation } from '../types/navigation';
 
 interface CheckingScreenProps extends CheckingScreenNavigation {}
 
-export function CheckingScreen({ route, navigation }: CheckingScreenProps) {
+export function CheckingScreen({ route }: CheckingScreenProps) {
 	return (
-		<SafeAreaView>
+		<SafeAreaView edges={['left', 'right']}>
 			<Surface style={styles.header}>
-				<StatusBar backgroundColor="#ff1493" />
+				<StatusBar backgroundColor="#ff1493" barStyle="light-content" />
 				<SecondaryPages routeText={route.params.textParam} screenName={'Checking'} />
 			</Surface>
 		</SafeAreaView>

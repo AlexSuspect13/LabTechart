@@ -8,7 +8,7 @@ import { SecondaryPages } from '../components/SecondaryPages';
 interface SavingScreenProps extends SavingsScreenNavigation {}
 export function Savings({ route }: SavingScreenProps) {
 	return (
-		<SafeAreaView>
+		<SafeAreaView edges={['left', 'right']}>
 			<Surface style={styles.header}>
 				<StatusBar backgroundColor="#ff1493" />
 				<SecondaryPages routeText={route.params.textParam} screenName={'Savings'} />
@@ -25,5 +25,4 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		elevation: 4,
 	},
-
 });
