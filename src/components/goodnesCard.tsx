@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { Button } from 'react-native-elements';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Video from 'react-native-video';
 
@@ -17,30 +16,6 @@ export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) =
 		return muted ? 'volume-off' : 'volume-up';
 	};
 
-	const isVideo = () => {
-		return (
-			<View style={styles.videoContainer}>
-				<Video style={styles.videos} muted={muted} controls source={video} paused={isPaused} />
-				<Icon
-					style={styles.videoicon}
-					color={'#fff'}
-					size={30}
-					name={volumeIcon()}
-					onPress={() => {
-						setMuted(!muted);
-					}}
-				/>
-			</View>
-		);
-	};
-
-	const videosChange = () => {
-		if (isPaused) {
-			return <Image style={styles.kidsimg} source={kidsPhotoForVideo} />;
-		} else {
-			return isVideo();
-		}
-	};
 	return (
 		<View style={styles.container}>
 			<View style={styles.headerContainer}>
@@ -59,22 +34,20 @@ export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) =
 			) : (
 				<View style={styles.videoContainer}>
 					<Video style={styles.videos} muted={muted} controls source={video} paused={isPaused} />
-					<Icon
-						style={styles.videoicon}
-						color={'#fff'}
-						size={30}
-						name={volumeIcon()}
+					<TouchableOpacity
 						onPress={() => {
 							setMuted(!muted);
 						}}
-					/>
+						style={{ backgroundColor: 'black', opacity: 1 }}>
+						<Icon style={styles.videoicon} color={'#fff'} size={30} name={volumeIcon()} />
+					</TouchableOpacity>
 				</View>
 			)}
 			<Text style={styles.textAboutKids}>
 				Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!
 			</Text>
 			<Button
-				title={'Share to spread the word'}
+				title="Share to spread the word"
 				buttonStyle={styles.cardButton}
 				icon={<Icon color={'#fff'} size={13} name="share" />}
 			/>
@@ -99,7 +72,7 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		right: 15,
 		bottom: 15,
-		padding: 15,
+		opacity: 0.4,
 	},
 	headerContainer: {
 		flexDirection: 'row',

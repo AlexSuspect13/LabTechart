@@ -6,11 +6,11 @@ import { useNavigation } from '@react-navigation/core';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 type SecondaryPagesProps = {
-	routeText: string;
-	screenName: string;
+	subtitle?: string;
+	title: string;
 };
 
-export const SecondaryPages = ({ routeText, screenName }: SecondaryPagesProps) => {
+export const Header = ({ subtitle, title }: SecondaryPagesProps) => {
 	const navigation = useNavigation();
 	return (
 		<SafeAreaView>
@@ -24,8 +24,8 @@ export const SecondaryPages = ({ routeText, screenName }: SecondaryPagesProps) =
 				/>
 			</View>
 			<View style={styles.view}>
-				<Text style={styles.headerText}>{screenName}</Text>
-				<Text style={styles.text}>{routeText}</Text>
+				<Text style={styles.headerText}>{title}</Text>
+				<Text style={styles.text}>{subtitle}</Text>
 			</View>
 			<View style={styles.view}>
 				<UserMenu />

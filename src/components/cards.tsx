@@ -19,12 +19,12 @@ export const Card = ({ kidsImg }: Cards) => {
 					</View>
 				</View>
 			</View>
-			<Image style={styles.kidsPhoto} source={kidsImg}></Image>
+			<Image style={styles.kidsPhoto} source={kidsImg} />
 			<Text style={styles.textAboutKids}>
 				Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!{' '}
 			</Text>
 			<Button
-				title={'Share to spread the word'}
+				title="Share to spread the word"
 				buttonStyle={styles.cardButton}
 				icon={<Icon color={'#fff'} size={13} name="share" />}
 			/>

@@ -3,7 +3,7 @@ import { StyleSheet, StatusBar } from 'react-native';
 import { Surface } from 'react-native-paper';
 import { GoodnessScreenNavigation } from '../types/navigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { SecondaryPages } from '../components/SecondaryPages';
+import { Header } from '../components/Header';
 
 interface GoodnessScreenProps extends GoodnessScreenNavigation {}
 export function Goodness({ route }: GoodnessScreenProps) {
@@ -11,7 +11,7 @@ export function Goodness({ route }: GoodnessScreenProps) {
 		<SafeAreaView edges={['left', 'right']}>
 			<Surface style={styles.header}>
 				<StatusBar backgroundColor="#ff1493" barStyle="light-content" />
-				<SecondaryPages routeText={route.params.textParam} screenName={'Goodness'} />
+				<Header subtitle={route.params.textParam} title="Goodness" />
 			</Surface>
 		</SafeAreaView>
 	);

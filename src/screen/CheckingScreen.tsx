@@ -2,8 +2,7 @@ import * as React from 'react';
 import { StyleSheet, StatusBar } from 'react-native';
 import { Surface } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-import { SecondaryPages } from '../components/SecondaryPages';
+import { Header } from '../components/Header';
 import { CheckingScreenNavigation } from '../types/navigation';
 
 interface CheckingScreenProps extends CheckingScreenNavigation {}
@@ -13,7 +12,7 @@ export function CheckingScreen({ route }: CheckingScreenProps) {
 		<SafeAreaView edges={['left', 'right']}>
 			<Surface style={styles.header}>
 				<StatusBar backgroundColor="#ff1493" barStyle="light-content" />
-				<SecondaryPages routeText={route.params.textParam} screenName={'Checking'} />
+				<Header subtitle={route.params.textParam} title="Checking" />
 			</Surface>
 		</SafeAreaView>
 	);

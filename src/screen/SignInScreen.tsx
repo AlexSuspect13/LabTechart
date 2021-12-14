@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity, Keyboard, Platform } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, TextInput, View, Text, TouchableOpacity, Keyboard, Platform } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
@@ -30,10 +30,19 @@ export function SignInScreen() {
 	const dispatch = useDispatch();
 	const authError = useSelector((state: RootState) => state.user.authError);
 	const isLoading = useSelector((state: RootState) => state.user.isLoading);
+	function HookComponent() {
+		const insets = useSafeAreaInsets();
+
+		return (
+			<View style={styles.statusBar}>
+				<View style={{ paddingBottom: Math.max(insets.bottom, 16) }} />
+			</View>
+		);
+	}
 
 	return (
 		<SafeAreaView edges={['left', 'right']} style={styles.container}>
-			<StatusBar backgroundColor="#fff" />
+			{HookComponent()}
 			<View style={styles.item1}>
 				<Text style={styles.textLogin}>Login</Text>
 				<View style={styles.hairline} />
@@ -155,4 +164,5 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 	},
 	letsTest: { color: '#c0c0c0', textAlign: 'center', marginBottom: 10 },
+	statusBar: { backgroundColor: 'white' },
 });

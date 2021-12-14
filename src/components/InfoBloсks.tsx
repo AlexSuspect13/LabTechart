@@ -9,9 +9,9 @@ type InfoBlockProps = {
 	infotxt: string;
 	dollar: string;
 	cent: string;
-	routeName: "Checking" | "Savings" | "Goodness"
+	routeName: 'Checking' | 'Savings' | 'Goodness';
 };
-export const InfoBlock = ({ text, infotxt, dollar, cent,routeName }: InfoBlockProps) => {
+export const InfoBlock = ({ text, infotxt, dollar, cent, routeName }: InfoBlockProps) => {
 	const navigation = useNavigation();
 	return (
 		<TouchableOpacity onPress={() => navigation.navigate(routeName, { textParam: infotxt })}>
@@ -31,7 +31,7 @@ export const InfoBlock = ({ text, infotxt, dollar, cent,routeName }: InfoBlockPr
 						{dollar}
 						<Text style={styles.cent}>.{cent}</Text>
 					</Text>
-					<Icon style={styles.chevron} color={'#ff1493'} name={'chevron-right'} />
+					<Icon style={styles.chevron} color={'#ff1493'} name="chevron-right" />
 				</View>
 			</View>
 		</TouchableOpacity>

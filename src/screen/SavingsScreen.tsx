@@ -3,7 +3,7 @@ import { StyleSheet, StatusBar } from 'react-native';
 import { Surface } from 'react-native-paper';
 import { SavingsScreenNavigation } from '../types/navigation';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { SecondaryPages } from '../components/SecondaryPages';
+import { Header } from '../components/Header';
 
 interface SavingScreenProps extends SavingsScreenNavigation {}
 export function Savings({ route }: SavingScreenProps) {
@@ -11,7 +11,7 @@ export function Savings({ route }: SavingScreenProps) {
 		<SafeAreaView edges={['left', 'right']}>
 			<Surface style={styles.header}>
 				<StatusBar backgroundColor="#ff1493" />
-				<SecondaryPages routeText={route.params.textParam} screenName={'Savings'} />
+				<Header subtitle={route.params.textParam} title="Savings" />
 			</Surface>
 		</SafeAreaView>
 	);

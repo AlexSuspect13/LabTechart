@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { StyleSheet, View, Image, StatusBar, FlatList, ImageRequireSource, FlatListProps } from 'react-native';
-import { Surface } from 'react-native-paper';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, View, Image, FlatList, ImageRequireSource, FlatListProps } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { UserMenu } from '../components/userMenu';
@@ -38,11 +37,20 @@ export function Home() {
 		},
 		[],
 	);
+	function HookComponent() {
+		const insets = useSafeAreaInsets();
+
+		return (
+			<View style={styles.statusBar}>
+				<View style={{ paddingBottom: Math.max(insets.bottom, 16) }} />
+			</View>
+		);
+	}
 
 	return (
-		<SafeAreaView edges={['left', 'right']}>
-			<Surface style={styles.header}>
-				<StatusBar backgroundColor="#ff1493" />
+		<SafeAreaView style={{ flex: 1 }} edges={['right', 'left']}>
+			{HookComponent()}
+			<View style={styles.header}>
 				<View style={styles.view}>
 					<TouchableOpacity>
 						<Feather style={styles.goBack} name="menu" size={24} color={'white'} />
@@ -54,23 +62,20 @@ export function Home() {
 				<View style={styles.view}>
 					<UserMenu />
 				</View>
-			</Surface>
-
-			<View style={styles.body}>
-				<FlatList<Item>
-					onViewableItemsChanged={onViewableItemsChanged}
-					viewabilityConfig={{ viewAreaCoveragePercentThreshold: 100 }}
-					ListHeaderComponent={AccountOverview}
-					data={data}
-					renderItem={({ item }) => {
-						if (item.video) {
-							return <VideoCards video={item.video} isPaused={isPaused} kidsPhotoForVideo={item.photo} />;
-						}
-
-						return <Card kidsImg={item.photo} />;
-					}}
-				/>
 			</View>
+
+			<FlatList<Item>
+				onViewableItemsChanged={onViewableItemsChanged}
+				viewabilityConfig={{ viewAreaCoveragePercentThreshold: 100 }}
+				ListHeaderComponent={AccountOverview}
+				data={data}
+				renderItem={({ item }) => {
+					if (item.video) {
+						return <VideoCards video={item.video} isPaused={isPaused} kidsPhotoForVideo={item.photo} />;
+					}
+					return <Card kidsImg={item.photo} />;
+				}}
+			/>
 		</SafeAreaView>
 	);
 }
@@ -90,7 +95,10 @@ const styles = StyleSheet.create({
 		margin: 5,
 		alignItems: 'center',
 	},
+	statusBar: { backgroundColor: '#ff1493' },
 	body: {
 		backgroundColor: '#F8F8FF',
+		flexDirection: 'row',
+		alignItems: 'center',
 	},
 });

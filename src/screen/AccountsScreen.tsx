@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Surface, Text } from 'react-native-paper';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, View, Text } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import Feather from 'react-native-vector-icons/Feather';
 import { AccountsScreenNavigation } from '../types/navigation';
 import { UserMenu } from '../components/userMenu';
@@ -9,9 +8,19 @@ import { UserMenu } from '../components/userMenu';
 interface AccountScreenProps extends AccountsScreenNavigation {}
 
 export function Account({ navigation }: AccountScreenProps) {
+	function HookComponent() {
+		const insets = useSafeAreaInsets();
+
+		return (
+			<View style={styles.statusBar}>
+				<View style={{ paddingBottom: Math.max(insets.bottom, 16) }} />
+			</View>
+		);
+	}
 	return (
 		<SafeAreaView edges={['left', 'right']}>
-			<Surface style={styles.header}>
+			{HookComponent()}
+			<View style={styles.header}>
 				<View style={styles.view}>
 					<Feather
 						style={styles.goBack}
@@ -27,7 +36,7 @@ export function Account({ navigation }: AccountScreenProps) {
 				<View style={styles.view}>
 					<UserMenu />
 				</View>
-			</Surface>
+			</View>
 		</SafeAreaView>
 	);
 }
@@ -47,5 +56,6 @@ const styles = StyleSheet.create({
 		margin: 5,
 		alignItems: 'center',
 	},
+	statusBar: { backgroundColor: '#ff1493' },
 	headerText: { color: 'white', fontSize: 20 },
 });
