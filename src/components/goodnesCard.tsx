@@ -38,9 +38,7 @@ export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) =
 						onPress={() => {
 							setMuted(!muted);
 						}}>
-						<View style={{ backgroundColor: 'pink' }}>
-							<Icon style={styles.videoicon} color={'#fff'} size={30} name={volumeIcon()} />
-						</View>
+						<Icon style={styles.videoicon} color={'#fff'} size={30} name={volumeIcon()} />
 					</TouchableOpacity>
 				</View>
 			)}
