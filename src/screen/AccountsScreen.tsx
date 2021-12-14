@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import Feather from 'react-native-vector-icons/Feather';
+import { Header } from '../components/Header';
 import { AccountsScreenNavigation } from '../types/navigation';
-import { UserMenu } from '../components/userMenu';
 
 interface AccountScreenProps extends AccountsScreenNavigation {}
 
-export function Account({ navigation }: AccountScreenProps) {
+export function Account({ route }: AccountScreenProps) {
 	function HookComponent() {
 		const insets = useSafeAreaInsets();
 
@@ -19,24 +18,7 @@ export function Account({ navigation }: AccountScreenProps) {
 	}
 	return (
 		<SafeAreaView edges={['left', 'right']}>
-			{HookComponent()}
-			<View style={styles.header}>
-				<View style={styles.view}>
-					<Feather
-						style={styles.goBack}
-						name="chevron-left"
-						size={30}
-						color={'white'}
-						onPress={() => navigation.goBack()}
-					/>
-				</View>
-				<View style={styles.view}>
-					<Text style={styles.headerText}>Account</Text>
-				</View>
-				<View style={styles.view}>
-					<UserMenu />
-				</View>
-			</View>
+			<Header title="Account" />
 		</SafeAreaView>
 	);
 }

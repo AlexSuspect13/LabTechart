@@ -22,7 +22,7 @@ function generateGreetings() {
 }
 
 export default function DateNow() {
-	const userName = useSelector((state: RootState) => state.userName.user);
+	const userName = useSelector((state: RootState) => state.userProfile.name);
 
 	return (
 		<View style={styles.container}>

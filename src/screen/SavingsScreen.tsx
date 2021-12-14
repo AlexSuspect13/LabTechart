@@ -9,20 +9,7 @@ interface SavingScreenProps extends SavingsScreenNavigation {}
 export function Savings({ route }: SavingScreenProps) {
 	return (
 		<SafeAreaView edges={['left', 'right']}>
-			<Surface style={styles.header}>
-				<StatusBar backgroundColor="#ff1493" />
-				<Header subtitle={route.params.textParam} title="Savings" />
-			</Surface>
+			<Header subtitle={route.params.textParam} title="Savings" />
 		</SafeAreaView>
 	);
 }
-const styles = StyleSheet.create({
-	header: {
-		justifyContent: 'space-between',
-		height: 50,
-		alignItems: 'center',
-		backgroundColor: '#ff1493',
-		flexDirection: 'row',
-		elevation: 4,
-	},
-});

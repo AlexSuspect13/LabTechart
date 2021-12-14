@@ -37,19 +37,13 @@ export function Home() {
 		},
 		[],
 	);
-	function HookComponent() {
-		const insets = useSafeAreaInsets();
 
-		return (
-			<View style={styles.statusBar}>
-				<View style={{ paddingBottom: Math.max(insets.bottom, 16) }} />
-			</View>
-		);
-	}
-
+	const insets = useSafeAreaInsets();
 	return (
-		<SafeAreaView style={{ flex: 1 }} edges={['right', 'left']}>
-			{HookComponent()}
+		<SafeAreaView style={styles.container} edges={['right', 'left']}>
+			<View style={styles.statusBar}>
+				<View style={{ top: Math.max(insets.top, 16) }} />
+			</View>
 			<View style={styles.header}>
 				<View style={styles.view}>
 					<TouchableOpacity>
@@ -71,7 +65,7 @@ export function Home() {
 				data={data}
 				renderItem={({ item }) => {
 					if (item.video) {
-						return <VideoCards video={item.video} isPaused={isPaused} kidsPhotoForVideo={item.photo} />;
+						return <VideoCards video={item.video} isPaused={isPaused} preview={item.photo} />;
 					}
 					return <Card kidsImg={item.photo} />;
 				}}
@@ -89,6 +83,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		elevation: 4,
 	},
+	container: { flex: 1 },
 	goBack: { marginRight: 80 },
 	view: {
 		flex: 1,
@@ -96,9 +91,4 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	statusBar: { backgroundColor: '#ff1493' },
-	body: {
-		backgroundColor: '#F8F8FF',
-		flexDirection: 'row',
-		alignItems: 'center',
-	},
 });

@@ -7,14 +7,10 @@ import Video from 'react-native-video';
 type VideoCards = {
 	video: any;
 	isPaused: boolean;
-	kidsPhotoForVideo: any;
+	preview: any;
 };
-export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) => {
+export const VideoCards = ({ video, isPaused, preview }: VideoCards) => {
 	const [muted, setMuted] = React.useState(true);
-
-	const volumeIcon = () => {
-		return muted ? 'volume-off' : 'volume-up';
-	};
 
 	return (
 		<View style={styles.container}>
@@ -30,16 +26,18 @@ export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) =
 				</View>
 			</View>
 			{isPaused ? (
-				<Image style={styles.kidsimg} source={kidsPhotoForVideo} />
+				<Image style={styles.kidsimg} source={preview} />
 			) : (
 				<View style={styles.videoContainer}>
-					<Video style={styles.videos} muted={muted} controls source={video} paused={isPaused} />
-					<TouchableOpacity
-						onPress={() => {
-							setMuted(!muted);
-						}}>
-						<Icon style={styles.videoicon} color={'#fff'} size={30} name={volumeIcon()} />
-					</TouchableOpacity>
+					<Video style={styles.videos} muted={muted} source={video} paused={isPaused} />
+					<View style={styles.iconContainer}>
+						<TouchableOpacity
+							onPress={() => {
+								setMuted(!muted);
+							}}>
+							<Icon color={'#fff'} size={30} name={muted ? 'volume-off' : 'volume-up'} />
+						</TouchableOpacity>
+					</View>
 				</View>
 			)}
 			<Text style={styles.textAboutKids}>
@@ -67,12 +65,17 @@ const styles = StyleSheet.create({
 		height: 200,
 		width: '100%',
 	},
-	videoicon: {
+	iconContainer: {
 		position: 'absolute',
+		height: 35,
+		width: 35,
 		right: 15,
 		bottom: 15,
 		opacity: 0.4,
 		backgroundColor: 'black',
+		borderRadius: 10,
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	headerContainer: {
 		flexDirection: 'row',
@@ -86,7 +89,7 @@ const styles = StyleSheet.create({
 	},
 
 	videoContainer: {
-		justifyContent: 'flex-end',
+		position: 'relative',
 	},
 	text: {
 		color: '#000',

@@ -13,7 +13,7 @@ type SecondaryPagesProps = {
 export const Header = ({ subtitle, title }: SecondaryPagesProps) => {
 	const navigation = useNavigation();
 	return (
-		<SafeAreaView>
+		<View style={styles.header}>
 			<View style={styles.view}>
 				<Feather
 					style={styles.goBack}
@@ -30,7 +30,7 @@ export const Header = ({ subtitle, title }: SecondaryPagesProps) => {
 			<View style={styles.view}>
 				<UserMenu />
 			</View>
-		</SafeAreaView>
+		</View>
 	);
 };
 const styles = StyleSheet.create({
@@ -44,5 +44,13 @@ const styles = StyleSheet.create({
 	text: {
 		color: '#fff',
 		fontSize: 10,
+	},
+	header: {
+		justifyContent: 'space-between',
+		height: 50,
+		alignItems: 'center',
+		backgroundColor: '#ff1493',
+		flexDirection: 'row',
+		elevation: 4,
 	},
 });

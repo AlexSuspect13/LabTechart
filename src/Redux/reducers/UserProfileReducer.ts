@@ -1,13 +1,13 @@
 export const nameState = {
-	user: 'Alex'
+	name: 'Alex',
 };
 
-export default (state = nameState, action:any) => {
+export default (state = nameState, action: any) => {
 	switch (action.type) {
 		case 'RENAME_USER':
 			return {
 				...state,
-				user: action.name,
+				name: action.name,
 			};
 		default:
 			return state;
