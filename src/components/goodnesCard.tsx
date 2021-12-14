@@ -37,9 +37,10 @@ export const VideoCards = ({ video, isPaused, kidsPhotoForVideo }: VideoCards) =
 					<TouchableOpacity
 						onPress={() => {
 							setMuted(!muted);
-						}}
-						style={{ backgroundColor: 'black', opacity: 1 }}>
-						<Icon style={styles.videoicon} color={'#fff'} size={30} name={volumeIcon()} />
+						}}>
+						<View style={{ backgroundColor: 'pink' }}>
+							<Icon style={styles.videoicon} color={'#fff'} size={30} name={volumeIcon()} />
+						</View>
 					</TouchableOpacity>
 				</View>
 			)}
@@ -73,6 +74,7 @@ const styles = StyleSheet.create({
 		right: 15,
 		bottom: 15,
 		opacity: 0.4,
+		backgroundColor: 'black',
 	},
 	headerContainer: {
 		flexDirection: 'row',
