@@ -30,20 +30,10 @@ export function SignInScreen() {
 	const dispatch = useDispatch();
 	const authError = useSelector((state: RootState) => state.user.authError);
 	const isLoading = useSelector((state: RootState) => state.user.isLoading);
-	function HookComponent() {
-		const insets = useSafeAreaInsets();
-
-		return (
-			<View style={styles.statusBar}>
-				<View style={{ paddingBottom: Math.max(insets.bottom, 16) }} />
-			</View>
-		);
-	}
-
+	const insets = useSafeAreaInsets();
 	return (
 		<SafeAreaView edges={['left', 'right']} style={styles.container}>
-			{HookComponent()}
-			<View style={styles.item1}>
+			<View style={[styles.item1, { paddingTop: insets.top }]}>
 				<Text style={styles.textLogin}>Login</Text>
 				<View style={styles.hairline} />
 				<Text style={styles.EmailPasswordText}>Email</Text>
@@ -164,5 +154,4 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 	},
 	letsTest: { color: '#c0c0c0', textAlign: 'center', marginBottom: 10 },
-	statusBar: { backgroundColor: 'white' },
 });

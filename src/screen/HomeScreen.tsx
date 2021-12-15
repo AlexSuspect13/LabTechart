@@ -41,20 +41,19 @@ export function Home() {
 	const insets = useSafeAreaInsets();
 	return (
 		<SafeAreaView style={styles.container} edges={['right', 'left']}>
-			<View style={styles.statusBar}>
-				<View style={{ top: Math.max(insets.top, 16) }} />
-			</View>
-			<View style={styles.header}>
-				<View style={styles.view}>
-					<TouchableOpacity>
-						<Feather style={styles.goBack} name="menu" size={24} color={'white'} />
-					</TouchableOpacity>
-				</View>
-				<View style={styles.view}>
-					<Image source={require('../../assets/img/logo.png')} />
-				</View>
-				<View style={styles.view}>
-					<UserMenu />
+			<View style={{ paddingTop: insets.top, backgroundColor: '#ff1493' }}>
+				<View style={styles.header}>
+					<View style={styles.view}>
+						<TouchableOpacity>
+							<Feather style={styles.goBack} name="menu" size={24} color={'white'} />
+						</TouchableOpacity>
+					</View>
+					<View style={styles.view}>
+						<Image source={require('../../assets/img/logo.png')} />
+					</View>
+					<View style={styles.view}>
+						<UserMenu />
+					</View>
 				</View>
 			</View>
 
@@ -77,10 +76,9 @@ export function Home() {
 const styles = StyleSheet.create({
 	header: {
 		justifyContent: 'space-between',
-		height: 50,
 		alignItems: 'center',
-		backgroundColor: '#ff1493',
 		flexDirection: 'row',
+		height: 50,
 		elevation: 4,
 	},
 	container: { flex: 1 },
@@ -90,5 +88,4 @@ const styles = StyleSheet.create({
 		margin: 5,
 		alignItems: 'center',
 	},
-	statusBar: { backgroundColor: '#ff1493' },
 });

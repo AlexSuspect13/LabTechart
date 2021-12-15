@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { UserMenu } from './userMenu';
 import Feather from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/core';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type SecondaryPagesProps = {
 	subtitle?: string;
@@ -11,24 +11,27 @@ type SecondaryPagesProps = {
 };
 
 export const Header = ({ subtitle, title }: SecondaryPagesProps) => {
+	const insets = useSafeAreaInsets();
 	const navigation = useNavigation();
 	return (
-		<View style={styles.header}>
-			<View style={styles.view}>
-				<Feather
-					style={styles.goBack}
-					name="chevron-left"
-					size={30}
-					color={'white'}
-					onPress={() => navigation.goBack()}
-				/>
-			</View>
-			<View style={styles.view}>
-				<Text style={styles.headerText}>{title}</Text>
-				<Text style={styles.text}>{subtitle}</Text>
-			</View>
-			<View style={styles.view}>
-				<UserMenu />
+		<View style={{ paddingTop: insets.top, backgroundColor: '#ff1493' }}>
+			<View style={styles.header}>
+				<View style={styles.view}>
+					<Feather
+						style={styles.goBack}
+						name="chevron-left"
+						size={30}
+						color={'white'}
+						onPress={() => navigation.goBack()}
+					/>
+				</View>
+				<View style={styles.view}>
+					<Text style={styles.headerText}>{title}</Text>
+					<Text style={styles.text}>{subtitle}</Text>
+				</View>
+				<View style={styles.view}>
+					<UserMenu />
+				</View>
 			</View>
 		</View>
 	);
@@ -49,7 +52,6 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between',
 		height: 50,
 		alignItems: 'center',
-		backgroundColor: '#ff1493',
 		flexDirection: 'row',
 		elevation: 4,
 	},
