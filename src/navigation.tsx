@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeTabs, SignInScreen, Giving, Account, Payments, CardScreen, Savings, CheckingScreen } from '../src';
+import { Home, SignInScreen, Giving, Account, Payments, CardScreen, Savings, CheckingScreen, Goodness } from '../src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RootBottomTabNavigator } from './types/navigation';
 import { useSelector } from 'react-redux';
@@ -24,7 +24,6 @@ const getIconByRouteName = (routeName: keyof RootBottomTabNavigator) => {
 	if (routeName === 'Payments') {
 		return 'ios-wallet-outline';
 	}
-
 	return 'home';
 };
 
@@ -32,14 +31,16 @@ function HomeTab() {
 	return (
 		<Tab.Navigator
 			screenOptions={({ route }) => ({
+				backgroundColor: 'transparent',
 				headerShown: false,
-				tabBarIcon: ({ color, size }) => {
+				tabBarActiveTintColor: '#ff1493',
+				tabBarIcon: ({ size, focused }) => {
 					const iconName = getIconByRouteName(route.name);
-
-					return <Ionicons name={iconName} size={size} color={color} />;
+					const IconColor = focused ? '#ff1493' : 'black';
+					return <Ionicons name={iconName} size={size} color={IconColor} />;
 				},
 			})}>
-			<Tab.Screen name="HomeTabs" component={HomeTabs} />
+			<Tab.Screen name="Home" component={Home} />
 			<Tab.Screen name="Accounts" component={Account} />
 			<Tab.Screen name="Giving" component={Giving} />
 			<Tab.Screen name="Payments" component={Payments} options={{}} />
@@ -68,9 +69,10 @@ export default function Navigation() {
 				</>
 			) : (
 				<>
-					<Stack.Screen name="Home" component={HomeTab} />
+					<Stack.Screen name="HomeTabs" component={HomeTab} />
 					<Stack.Screen name="Savings" component={Savings} />
 					<Stack.Screen name="Checking" component={CheckingScreen} />
+					<Stack.Screen name="Goodness" component={Goodness} />
 				</>
 			)}
 		</Stack.Navigator>

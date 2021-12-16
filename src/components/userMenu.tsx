@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal } from 'react-native';
-import { AuthContext } from '../utils';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ListItem } from 'react-native-elements';
 import { useDispatch } from 'react-redux';
@@ -21,7 +20,7 @@ export function UserMenu() {
 	return (
 		<>
 			<TouchableOpacity onPress={showUserMenu}>
-				<Image style={{ marginLeft: 70 }} source={require('../../assets/img/oval.png')} />
+				<Image source={require('../../assets/img/oval.png')} />
 			</TouchableOpacity>
 			<Modal visible={userMenuVisible} transparent>
 				<TouchableWithoutFeedback onPress={hideUserMenu}>
@@ -46,5 +45,6 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		right: 10,
 		width: 100,
+		top: 50,
 	},
 });

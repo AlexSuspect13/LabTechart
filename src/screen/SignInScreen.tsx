@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { StyleSheet, TextInput, View, StatusBar, Text, TouchableOpacity, Keyboard } from 'react-native';
+import { StyleSheet, TextInput, View, Text, TouchableOpacity, Keyboard, Platform } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import { Icon } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,10 +30,8 @@ export function SignInScreen() {
 	const dispatch = useDispatch();
 	const authError = useSelector((state: RootState) => state.user.authError);
 	const isLoading = useSelector((state: RootState) => state.user.isLoading);
-
 	return (
-		<View style={styles.container}>
-			<StatusBar backgroundColor="#fff" />
+		<SafeAreaView style={styles.container}>
 			<View style={styles.item1}>
 				<Text style={styles.textLogin}>Login</Text>
 				<View style={styles.hairline} />
@@ -98,9 +97,11 @@ export function SignInScreen() {
 					</>
 				) : null}
 			</View>
-		</View>
+		</SafeAreaView>
 	);
 }
+
+const margginTopBut = Platform.OS === 'ios' ? 10 : 0;
 
 const styles = StyleSheet.create({
 	container: {
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		backgroundColor: '#fff',
 	},
-	textLogin: { color: '#000', fontSize: 45, fontFamily: 'SF-Pro-Rounded-Medium' },
+	textLogin: { color: '#000', fontSize: 45, fontFamily: 'SFRounded-Medium' },
 	item1: {
 		flex: 1,
 		backgroundColor: '#fff',
@@ -118,8 +119,8 @@ const styles = StyleSheet.create({
 	item2: {
 		padding: 15,
 	},
-	forgotPassword: { textAlign: 'right', color: '#ff1493', fontFamily: 'SF-Pro-Rounded-Bold' },
-	EmailPasswordText: { color: '#636363', fontSize: 20, fontFamily: 'SF-Pro-Rounded-Medium' },
+	forgotPassword: { textAlign: 'right', color: '#ff1493', fontFamily: 'SFRounded-Bold' },
+	EmailPasswordText: { color: '#636363', fontSize: 20, fontFamily: 'SFRounded-Medium' },
 	hairline: {
 		backgroundColor: '#ff1493',
 		height: 4,
@@ -128,8 +129,7 @@ const styles = StyleSheet.create({
 	},
 	lineUnderInput: { height: 1, backgroundColor: '#636363', marginBottom: 5 },
 	idButton: {
-		marginRight: 10,
-		marginLeft: 10,
+		marginHorizontal: 10,
 		borderWidth: 1,
 		borderColor: '#c0c0c0',
 		height: 30,
@@ -142,6 +142,8 @@ const styles = StyleSheet.create({
 	idButtonContainer: { flexDirection: 'row', justifyContent: 'center' },
 	txtinput: {
 		color: '#000',
+		marginTop: margginTopBut,
+		marginBottom: margginTopBut,
 	},
 	idButtonText: { color: '#c0c0c0' },
 	authError: { textAlign: 'left', color: 'red' },

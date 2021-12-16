@@ -69,10 +69,10 @@
 		<string>Octicons.ttf</string>
 		<string>SimpleLineIcons.ttf</string>
 		<string>Zocial.ttf</string>
-		<string>SF Pro Rounded Regular.ttf</string>
-		<string>SF-Pro-Rounded-Bold.ttf</string>
-		<string>SF-Pro-Rounded-Medium.ttf</string>
-		<string>SF-Pro-Rounded-Ultralight.ttf</string>
+		<string>SFProRounded-Regular.ttf</string>
+		<string>SFRounded-Bold.ttf</string>
+		<string>SFRounded-Medium.ttf</string>
+		<string>SFRounded-Ultralight.ttf</string>
 	</array>
 </dict>
 </plist>

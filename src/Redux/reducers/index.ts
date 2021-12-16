@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
 
-import userReducer from './userReducer';
+import UserReducer from './UserReducer';
+
+import UserProfileReducer from './UserProfileReducer';
 
 export const rootReducer = combineReducers({
-	user: userReducer,
+	user: UserReducer,
+	userProfile: UserProfileReducer,
 });
