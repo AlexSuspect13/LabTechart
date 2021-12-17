@@ -1,6 +1,6 @@
 export const userProfilestate = {
-	name: 'Alex',
-	birthday: '24.10.1991',
+	fullName: 'Alex Suspect',
+	Userbirthday: '24.10.1991',
 };
 
 export default (state = userProfilestate, action) => {
@@ -8,12 +8,12 @@ export default (state = userProfilestate, action) => {
 		case 'RENAME_USER':
 			return {
 				...state,
-				name: action.name,
+				fullName: action.Username,
 			};
 		case 'BIRTHDAY':
 			return {
 				...state,
-				name: action.birthday,
+				Userbirthday: action.birthday,
 			};
 		default:
 			return state;
