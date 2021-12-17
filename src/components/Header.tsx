@@ -16,20 +16,14 @@ export const Header = ({ subtitle, title }: SecondaryPagesProps) => {
 	return (
 		<View style={{ paddingTop: insets.top, backgroundColor: '#ff1493' }}>
 			<View style={styles.header}>
-				<View style={styles.view}>
-					<Feather
-						style={styles.goBack}
-						name="chevron-left"
-						size={30}
-						color={'white'}
-						onPress={() => navigation.goBack()}
-					/>
+				<View>
+					<Feather name="chevron-left" size={30} color={'white'} onPress={() => navigation.goBack()} />
 				</View>
-				<View style={styles.view}>
+				<View>
 					<Text style={styles.headerText}>{title}</Text>
 					<Text style={styles.text}>{subtitle}</Text>
 				</View>
-				<View style={styles.view}>
+				<View>
 					<UserMenu />
 				</View>
 			</View>
@@ -38,21 +32,15 @@ export const Header = ({ subtitle, title }: SecondaryPagesProps) => {
 };
 const styles = StyleSheet.create({
 	headerText: { color: '#fff', fontSize: 20 },
-	view: {
-		flex: 1,
-		margin: 5,
-		alignItems: 'center',
-	},
-	goBack: { marginRight: 80 },
 	text: {
 		color: '#fff',
 		fontSize: 10,
 	},
 	header: {
 		justifyContent: 'space-between',
-		height: 50,
 		alignItems: 'center',
 		flexDirection: 'row',
 		elevation: 4,
+		marginHorizontal: 15,
 	},
 });

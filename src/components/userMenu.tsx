@@ -20,7 +20,7 @@ export function UserMenu() {
 	return (
 		<>
 			<TouchableOpacity onPress={showUserMenu}>
-				<Image style={{ marginLeft: 70 }} source={require('../../assets/img/oval.png')} />
+				<Image source={require('../../assets/img/oval.png')} />
 			</TouchableOpacity>
 			<Modal visible={userMenuVisible} transparent>
 				<TouchableWithoutFeedback onPress={hideUserMenu}>

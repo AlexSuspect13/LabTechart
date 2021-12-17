@@ -30,10 +30,9 @@ export function SignInScreen() {
 	const dispatch = useDispatch();
 	const authError = useSelector((state: RootState) => state.user.authError);
 	const isLoading = useSelector((state: RootState) => state.user.isLoading);
-	const insets = useSafeAreaInsets();
 	return (
-		<SafeAreaView edges={['left', 'right']} style={styles.container}>
-			<View style={[styles.item1, { paddingTop: insets.top }]}>
+		<SafeAreaView style={styles.container}>
+			<View style={styles.item1}>
 				<Text style={styles.textLogin}>Login</Text>
 				<View style={styles.hairline} />
 				<Text style={styles.EmailPasswordText}>Email</Text>

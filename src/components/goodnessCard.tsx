@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ImageRequireSource } from 'react-native';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Video from 'react-native-video';
 
 type VideoCards = {
-	video: any;
+	video: ImageRequireSource;
 	isPaused: boolean;
-	preview: any;
+	preview: ImageRequireSource;
 };
 export const VideoCards = ({ video, isPaused, preview }: VideoCards) => {
 	const [muted, setMuted] = React.useState(true);

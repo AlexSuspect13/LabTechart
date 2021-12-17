@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, ImageRequireSource } from 'react-native';
 import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 type Cards = {
-	kidsImg: any;
+	preview: ImageRequireSource;
 };
-export const Card = ({ kidsImg }: Cards) => {
+export const Card = ({ preview }: Cards) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.headerContainer}>
@@ -19,7 +19,7 @@ export const Card = ({ kidsImg }: Cards) => {
 					</View>
 				</View>
 			</View>
-			<Image style={styles.kidsPhoto} source={kidsImg} />
+			<Image style={styles.kidsPhoto} source={preview} />
 			<Text style={styles.textAboutKids}>
 				Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!{' '}
 			</Text>

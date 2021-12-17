@@ -1,8 +1,8 @@
-export const nameState = {
+export const userProfilestate = {
 	name: 'Alex',
 };
 
-export default (state = nameState, action: any) => {
+export default (state = userProfilestate, action: any) => {
 	switch (action.type) {
 		case 'RENAME_USER':
 			return {

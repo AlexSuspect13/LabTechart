@@ -20,7 +20,7 @@ export const InfoBlock = ({ text, infotxt, dollar, cent, routeName }: InfoBlockP
 					<View style={styles.goodnescard}>
 						<Text style={styles.namePage}>{text}</Text>
 						{text === 'Goodness' ? (
-							<Image source={require('../../assets/img/heart.png')} style={styles.goodnesimg} />
+							<Image source={require('../../assets/img/heart.png')} style={styles.goodnessimg} />
 						) : null}
 					</View>
 					<Text style={styles.info}>{infotxt}</Text>
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
 	goodnescard: {
 		flexDirection: 'row',
 	},
-	goodnesimg: {
+	goodnessimg: {
 		height: 15,
 		width: 15,
 		margin: 5,

@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import Feather from 'react-native-vector-icons/Feather';
 import { UserMenu } from '../components/userMenu';
 import { AccountOverview } from '../components/AccountOverview';
-import { VideoCards } from '../components/goodnesCard';
+import { VideoCards } from '../components/goodnessCard';
 import { Card } from '../components/cards';
 type Item = {
 	photo: ImageRequireSource;
@@ -43,15 +43,15 @@ export function Home() {
 		<SafeAreaView style={styles.container} edges={['right', 'left']}>
 			<View style={{ paddingTop: insets.top, backgroundColor: '#ff1493' }}>
 				<View style={styles.header}>
-					<View style={styles.view}>
+					<View>
 						<TouchableOpacity>
-							<Feather style={styles.goBack} name="menu" size={24} color={'white'} />
+							<Feather name="menu" size={24} color={'white'} />
 						</TouchableOpacity>
 					</View>
-					<View style={styles.view}>
+					<View>
 						<Image source={require('../../assets/img/logo.png')} />
 					</View>
-					<View style={styles.view}>
+					<View>
 						<UserMenu />
 					</View>
 				</View>
@@ -66,7 +66,7 @@ export function Home() {
 					if (item.video) {
 						return <VideoCards video={item.video} isPaused={isPaused} preview={item.photo} />;
 					}
-					return <Card kidsImg={item.photo} />;
+					return <Card preview={item.photo} />;
 				}}
 			/>
 		</SafeAreaView>
@@ -75,17 +75,11 @@ export function Home() {
 
 const styles = StyleSheet.create({
 	header: {
-		justifyContent: 'space-between',
 		alignItems: 'center',
 		flexDirection: 'row',
-		height: 50,
 		elevation: 4,
+		justifyContent: 'space-between',
+		marginHorizontal: 15,
 	},
 	container: { flex: 1 },
-	goBack: { marginRight: 80 },
-	view: {
-		flex: 1,
-		margin: 5,
-		alignItems: 'center',
-	},
 });
