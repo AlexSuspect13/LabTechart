@@ -1,7 +1,18 @@
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Home, SignInScreen, Giving, Account, Payments, CardScreen, Savings, CheckingScreen, Goodness } from '../src';
+import {
+	Home,
+	SignInScreen,
+	Giving,
+	Account,
+	Payments,
+	CardScreen,
+	Savings,
+	CheckingScreen,
+	Goodness,
+	Profile,
+} from '../src';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RootBottomTabNavigator } from './types/navigation';
 import { useSelector } from 'react-redux';
@@ -73,6 +84,7 @@ export default function Navigation() {
 					<Stack.Screen name="Savings" component={Savings} />
 					<Stack.Screen name="Checking" component={CheckingScreen} />
 					<Stack.Screen name="Goodness" component={Goodness} />
+					<Stack.Screen name="Profile" component={Profile} />
 				</>
 			)}
 		</Stack.Navigator>

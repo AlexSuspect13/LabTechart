@@ -2,7 +2,8 @@ import * as React from 'react';
 import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ListItem } from 'react-native-elements';
-import { useDispatch } from 'react-redux';
+//import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/core';
 
 export function UserMenu() {
 	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
@@ -15,8 +16,8 @@ export function UserMenu() {
 		setUserMenuVisible(true);
 	};
 
-	const dispatch = useDispatch();
-
+	//const dispatch = useDispatch();
+	const navigation = useNavigation();
 	return (
 		<>
 			<TouchableOpacity onPress={showUserMenu}>
@@ -29,10 +30,10 @@ export function UserMenu() {
 				<ListItem
 					style={styles.userMenuContent}
 					onPress={() => {
-						dispatch({ type: 'SIGN_OUT', token: null });
+						navigation.navigate('Profile');
 					}}>
 					<ListItem.Content>
-						<ListItem.Title>Log out</ListItem.Title>
+						<ListItem.Title>Profile</ListItem.Title>
 					</ListItem.Content>
 				</ListItem>
 			</Modal>
