@@ -6,14 +6,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../Redux/store';
 import DatePicker from 'react-native-date-picker';
 import { Button } from 'react-native-elements';
-import CameraComponent from '../screen/CameraScreen';
+import { CameraScreen } from '..';
 import { useNavigation } from '@react-navigation/core';
-import Navigation from '../navigation';
 
 export const Profile = () => {
 	const [date, setDate] = React.useState(new Date());
 	const [open, setOpen] = React.useState(false);
-	const [openCamer, setOpenCamera] = React.useState(false);
+
 	const [nickName, setNickName] = React.useState('');
 	const name = useSelector((state: RootState) => state.userProfile.fullName);
 	const birthday = useSelector((state: RootState) => state.userProfile.Userbirthday);
@@ -23,13 +22,12 @@ export const Profile = () => {
 		<SafeAreaView style={styles.container} edges={['left', 'right']}>
 			<Header title="Profile" />
 			<View style={styles.avatarEdit}>
-				<Image style={styles.profilePhoto} source={require('../../assets/img/standartProfilePhoto.png')}></Image>
+				<Image style={styles.profilePhoto} source={require('../../assets/img/standartProfilePhoto.png')} />
 				<View style={styles.profileButton}>
 					<Button buttonStyle={styles.button} title="Make from camera" onPress={() => navigation.navigate('Camera')} />
 					<Button buttonStyle={styles.button} title="Choose from Galery" onPress={() => setOpen(true)} />
 				</View>
 			</View>
-			{openCamer ? <CameraComponent /> : null}
 			<View style={styles.item1}>
 				<Text style={styles.fullName}>Full Name </Text>
 				<TextInput
@@ -43,7 +41,6 @@ export const Profile = () => {
 				<Text style={styles.fullName}>Birthday </Text>
 				<Text style={styles.infoText}>{birthday}</Text>
 				<View style={styles.lineUnderInput} />
-
 				<Button buttonStyle={styles.button} title="Change birthday" onPress={() => setOpen(true)} />
 				<Button
 					buttonStyle={styles.button}
