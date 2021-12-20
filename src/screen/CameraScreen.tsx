@@ -15,7 +15,7 @@ export const CameraScreen = () => {
 	};
 	return (
 		<View style={styles.container}>
-			<RNCamera ref={cameraRef} type={RNCamera.Constants.Type.back} captureAudio={false}>
+			<RNCamera style={styles.camera} ref={cameraRef} type={RNCamera.Constants.Type.front} captureAudio={false}>
 				<Button
 					buttonStyle={styles.button}
 					onPress={() => {
@@ -35,5 +35,12 @@ const styles = StyleSheet.create({
 		height: 70,
 		borderRadius: 100,
 		backgroundColor: 'white',
+		alignSelf: 'center',
+		marginBottom: 30,
+	},
+	camera: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'flex-end',
 	},
 });
