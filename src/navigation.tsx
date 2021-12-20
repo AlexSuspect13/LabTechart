@@ -13,6 +13,7 @@ import {
 	Goodness,
 	Profile,
 } from '../src';
+import CameraComponent from './screen/CameraScreen';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RootBottomTabNavigator } from './types/navigation';
 import { useSelector } from 'react-redux';
@@ -85,6 +86,7 @@ export default function Navigation() {
 					<Stack.Screen name="Checking" component={CheckingScreen} />
 					<Stack.Screen name="Goodness" component={Goodness} />
 					<Stack.Screen name="Profile" component={Profile} />
+					<Stack.Screen name="Camera" component={CameraComponent} />
 				</>
 			)}
 		</Stack.Navigator>
