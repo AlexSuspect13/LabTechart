@@ -35,7 +35,7 @@ export const CameraScreen = () => {
 					style={styles.chevron}
 					name="chevron-left"
 					size={50}
-					color={'white'}
+					color="white"
 					onPress={() => navigation.goBack()}
 				/>
 

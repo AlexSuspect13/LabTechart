@@ -21,12 +21,12 @@ export const Card = ({ preview }: Cards) => {
 			</View>
 			<Image style={styles.kidsPhoto} source={preview} />
 			<Text style={styles.textAboutKids}>
-				Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!{' '}
+				Danny, Your donation helped 5 amazing kids get much needed cancer sergery, thanks for being amazing!
 			</Text>
 			<Button
 				title="Share to spread the word"
 				buttonStyle={styles.cardButton}
-				icon={<Icon color={'#fff'} size={13} name="share" />}
+				icon={<Icon color="#fff" size={13} name="share" />}
 			/>
 		</View>
 	);

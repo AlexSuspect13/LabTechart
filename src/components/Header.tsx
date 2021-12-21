@@ -17,7 +17,7 @@ export const Header = ({ subtitle, title }: SecondaryPagesProps) => {
 		<View style={{ paddingTop: insets.top, backgroundColor: '#ff1493' }}>
 			<View style={styles.header}>
 				<View>
-					<Feather name="chevron-left" size={30} color={'white'} onPress={() => navigation.goBack()} />
+					<Feather name="chevron-left" size={30} color="white" onPress={() => navigation.goBack()} />
 				</View>
 				<View>
 					<Text style={styles.headerText}>{title}</Text>

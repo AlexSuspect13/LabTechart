@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal } from 'react-native';
+import { StyleSheet, Image, Modal } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ListItem } from 'react-native-elements';
 //import { useDispatch } from 'react-redux';
@@ -24,12 +24,10 @@ export function UserMenu() {
 				<Image source={require('../../assets/img/oval.png')} />
 			</TouchableOpacity>
 			<Modal visible={userMenuVisible} transparent>
-				<TouchableWithoutFeedback onPress={hideUserMenu}>
-					<View style={StyleSheet.absoluteFillObject} />
-				</TouchableWithoutFeedback>
 				<ListItem
 					style={styles.userMenuContent}
 					onPress={() => {
+						hideUserMenu();
 						navigation.navigate('Profile');
 					}}>
 					<ListItem.Content>

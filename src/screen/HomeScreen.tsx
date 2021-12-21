@@ -45,7 +45,7 @@ export function Home() {
 				<View style={styles.header}>
 					<View>
 						<TouchableOpacity>
-							<Feather name="menu" size={24} color={'white'} />
+							<Feather name="menu" size={24} color="white" />
 						</TouchableOpacity>
 					</View>
 					<View>

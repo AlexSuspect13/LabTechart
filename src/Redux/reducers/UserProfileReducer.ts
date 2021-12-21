@@ -1,25 +1,25 @@
 export const userProfilestate = {
 	fullName: 'Alex Suspect',
-	Userbirthday: '24.10.1991',
-	UserUriPhoto: 'https://drive.google.com/drive/folders/1731U3zmET8EWuGEAhFBUN1PrHow2g8ma',
+	birthday: null,
+	image: null,
 };
 
 export default (state = userProfilestate, action) => {
 	switch (action.type) {
-		case 'RENAME_USER':
+		case 'SET_RENAME':
 			return {
 				...state,
-				fullName: action.Username,
+				fullName: action.name,
 			};
-		case 'BIRTHDAY':
+		case 'SET_BIRTHDAY':
 			return {
 				...state,
-				Userbirthday: action.birthday,
+				birthday: action.birthday,
 			};
-		case 'URI_USER_PHOTO':
+		case 'SET_PHOTO':
 			return {
 				...state,
-				UserUriPhoto: action.userPhoto,
+				image: action.image,
 			};
 		default:
 			return state;

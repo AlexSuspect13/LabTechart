@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, Image } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Image, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Header } from '../components/Header';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,13 +10,12 @@ import { useNavigation } from '@react-navigation/core';
 import ImagePicker from 'react-native-image-crop-picker';
 export const Profile = () => {
 	const [date, setDate] = React.useState(new Date());
-	const [open, setOpen] = React.useState(false);
-	const [photo, setPhoto] = React.useState('');
-
+	const [openDate, setOpenDate] = React.useState(false);
+	const [avatarPhoto, setAvatarPhoto] = React.useState('');
 	const [nickName, setNickName] = React.useState('');
 	const name = useSelector((state: RootState) => state.userProfile.fullName);
-	const birthday = useSelector((state: RootState) => state.userProfile.Userbirthday);
-	const userPhoto = useSelector((state: RootState) => state.userProfile.UserUriPhoto);
+	const birthday = useSelector((state: RootState) => state.userProfile.birthday);
+	const userPhoto = useSelector((state: RootState) => state.userProfile.image);
 	const dispatch = useDispatch();
 	const navigation = useNavigation();
 
@@ -25,16 +24,23 @@ export const Profile = () => {
 			width: 300,
 			height: 400,
 		}).then((image) => {
-			setPhoto(image.path);
-			dispatch({ type: 'URI_USER_PHOTO', userPhoto: image.path });
-			console.log(photo);
+			setAvatarPhoto(image.path);
+			dispatch({ type: 'SET_PHOTO', image: image.path });
+			console.log(avatarPhoto);
 		});
+	};
+
+	const choosenBirthday = (date: any) => {
+		setOpenDate(false);
+		setDate(date);
+		const chooseDay = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
+		dispatch({ type: 'SET_BIRTHDAY', birthday: chooseDay });
 	};
 
 	return (
 		<SafeAreaView style={styles.container} edges={['left', 'right']}>
 			<Header title="Profile" />
-			<View style={styles.avatarEdit}>
+			<View style={styles.avatarConatiner}>
 				<Image
 					style={styles.profilePhoto}
 					source={{
@@ -46,7 +52,8 @@ export const Profile = () => {
 					<Button buttonStyle={styles.button} title="Choose from Galery" onPress={choosePhotoFromLibrary} />
 				</View>
 			</View>
-			<View style={styles.item1}>
+
+			<ScrollView style={styles.body}>
 				<Text style={styles.fullName}>Full Name </Text>
 				<TextInput
 					style={styles.infoText}
@@ -59,12 +66,12 @@ export const Profile = () => {
 				<Text style={styles.fullName}>Birthday </Text>
 				<Text style={styles.infoText}>{birthday}</Text>
 				<View style={styles.lineUnderInput} />
-				<Button buttonStyle={styles.button} title="Change birthday" onPress={() => setOpen(true)} />
+				<Button buttonStyle={styles.button} title="Change birthday" onPress={() => setOpenDate(true)} />
 				<Button
 					buttonStyle={styles.button}
 					title="Change name"
 					onPress={() => {
-						dispatch({ type: 'RENAME_USER', Username: nickName });
+						dispatch({ type: 'SET_RENAME', name: nickName });
 					}}
 				/>
 				<Button
@@ -74,22 +81,18 @@ export const Profile = () => {
 						dispatch({ type: 'SIGN_OUT', token: null });
 					}}
 				/>
+
 				<DatePicker
 					modal
 					date={date}
 					mode="date"
-					open={open}
-					onConfirm={(date) => {
-						setOpen(false);
-						setDate(date);
-						const fdate = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
-						dispatch({ type: 'BIRTHDAY', birthday: fdate });
-					}}
+					open={openDate}
+					onConfirm={choosenBirthday}
 					onCancel={() => {
-						setOpen(false);
+						setOpenDate(false);
 					}}
 				/>
-			</View>
+			</ScrollView>
 		</SafeAreaView>
 	);
 };
@@ -99,9 +102,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: '#fff',
 	},
-	item1: {
-		flex: 1,
-
+	body: {
 		padding: 20,
 	},
 	fullName: { color: '#636363', fontSize: 20, fontFamily: 'SFRounded-Medium' },
@@ -113,8 +114,9 @@ const styles = StyleSheet.create({
 		backgroundColor: '#ff1493',
 		borderRadius: 15,
 	},
-	avatarEdit: {
+	avatarConatiner: {
 		padding: 20,
+		alignContent: 'flex-end',
 	},
 	profilePhoto: {
 		alignSelf: 'center',
@@ -124,7 +126,7 @@ const styles = StyleSheet.create({
 	},
 	profileButton: {
 		marginHorizontal: 10,
-		top: 30,
+		marginTop: 30,
 		flexDirection: 'row',
 		justifyContent: 'space-between',
 	},
