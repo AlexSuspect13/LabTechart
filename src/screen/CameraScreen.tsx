@@ -6,18 +6,20 @@ import { useCamera } from 'react-native-camera-hooks';
 import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/core';
 import RNFS from 'react-native-fs';
+import { useDispatch } from 'react-redux';
 export const CameraScreen = () => {
+	const dispatch = useDispatch();
 	const navigation = useNavigation();
 	const [{ cameraRef }, { takePicture }] = useCamera();
 	const captureHandle = async () => {
 		try {
 			const data = await takePicture();
-
 			const filePath = data.uri;
 			const newFilePath = RNFS.ExternalDirectoryPath + '/MyPhoto.jpg';
 			RNFS.moveFile(filePath, newFilePath)
 				.then(() => {
 					console.log('IMAGE MOVED', filePath, '---to---', newFilePath);
+					dispatch({ type: 'URI_USER_PHOTO', userPhoto: newFilePath });
 				})
 				.catch((e) => {
 					console.log(e);

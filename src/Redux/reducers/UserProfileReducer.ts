@@ -1,6 +1,7 @@
 export const userProfilestate = {
 	fullName: 'Alex Suspect',
 	Userbirthday: '24.10.1991',
+	UserUriPhoto: 'https://drive.google.com/drive/folders/1731U3zmET8EWuGEAhFBUN1PrHow2g8ma',
 };
 
 export default (state = userProfilestate, action) => {
@@ -14,6 +15,11 @@ export default (state = userProfilestate, action) => {
 			return {
 				...state,
 				Userbirthday: action.birthday,
+			};
+		case 'URI_USER_PHOTO':
+			return {
+				...state,
+				UserUriPhoto: action.userPhoto,
 			};
 		default:
 			return state;
