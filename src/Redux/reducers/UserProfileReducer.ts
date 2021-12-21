@@ -1,7 +1,7 @@
 export const userProfilestate = {
 	fullName: null,
 	birthday: null,
-	image: require('../../../assets/img/standartProfilePhoto.png'),
+	image: null,
 };
 export default (state = userProfilestate, action) => {
 	switch (action.type) {

@@ -17,7 +17,6 @@ export function UserMenu() {
 		setUserMenuVisible(true);
 	};
 
-	//const dispatch = useDispatch();
 	const navigation = useNavigation();
 	return (
 		<>
