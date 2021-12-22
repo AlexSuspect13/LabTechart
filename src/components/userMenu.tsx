@@ -2,7 +2,6 @@ import * as React from 'react';
 import { StyleSheet, Image, Modal } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { ListItem } from 'react-native-elements';
-//import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/core';
 import { useSelector } from 'react-redux';
 import { RootState } from '../Redux/store';
@@ -49,9 +48,8 @@ const styles = StyleSheet.create({
 		top: 50,
 	},
 	avatarPhoto: {
-		height: 30,
-		width: 30,
+		height: 25,
+		width: 25,
 		borderRadius: 50,
-		bottom: 5,
 	},
 });

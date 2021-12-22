@@ -1,9 +1,8 @@
 export const userProfilestate = {
-	fullName: 'Alex Suspect',
+	fullName: null,
 	birthday: null,
-	image: null,
+	image: require('../../../assets/img/standartProfilePhoto.png'),
 };
-
 export default (state = userProfilestate, action) => {
 	switch (action.type) {
 		case 'SET_RENAME':
