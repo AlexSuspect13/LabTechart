@@ -18,7 +18,7 @@ export type RootStackParamList = {
 	Savings: { textParam: string };
 	Checking: { textParam: string };
 	Goodness: { textParam: string };
-	Profile: undefined;
+	Profile: { post: string };
 	Camera: undefined;
 };
 
@@ -37,3 +37,4 @@ export type SavingsScreenNavigation = StackScreenProps<RootStackParamList, 'Savi
 export type GoodnessScreenNavigation = StackScreenProps<RootStackParamList, 'Goodness'>;
 export type ProfieScreenNavigation = StackScreenProps<RootStackParamList, 'Profile'>;
 export type CameraScreenNavigation = StackScreenProps<RootStackParamList, 'Camera'>;
+export type ProfileScreenNavigation = StackScreenProps<RootStackParamList, 'Profile'>;

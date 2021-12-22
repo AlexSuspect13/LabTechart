@@ -20,8 +20,14 @@ export const Header = ({ subtitle, title }: SecondaryPagesProps) => {
 					<Feather name="chevron-left" size={30} color="white" onPress={() => navigation.goBack()} />
 				</View>
 				<View style={styles.centralText}>
-					<Text style={styles.headerText}>{title}</Text>
-					{subtitle != null ? <Text style={styles.text}>{subtitle}</Text> : null}
+					{subtitle !== undefined ? (
+						<>
+							<Text style={styles.headerText}>{title}</Text>
+							<Text style={styles.text}>{subtitle}</Text>
+						</>
+					) : (
+						<Text style={styles.headerText}>{title}</Text>
+					)}
 				</View>
 				<View>
 					<UserMenu />
@@ -34,6 +40,8 @@ const styles = StyleSheet.create({
 	headerText: {
 		color: '#fff',
 		fontSize: 20,
+		alignItems: 'center',
+		height: 20,
 	},
 	text: {
 		color: '#fff',
@@ -44,7 +52,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		flexDirection: 'row',
 		elevation: 4,
-		marginHorizontal: 15,
+		marginHorizontal: 10,
 	},
 	centralText: {
 		flexDirection: 'column',

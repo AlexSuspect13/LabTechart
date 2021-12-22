@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
 		elevation: 4,
 		justifyContent: 'space-between',
 		marginHorizontal: 15,
+		height: 30,
 	},
 	container: { flex: 1 },
 });

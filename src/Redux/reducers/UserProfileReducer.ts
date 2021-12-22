@@ -1,11 +1,11 @@
 export const userProfilestate = {
 	fullName: null,
 	birthday: null,
-	image: null,
+	image: '/Users/aliaksei/Desktop/app/LabTechart/assets/img/standartProfilePhoto.png',
 };
 export default (state = userProfilestate, action) => {
 	switch (action.type) {
-		case 'SET_RENAME':
+		case 'SET_FULLNAME':
 			return {
 				...state,
 				fullName: action.name,

@@ -21,10 +21,7 @@ export function UserMenu() {
 	return (
 		<>
 			<TouchableOpacity style={styles.avatarContainer} onPress={showUserMenu}>
-				<Image
-					style={styles.avatarPhoto}
-					source={{ uri: userPhoto ? userPhoto : require('../../assets/img/standartProfilePhoto.png') }}
-				/>
+				<Image style={styles.avatarPhoto} source={{ uri: userPhoto }} />
 			</TouchableOpacity>
 
 			<Modal visible={userMenuVisible} transparent>

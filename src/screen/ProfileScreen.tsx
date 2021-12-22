@@ -6,24 +6,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../Redux/store';
 import DatePicker from 'react-native-date-picker';
 import { Button } from 'react-native-elements';
-import { useNavigation } from '@react-navigation/core';
 import ImagePicker from 'react-native-image-crop-picker';
 import { ProfieScreenNavigation } from '../types/navigation';
-
-interface ProfileScreenProps extends ProfieScreenNavigation {}
-export const Profile = ({ route }: ProfileScreenProps) => {
+interface ProfieScreenProps extends ProfieScreenNavigation {}
+export const Profile = ({ route, navigation }: ProfieScreenProps) => {
 	const birthday = useSelector((state: RootState) => state.userProfile.birthday);
 	const name = useSelector((state: RootState) => state.userProfile.fullName);
 	const userPhoto = useSelector((state: RootState) => state.userProfile.image);
 	const [date, setDate] = React.useState(new Date());
 	const [openDate, setOpenDate] = React.useState(false);
 	const [avatarPhoto, setAvatarPhoto] = React.useState(userPhoto);
-	const [nickName, setNickName] = React.useState('');
+	const [nickName, setNickName] = React.useState(name);
 	const [editProfile, setEditProfile] = React.useState(true);
 	const [stateBirthday, setStateBirthday] = React.useState(birthday);
-
 	const dispatch = useDispatch();
-	const navigation = useNavigation();
 
 	const choosePhotoFromLibrary = async () => {
 		const image = await ImagePicker.openPicker({
@@ -39,6 +35,11 @@ export const Profile = ({ route }: ProfileScreenProps) => {
 		const chooseDay = date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear();
 		setStateBirthday(chooseDay);
 	};
+	React.useEffect(() => {
+		if (route.params?.post) {
+			setAvatarPhoto(route.params?.post);
+		}
+	}, [route.params?.post]);
 
 	return (
 		<SafeAreaView style={styles.container} edges={['left', 'right']}>
@@ -80,7 +81,7 @@ export const Profile = ({ route }: ProfileScreenProps) => {
 					) : (
 						<TextInput
 							style={styles.infoText}
-							placeholder={name}
+							value={nickName}
 							placeholderTextColor="black"
 							onChangeText={setNickName}
 						/>
@@ -97,29 +98,6 @@ export const Profile = ({ route }: ProfileScreenProps) => {
 					)}
 
 					<View style={styles.lineUnderInput} />
-					{editProfile ? null : (
-						<>
-							<Button
-								buttonStyle={styles.button}
-								title="Cancel"
-								onPress={() => {
-									setEditProfile(true);
-									setStateBirthday(birthday);
-									setAvatarPhoto(userPhoto);
-								}}
-							/>
-							<Button
-								buttonStyle={styles.button}
-								title="Apply updates"
-								onPress={() => {
-									dispatch({ type: 'SET_BIRTHDAY', birthday: stateBirthday });
-									dispatch({ type: 'SET_RENAME', name: nickName });
-									dispatch({ type: 'SET_PHOTO', image: avatarPhoto });
-									setEditProfile(true);
-								}}
-							/>
-						</>
-					)}
 					{editProfile ? (
 						<>
 							<Button
@@ -137,7 +115,29 @@ export const Profile = ({ route }: ProfileScreenProps) => {
 								}}
 							/>
 						</>
-					) : null}
+					) : (
+						<>
+							<Button
+								buttonStyle={styles.button}
+								title="Cancel"
+								onPress={() => {
+									setEditProfile(true);
+									setStateBirthday(birthday);
+									setAvatarPhoto(userPhoto);
+								}}
+							/>
+							<Button
+								buttonStyle={styles.button}
+								title="Apply updates"
+								onPress={() => {
+									dispatch({ type: 'SET_BIRTHDAY', birthday: stateBirthday });
+									dispatch({ type: 'SET_FULLNAME', name: nickName });
+									dispatch({ type: 'SET_PHOTO', image: avatarPhoto });
+									setEditProfile(true);
+								}}
+							/>
+						</>
+					)}
 
 					<DatePicker
 						modal
