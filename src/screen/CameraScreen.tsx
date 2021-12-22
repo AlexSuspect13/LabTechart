@@ -1,57 +1,51 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import { RNCamera } from 'react-native-camera';
 import { useCamera } from 'react-native-camera-hooks';
-import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/core';
 import RNFS from 'react-native-fs';
 import { useDispatch } from 'react-redux';
+
 export const CameraScreen = () => {
 	const dispatch = useDispatch();
 	const navigation = useNavigation();
-	const [{ cameraRef }, { takePicture }] = useCamera();
-	const captureHandle = async () => {
-		try {
-			const data = await takePicture();
-			const filePath = data.uri;
-			const newFilePath = RNFS.ExternalDirectoryPath + '/MyPhoto.jpg';
-			RNFS.moveFile(filePath, newFilePath)
-				.then(() => {
-					console.log('IMAGE MOVED', filePath, '---to---', newFilePath);
-					dispatch({ type: 'URI_USER_PHOTO', userPhoto: newFilePath });
-				})
-				.catch((e) => {
-					console.log(e);
-				});
-		} catch (e) {
-			console.log(e);
-		}
+	const PendingView = () => (
+		<View
+			style={{
+				flex: 1,
+				backgroundColor: 'lightgreen',
+				justifyContent: 'center',
+				alignItems: 'center',
+			}}>
+			<Text>Waiting</Text>
+		</View>
+	);
+	const takePictures = async function (camera: any) {
+		const options = { quality: 0.1, base64: true };
+		const data = await camera.takePictureAsync(options);
+		dispatch({ type: 'SET_PHOTO', image: data.uri });
+		navigation.goBack();
 	};
 	return (
-		<View style={styles.container}>
-			<RNCamera style={styles.camera} ref={cameraRef} type={RNCamera.Constants.Type.front} captureAudio={false}>
-				<Feather
-					style={styles.chevron}
-					name="chevron-left"
-					size={50}
-					color="white"
-					onPress={() => navigation.goBack()}
-				/>
-
-				<Button
-					buttonStyle={styles.button}
-					onPress={() => {
-						captureHandle();
-					}}
-				/>
-			</RNCamera>
-		</View>
+		<RNCamera style={styles.container} type={RNCamera.Constants.Type.front} flashMode={RNCamera.Constants.FlashMode.on}>
+			{({ camera, status }) => {
+				if (status !== 'READY') return <PendingView />;
+				return (
+					<View>
+						<TouchableOpacity onPress={() => takePictures(camera)}>
+							<View style={styles.button} />
+						</TouchableOpacity>
+					</View>
+				);
+			}}
+		</RNCamera>
 	);
 };
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		justifyContent: 'flex-end',
 	},
 	button: {
 		width: 70,
@@ -60,16 +54,5 @@ const styles = StyleSheet.create({
 		backgroundColor: 'white',
 		alignSelf: 'center',
 		marginBottom: 30,
-	},
-	camera: {
-		flex: 1,
-		alignItems: 'center',
-		justifyContent: 'flex-end',
-		flexDirection: 'column',
-	},
-	chevron: {
-		alignSelf: 'flex-start',
-		top: 60,
-		left: 30,
 	},
 });

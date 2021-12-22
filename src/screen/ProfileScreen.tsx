@@ -8,7 +8,10 @@ import DatePicker from 'react-native-date-picker';
 import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/core';
 import ImagePicker from 'react-native-image-crop-picker';
-export const Profile = () => {
+import { ProfieScreenNavigation } from '../types/navigation';
+
+interface ProfileScreenProps extends ProfieScreenNavigation {}
+export const Profile = ({ route }: ProfileScreenProps) => {
 	const birthday = useSelector((state: RootState) => state.userProfile.birthday);
 	const name = useSelector((state: RootState) => state.userProfile.fullName);
 	const userPhoto = useSelector((state: RootState) => state.userProfile.image);
@@ -61,7 +64,9 @@ export const Profile = () => {
 								<Button
 									buttonStyle={styles.button}
 									title="Make from camera"
-									onPress={() => navigation.navigate('Camera')}
+									onPress={() => {
+										navigation.navigate('Camera');
+									}}
 								/>
 								<Button buttonStyle={styles.button} title="Choose from Galery" onPress={choosePhotoFromLibrary} />
 							</View>
