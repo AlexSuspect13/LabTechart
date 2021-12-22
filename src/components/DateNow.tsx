@@ -22,12 +22,12 @@ function generateGreetings() {
 }
 
 export default function DateNow() {
-	const userName = useSelector((state: RootState) => state.userProfile.name);
+	const name = useSelector((state: RootState) => state.userProfile.fullName);
 
 	return (
 		<View style={styles.container}>
 			<Text style={styles.text}>{generateGreetings()}</Text>
-			<Text style={styles.text}>{userName}</Text>
+			<Text style={styles.text}>{name}</Text>
 			<View style={styles.hairline} />
 			<Text style={styles.text}>{date}</Text>
 		</View>

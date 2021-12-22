@@ -35,7 +35,7 @@ export const VideoCards = ({ video, isPaused, preview }: VideoCards) => {
 							onPress={() => {
 								setMuted(!muted);
 							}}>
-							<Icon color={'#fff'} size={30} name={muted ? 'volume-off' : 'volume-up'} />
+							<Icon color="#fff" size={30} name={muted ? 'volume-off' : 'volume-up'} />
 						</TouchableOpacity>
 					</View>
 				</View>
@@ -46,7 +46,7 @@ export const VideoCards = ({ video, isPaused, preview }: VideoCards) => {
 			<Button
 				title="Share to spread the word"
 				buttonStyle={styles.cardButton}
-				icon={<Icon color={'#fff'} size={13} name="share" />}
+				icon={<Icon color="#fff" size={13} name="share" />}
 			/>
 		</View>
 	);

@@ -4,7 +4,7 @@ export const initialState = {
 	authError: null,
 };
 
-export default (state = initialState, action:any) => {
+export default (state = initialState, action) => {
 	switch (action.type) {
 		case 'SIGN_IN_FULFILLED':
 			return {

@@ -9,6 +9,8 @@ export type RootBottomTabNavigator = {
 	Payments: undefined;
 	Card: undefined;
 	Goodnes: undefined;
+	Profile: undefined;
+	Camera: undefined;
 };
 export type RootStackParamList = {
 	SignInScreen: undefined;
@@ -16,6 +18,8 @@ export type RootStackParamList = {
 	Savings: { textParam: string };
 	Checking: { textParam: string };
 	Goodness: { textParam: string };
+	Profile: { post: string };
+	Camera: undefined;
 };
 
 export type HomeScreenNavigation = CompositeScreenProps<
@@ -31,3 +35,6 @@ export type AccountsScreenNavigation = CompositeScreenProps<
 export type CheckingScreenNavigation = StackScreenProps<RootStackParamList, 'Checking'>;
 export type SavingsScreenNavigation = StackScreenProps<RootStackParamList, 'Savings'>;
 export type GoodnessScreenNavigation = StackScreenProps<RootStackParamList, 'Goodness'>;
+export type ProfieScreenNavigation = StackScreenProps<RootStackParamList, 'Profile'>;
+export type CameraScreenNavigation = StackScreenProps<RootStackParamList, 'Camera'>;
+export type ProfileScreenNavigation = StackScreenProps<RootStackParamList, 'Profile'>;

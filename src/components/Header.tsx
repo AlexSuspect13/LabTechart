@@ -17,11 +17,17 @@ export const Header = ({ subtitle, title }: SecondaryPagesProps) => {
 		<View style={{ paddingTop: insets.top, backgroundColor: '#ff1493' }}>
 			<View style={styles.header}>
 				<View>
-					<Feather name="chevron-left" size={30} color={'white'} onPress={() => navigation.goBack()} />
+					<Feather name="chevron-left" size={30} color="white" onPress={() => navigation.goBack()} />
 				</View>
-				<View>
-					<Text style={styles.headerText}>{title}</Text>
-					<Text style={styles.text}>{subtitle}</Text>
+				<View style={styles.centralText}>
+					{subtitle !== undefined ? (
+						<>
+							<Text style={styles.headerText}>{title}</Text>
+							<Text style={styles.text}>{subtitle}</Text>
+						</>
+					) : (
+						<Text style={styles.headerText}>{title}</Text>
+					)}
 				</View>
 				<View>
 					<UserMenu />
@@ -31,7 +37,12 @@ export const Header = ({ subtitle, title }: SecondaryPagesProps) => {
 	);
 };
 const styles = StyleSheet.create({
-	headerText: { color: '#fff', fontSize: 20 },
+	headerText: {
+		color: '#fff',
+		fontSize: 20,
+		alignItems: 'center',
+		height: 20,
+	},
 	text: {
 		color: '#fff',
 		fontSize: 10,
@@ -41,6 +52,10 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		flexDirection: 'row',
 		elevation: 4,
-		marginHorizontal: 15,
+		marginHorizontal: 10,
+	},
+	centralText: {
+		flexDirection: 'column',
+		alignItems: 'center',
 	},
 });

@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { TouchableWithoutFeedback, StyleSheet, View, Image, Modal } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, Image, Modal, View, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+
 import { ListItem } from 'react-native-elements';
-import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/core';
+import { useSelector } from 'react-redux';
+import { RootState } from '../Redux/store';
 
 export function UserMenu() {
 	const [userMenuVisible, setUserMenuVisible] = React.useState(false);
-
+	const userPhoto = useSelector((state: RootState) => state.userProfile.image);
 	const hideUserMenu = () => {
 		setUserMenuVisible(false);
 	};
@@ -15,13 +17,13 @@ export function UserMenu() {
 		setUserMenuVisible(true);
 	};
 
-	const dispatch = useDispatch();
-
+	const navigation = useNavigation();
 	return (
 		<>
-			<TouchableOpacity onPress={showUserMenu}>
-				<Image source={require('../../assets/img/oval.png')} />
+			<TouchableOpacity style={styles.avatarContainer} onPress={showUserMenu}>
+				<Image style={styles.avatarPhoto} source={{ uri: userPhoto }} />
 			</TouchableOpacity>
+
 			<Modal visible={userMenuVisible} transparent>
 				<TouchableWithoutFeedback onPress={hideUserMenu}>
 					<View style={StyleSheet.absoluteFillObject} />
@@ -29,10 +31,11 @@ export function UserMenu() {
 				<ListItem
 					style={styles.userMenuContent}
 					onPress={() => {
-						dispatch({ type: 'SIGN_OUT', token: null });
+						hideUserMenu();
+						navigation.navigate('Profile');
 					}}>
 					<ListItem.Content>
-						<ListItem.Title>Log out</ListItem.Title>
+						<ListItem.Title>Profile</ListItem.Title>
 					</ListItem.Content>
 				</ListItem>
 			</Modal>
@@ -46,5 +49,14 @@ const styles = StyleSheet.create({
 		right: 10,
 		width: 100,
 		top: 50,
+	},
+	avatarPhoto: {
+		height: 25,
+		width: 25,
+		borderRadius: 50,
+	},
+	avatarContainer: {
+		backgroundColor: 'white',
+		borderRadius: 50,
 	},
 });

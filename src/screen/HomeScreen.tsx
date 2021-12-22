@@ -45,7 +45,7 @@ export function Home() {
 				<View style={styles.header}>
 					<View>
 						<TouchableOpacity>
-							<Feather name="menu" size={24} color={'white'} />
+							<Feather name="menu" size={24} color="white" />
 						</TouchableOpacity>
 					</View>
 					<View>
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
 		elevation: 4,
 		justifyContent: 'space-between',
 		marginHorizontal: 15,
+		height: 30,
 	},
 	container: { flex: 1 },
 });

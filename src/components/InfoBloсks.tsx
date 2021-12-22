@@ -31,7 +31,7 @@ export const InfoBlock = ({ text, infotxt, dollar, cent, routeName }: InfoBlockP
 						{dollar}
 						<Text style={styles.cent}>.{cent}</Text>
 					</Text>
-					<Icon style={styles.chevron} color={'#ff1493'} name="chevron-right" />
+					<Icon style={styles.chevron} color="#ff1493" name="chevron-right" />
 				</View>
 			</View>
 		</TouchableOpacity>
