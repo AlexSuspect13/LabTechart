@@ -9,12 +9,12 @@ import { Button } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/core';
 import ImagePicker from 'react-native-image-crop-picker';
 export const Profile = () => {
-	const [date, setDate] = React.useState(new Date());
 	const birthday = useSelector((state: RootState) => state.userProfile.birthday);
 	const name = useSelector((state: RootState) => state.userProfile.fullName);
 	const userPhoto = useSelector((state: RootState) => state.userProfile.image);
+	const [date, setDate] = React.useState(new Date());
 	const [openDate, setOpenDate] = React.useState(false);
-	const [avatarPhoto, setAvatarPhoto] = React.useState('');
+	const [avatarPhoto, setAvatarPhoto] = React.useState(userPhoto);
 	const [nickName, setNickName] = React.useState('');
 	const [editProfile, setEditProfile] = React.useState(true);
 	const [stateBirthday, setStateBirthday] = React.useState(birthday);
@@ -22,15 +22,12 @@ export const Profile = () => {
 	const dispatch = useDispatch();
 	const navigation = useNavigation();
 
-	const choosePhotoFromLibrary = () => {
-		ImagePicker.openPicker({
+	const choosePhotoFromLibrary = async () => {
+		const image = await ImagePicker.openPicker({
 			width: 300,
 			height: 400,
-		}).then((image) => {
-			setAvatarPhoto(image.path);
-			dispatch({ type: 'SET_PHOTO', image: image.path });
-			console.log(avatarPhoto);
 		});
+		setAvatarPhoto(image.path);
 	};
 
 	const choosenBirthday = (date: any) => {
@@ -45,21 +42,30 @@ export const Profile = () => {
 			<Header title="Profile" />
 			<ScrollView>
 				<View style={styles.avatarConatiner}>
-					<Image
-						style={styles.profilePhoto}
-						source={{
-							uri: userPhoto,
-						}}
-					/>
-					{editProfile ? null : (
-						<View style={styles.profileButton}>
-							<Button
-								buttonStyle={styles.button}
-								title="Make from camera"
-								onPress={() => navigation.navigate('Camera')}
+					{editProfile ? (
+						<Image
+							style={styles.profilePhoto}
+							source={{
+								uri: userPhoto,
+							}}
+						/>
+					) : (
+						<>
+							<Image
+								style={styles.profilePhoto}
+								source={{
+									uri: avatarPhoto,
+								}}
 							/>
-							<Button buttonStyle={styles.button} title="Choose from Galery" onPress={choosePhotoFromLibrary} />
-						</View>
+							<View style={styles.profileButton}>
+								<Button
+									buttonStyle={styles.button}
+									title="Make from camera"
+									onPress={() => navigation.navigate('Camera')}
+								/>
+								<Button buttonStyle={styles.button} title="Choose from Galery" onPress={choosePhotoFromLibrary} />
+							</View>
+						</>
 					)}
 				</View>
 				<View style={styles.infoContainer}>
@@ -94,6 +100,7 @@ export const Profile = () => {
 								onPress={() => {
 									setEditProfile(true);
 									setStateBirthday(birthday);
+									setAvatarPhoto(userPhoto);
 								}}
 							/>
 							<Button
@@ -102,6 +109,7 @@ export const Profile = () => {
 								onPress={() => {
 									dispatch({ type: 'SET_BIRTHDAY', birthday: stateBirthday });
 									dispatch({ type: 'SET_RENAME', name: nickName });
+									dispatch({ type: 'SET_PHOTO', image: avatarPhoto });
 									setEditProfile(true);
 								}}
 							/>
