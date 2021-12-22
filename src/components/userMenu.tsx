@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { StyleSheet, Image, Modal } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, Image, Modal, View, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+
 import { ListItem } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/core';
 import { useSelector } from 'react-redux';
@@ -20,10 +20,17 @@ export function UserMenu() {
 	const navigation = useNavigation();
 	return (
 		<>
-			<TouchableOpacity onPress={showUserMenu}>
-				<Image style={styles.avatarPhoto} source={{ uri: userPhoto }} />
+			<TouchableOpacity style={styles.avatarContainer} onPress={showUserMenu}>
+				<Image
+					style={styles.avatarPhoto}
+					source={{ uri: userPhoto ? userPhoto : require('../../assets/img/standartProfilePhoto.png') }}
+				/>
 			</TouchableOpacity>
+
 			<Modal visible={userMenuVisible} transparent>
+				<TouchableWithoutFeedback onPress={hideUserMenu}>
+					<View style={StyleSheet.absoluteFillObject} />
+				</TouchableWithoutFeedback>
 				<ListItem
 					style={styles.userMenuContent}
 					onPress={() => {
@@ -49,6 +56,10 @@ const styles = StyleSheet.create({
 	avatarPhoto: {
 		height: 25,
 		width: 25,
+		borderRadius: 50,
+	},
+	avatarContainer: {
+		backgroundColor: 'white',
 		borderRadius: 50,
 	},
 });
